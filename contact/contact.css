@@ -1,0 +1,108 @@
+.contact-container {
+    padding-bottom: 2em;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.contact-section {
+    display: flex;
+    gap: 2rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 2em;
+  width: 45%;
+}
+
+.contact-icon {
+  background: linear-gradient(45deg, #57c530, #21a77b);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 5px;
+  flex-shrink: 0;
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.location-detail > h2,
+.location-detail > p {
+  margin: 0.5em;
+}
+
+.phone {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.phone-detail > h2,
+.phone-detail > p {
+  margin: 0.5em;
+}
+
+.email {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.email-detail > h2,
+.email-detail > p {
+  margin: 0.5em;
+}
+
+.contact-form {
+    width: 55%;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  border-radius: 3px;
+  color: #333;
+}
+
+.form-row input {
+  width: 50%;
+}
+
+textarea {
+  height: 200px;
+  resize: vertical;
+}
