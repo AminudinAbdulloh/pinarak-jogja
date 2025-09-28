@@ -1,0 +1,80 @@
+.berita-section {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffff;
+  margin: 0;
+  color: #333;
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.berita-section h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #0e4b75;
+}
+
+.berita-section h1::after {
+  content: "";
+  display: block;
+  width: 10%;
+  height: 5px;
+  background-color: #c86b85;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.berita-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.berita-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.berita-card:hover {
+  transform: translateY(-5px);
+}
+
+.berita-card img {
+  width: 100%;
+  height: auto;
+}
+
+.berita-content {
+  padding: 20px;
+}
+
+.berita-content .tanggal {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.berita-content h3 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #0e4b75;
+}
+
+.berita-content p {
+  font-size: 0.95em;
+  margin-bottom: 10px;
+}
+
+.berita-content a {
+  text-decoration: none;
+  color: #c86b85;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.berita-content a:hover {
+  color: #0056b3;
+}

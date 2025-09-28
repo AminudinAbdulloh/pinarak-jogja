@@ -1,0 +1,242 @@
+/* YouTube Video Section */
+.video-section {
+    padding: 30px 15px;
+    text-align: center;
+}
+
+.video-section h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #0e4b75;
+    margin-bottom: 25px;
+}
+
+.video-section h1::after {
+    content: "";
+    display: block;
+    width: 15%;
+    height: 5px;
+    background-color: #c86b85;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.video-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 45%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.profile-section {
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-section h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #0e4b75;
+    margin-bottom: 20px;
+}
+
+.profile-section h1::after {
+    content: "";
+    display: block;
+    width: 55%;
+    height: 5px;
+    background-color: #c86b85;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.profile-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+    padding: 10px;
+}
+
+.card {
+    position: relative;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    min-width: 280px;
+    flex: 0 0 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.pas-photo {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+.detail {
+    position: absolute;
+    background: linear-gradient(45deg, #57c530, #21a77b);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-profile {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.tiktok img {
+    width: 50px;
+    height: 50px;
+}
+
+.contact-profile:hover {
+    transform: scale(1.15);
+}
+
+.card:hover .detail {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.info {
+    background-color: #fff;
+    width: 100%;
+    z-index: 99;
+    padding: 15px;
+    text-align: center;
+}
+
+.info h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.info p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+.arrow:hover {
+    background-color: white;
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
+.arrow svg {
+    width: 24px;
+    height: 24px;
+    fill: #0e4b75;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #0e4b75;
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .card {
+        min-width: 240px;
+        flex: 0 0 240px;
+    }
+    
+    .pas-photo {
+        height: 240px;
+    }
+    
+    .arrow {
+        width: 40px;
+        height: 40px;
+    }
+}

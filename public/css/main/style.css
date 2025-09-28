@@ -1,0 +1,466 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #dedede;
+  scroll-behavior: smooth;
+  background-color: #ffff;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #ffff;
+}
+
+.layar-dalam {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 80px; /* Set fixed height for navbar */
+}
+
+.layar-penuh {
+  width: 100%;
+}
+
+nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  color: #fff;
+  background: linear-gradient(135deg, #2d5016, #4a7c22),
+    url("../../img/headers/batik.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  width: 100%;
+  border-bottom: 2px solid #ababab;
+}
+
+.header {
+  background-color: transparent; /* Make header transparent */
+  color: #fff; /* Change text color to white for visibility */
+  text-align: end;
+  padding: 10px 25px;
+  width: 50%;
+  margin-right: 0;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+/* Language Selector Styles */
+.language-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.language-select {
+  appearance: none;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Semi-transparent white background */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  padding: 5px 25px 5px 35px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23666" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 10px;
+}
+
+.language-select:focus {
+  outline: none;
+  border-color: #fff;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.flag-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 12px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Flag styles using images */
+.flag-indonesia {
+  background-image: url("/img/headers/id.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.flag-english {
+  background-image: url("/img/headers/en-us.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Logo styles - full height */
+nav .logo {
+  padding-bottom: 45px;
+  height: 100%; /* Take full height of parent container */
+  display: flex;
+  align-items: center;
+}
+
+nav .logo img {
+  height: 500px; /* Full height of navbar */
+  width: auto; /* Maintain aspect ratio */
+  max-height: 120px; /* Match navbar height */
+  object-fit: contain; /* Ensure logo fits properly */
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+nav .menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav .menu ul li {
+  list-style-type: none;
+  float: left;
+  line-height: 60px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-align: center;
+  padding: 0px 16px 0px 16px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.tombol-menu {
+  position: absolute;
+  top: 1.7rem;
+  right: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  display: none;
+}
+
+.tombol-menu .garis {
+  height: 3px;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 991.98px) {
+  .layar-dalam {
+    width: 90%;
+    height: 60px; /* Smaller height for mobile */
+  }
+
+  nav .logo img {
+    max-height: 60px; /* Adjust for mobile */
+  }
+
+  nav .menu ul {
+    display: none;
+    margin-top: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  nav .menu ul li {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    line-height: 40px;
+  }
+  nav .menu ul li a {
+    color: #333;
+  }
+  .tombol-menu {
+    display: flex;
+  }
+
+  .header {
+    padding: 10px 15px;
+  }
+}
+
+/* Footer Styles */
+.main-footer {
+  background: linear-gradient(135deg, #2d5016, #4a7c22);
+  color: white;
+  padding: 50px 20px 30px;
+  text-align: center;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Media Partner Section */
+.media-partner-section {
+  margin-bottom: 50px;
+}
+
+.media-partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+}
+
+.logo-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.logo-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+/* Information Section */
+.info-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.info-item {
+  min-width: 250px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.info-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-3px);
+}
+
+.info-item h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #f5cf41;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-item p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #f0f0f0;
+  margin: 0;
+}
+
+/* Main Logos Section */
+.main-logos-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 50px 0;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-logo {
+  height: 120px;
+  max-width: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.main-logo:hover {
+  transform: scale(1.05);
+}
+
+.divider-line {
+  height: 130px;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #f5cf41, transparent);
+  border-radius: 2px;
+}
+
+/* Social Media Section */
+.social-media-section {
+  margin: 40px 0;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-link {
+  display: inline-block;
+  padding: 12px;
+  background: #f5cf41;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 207, 65, 0.3);
+}
+
+.social-link:hover {
+  transform: translateY(-5px) scale(1.1);
+  background: #ffd700;
+  box-shadow: 0 8px 25px rgba(245, 207, 65, 0.5);
+}
+
+.social-link img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* Copyright Section */
+.copyright-section {
+  margin-top: 40px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.copyright-section p {
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-footer {
+    padding: 30px 15px 20px;
+  }
+
+  .media-partner-logos {
+    gap: 15px;
+  }
+
+  .logo-card {
+    padding: 10px;
+  }
+
+  .logo-card img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .info-section {
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-item {
+    min-width: auto;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .main-logos-section {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .divider-line {
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(to right, transparent, #f5cf41, transparent);
+  }
+
+  .main-logo {
+    height: 80px;
+  }
+
+  .social-links {
+    gap: 15px;
+  }
+
+  .social-link {
+    padding: 10px;
+  }
+
+  .social-link img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-section {
+    gap: 20px;
+  }
+
+  .info-item h3 {
+    font-size: 1.2em;
+  }
+
+  .info-item p {
+    font-size: 0.9em;
+  }
+
+  .main-logos-section {
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .main-logo {
+    height: 60px;
+  }
+}
