@@ -8,3 +8,9 @@ function previewImage(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+function resetForm(formId, imagePreviewText) {
+    document.getElementById(formId).reset();
+    document.getElementById('imagePreview').innerHTML =
+            imagePreviewText;
+}
