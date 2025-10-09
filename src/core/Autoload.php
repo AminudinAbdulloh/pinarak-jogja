@@ -8,3 +8,4 @@ function load_core($class_name) {
 }
 
 spl_autoload_register('load_core');
+require_once '../src/core/helpers.php';
