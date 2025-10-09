@@ -20,6 +20,24 @@ class EventModel extends Database {
         return $this->qry($query)->fetchAll();
     }
 
+    public function highlightEvent(){
+        $query = "SELECT *
+        FROM events
+        WHERE status = 'published' AND start_time > NOW()
+        ORDER BY start_time ASC
+        LIMIT 1";
+        return $this->qry($query)->fetch();
+    }
+
+    public function allEvents() {
+        $query = "SELECT *
+        FROM events
+        WHERE status = 'published' AND start_time > NOW() 
+        ORDER BY start_time ASC 
+        LIMIT 6";
+        return $this->qry($query)->fetchAll();
+    }
+
     public function insert($data) {
         try {
             $query = "INSERT INTO events (id, title, description, start_time, location, image, author_id, status) 
