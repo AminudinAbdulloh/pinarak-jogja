@@ -5,6 +5,7 @@ class AdminEventController extends BaseController{
     private $eventModel;
 
     public function __construct() {
+        AuthMiddleware::checkAuth();
         $this->eventModel = $this->model('EventModel');
     }
 

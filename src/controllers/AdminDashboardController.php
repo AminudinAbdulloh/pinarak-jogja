@@ -1,6 +1,11 @@
 <?php
 
 class AdminDashboardController extends BaseController{
+    public function __construct() {
+        // Cek autentikasi di setiap controller admin
+        AuthMiddleware::checkAuth();
+    }
+    
     public function index() {
         $data = [
             'title' => 'Dashboard - Home',
