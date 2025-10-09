@@ -10,8 +10,8 @@ class DefaultApp extends BaseController {
     public function index() {
         $data = [
             'title' => 'Home',
-            'highlight_event' => $this->eventModel->highlightEvent(),
-            'all_events' => $this->eventModel->allEvents()
+            'highlight_event' => $this->eventModel->highlight_event(),
+            'all_events' => $this->eventModel->all_events()
         ];
 
         $this->view('templates/public/header', $data);
