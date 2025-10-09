@@ -93,8 +93,8 @@
                             <?php foreach ($events as $event): ?>
                                 <tr>
                                     <td>
-                                        <?php if (!empty($event['image']) && file_exists('../../' . $event['image'])): ?>
-                                            <img src="../../<?php echo htmlspecialchars($event['image']); ?>"
+                                        <?php if (!empty($event['image'])): ?>
+                                            <img src="<?= BASEURL . '/' . $event['image']; ?>"
                                                 alt="<?php echo htmlspecialchars($event['title']); ?>"
                                                 style="width: 60px; height: 40px; object-fit: cover; border-radius: 5px;">
                                         <?php else: ?>

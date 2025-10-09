@@ -7,13 +7,13 @@
     <div class="content-area">
         <div class="content-header">
             <h3>Form Tambah Event</h3>
-            <a href="/pinarak-jogja-main/admin/events/" class="btn btn-warning">
+            <a href="<?= BASEURL . '/admin/event' ?>" class="btn btn-warning">
                 <i class="fas fa-arrow-left"></i> Kembali ke Daftar Event
             </a>
         </div>
 
         <div class="content-body">
-            <form method="POST" enctype="multipart/form-data" id="addEventForm">
+            <form method="POST" action="<?= BASEURL . '/admin/event/add_event' ?>" enctype="multipart/form-data" id="addEventForm">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="title">
@@ -94,7 +94,7 @@
                     <button type="button" class="btn btn-warning" onclick="resetForm()">
                         <i class="fas fa-undo"></i> Reset Form
                     </button>
-                    <a href="/pinarak-jogja-main/admin/events/" class="btn btn-danger">
+                    <a href="<?= BASEURL . '/admin/event' ?>" class="btn btn-danger">
                         <i class="fas fa-times"></i> Batal
                     </a>
                 </div>
