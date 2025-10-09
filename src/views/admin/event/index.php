@@ -6,13 +6,21 @@
 
     <?php if (!empty($success_message)): ?>
         <div class="notification notification-success" id="successNotification">
-            <i class="fas fa-check-circle"></i> <?= htmlspecialchars($success_message) ?>
+            <i class="fas fa-check-circle"></i> 
+            <span><?= htmlspecialchars($success_message) ?></span>
+            <span class="notification-close" onclick="closeNotification(this)">
+                <i class="fas fa-times"></i>
+            </span>
         </div>
     <?php endif; ?>
 
     <?php if (!empty($error_message)): ?>
         <div class="notification notification-error" id="errorNotification">
-            <i class="fas fa-exclamation-circle"></i> <?= htmlspecialchars($error_message) ?>
+            <i class="fas fa-exclamation-circle"></i> 
+            <span><?= htmlspecialchars($error_message) ?></span>
+            <span class="notification-close" onclick="closeNotification(this)">
+                <i class="fas fa-times"></i>
+            </span>
         </div>
     <?php endif; ?>
 
@@ -41,7 +49,7 @@
                 </div>
                 <div class="mt-2">
                     <?php if (!empty($search)): ?>
-                        <a href="/pinarak-jogja-main/admin/events/" class="btn btn-outline-secondary btn-sm">
+                        <a href="<?= BASEURL . '/admin/event' ?>" class="btn btn-outline-secondary btn-sm">
                             <i class="fas fa-times"></i> Reset
                         </a>
                     <?php endif; ?>
@@ -83,7 +91,7 @@
                                         <p class="text-muted">Coba gunakan kata kunci yang berbeda</p>
                                     <?php else: ?>
                                         <p class="text-muted">Mulai dengan menambahkan event baru</p>
-                                        <a href="/pinarak-jogja-main/admin/events/add" class="btn btn-primary">
+                                        <a href="<?= BASEURL . '/admin/event/add' ?>" class="btn btn-primary">
                                             <i class="fas fa-plus"></i> Tambah Event
                                         </a>
                                     <?php endif; ?>
@@ -108,7 +116,6 @@
                                     </td>
                                     <td>
                                         <?php 
-                                        // Simple text truncation if truncateText function doesn't exist
                                         $description = $event['description'];
                                         if (function_exists('truncateText')) {
                                             echo htmlspecialchars(truncateText($description, 50));
@@ -119,7 +126,6 @@
                                     </td>
                                     <td>
                                         <?php 
-                                        // Simple date formatting if formatDate function doesn't exist
                                         if (function_exists('formatDate')) {
                                             echo formatDate($event['start_time']);
                                         } else {
@@ -146,7 +152,7 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="/pinarak-jogja-main/admin/events/edit?id=<?php echo urlencode($event['id']); ?>"
+                                            <a href="<?= BASEURL . '/admin/event/edit?id=' . urlencode($event['id']) ?>"
                                                 class="btn btn-warning btn-sm"
                                                 title="Edit Event">
                                                 <i class="fas fa-edit"></i>

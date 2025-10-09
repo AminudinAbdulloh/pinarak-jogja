@@ -91,7 +91,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Simpan Event
                     </button>
-                    <button type="button" class="btn btn-warning" onclick="resetForm()">
+                    <button type="button" class="btn btn-warning" onclick="resetForm('addEventForm', '<i class=\'fas fa-image\'></i><p>Klik untuk upload gambar</p><small>Gambar utama event</small>')">
                         <i class="fas fa-undo"></i> Reset Form
                     </button>
                     <a href="<?= BASEURL . '/admin/event' ?>" class="btn btn-danger">
