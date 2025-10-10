@@ -1,13 +1,3 @@
-<?php
-// Fungsi helper untuk memotong teks
-function truncateText($text, $limit = 50) {
-    if (strlen($text) <= $limit) {
-        return $text;
-    }
-    return substr($text, 0, $limit) . '...';
-}
-?>
-
 <div class="content-section" id="articles">
     <div class="page-header">
         <h1><i class="fas fa-newspaper"></i> Manajemen Artikel</h1>
