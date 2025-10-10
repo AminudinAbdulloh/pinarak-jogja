@@ -42,14 +42,29 @@ class Routes {
         // 4. Admin Profile
         $router->get('/admin/profile', ['AdminProfileController', 'index']);
         $router->get('/admin/profile/index', ['AdminProfileController', 'index']);
-        // Add Youtube Link
-        $router->get('/admin/profile/youtube_link/add', ['AdminProfileController', 'add_youtube_link']);
-        $router->post('/admin/profile/youtube_link/added_youtube_link', ['AdminProfileController', 'added_youtube_link']);
+        // Profile Pagination
+        $router->get('/admin/profile/page/:page', ['AdminProfileController', 'index']);
+        // Profile Search
+        $router->get('/admin/profile/search/:search', ['AdminProfileController', 'search']);
+        $router->get('/admin/profile/search/:search/page/:page', ['AdminProfileController', 'search']);
         // Add Profile
         $router->get('/admin/profile/add', ['AdminProfileController', 'add']);
         $router->post('/admin/profile/add_profile', ['AdminProfileController', 'add_profile']);
-        $router->get('/admin/profile/edit/:1', ['AdminProfileController', 'edit']);
-        $router->post('/admin/profile/edit/edit_profile', ['AdminProfileController', 'edit_profile']);
+        // Edit Profile
+        $router->get('/admin/profile/edit', ['AdminProfileController', 'edit']);
+        $router->get('/admin/profile/edit/:id', ['AdminProfileController', 'edit']);
+        $router->post('/admin/profile/edit_profile', ['AdminProfileController', 'edit_profile']);
+        // Delete Profile
+        $router->post('/admin/profile/delete_profile', ['AdminProfileController', 'delete_profile']);
+        // Add Youtube Link
+        $router->get('/admin/profile/youtube_link/add', ['AdminProfileController', 'add_youtube_link']);
+        $router->post('/admin/profile/youtube_link/added_youtube_link', ['AdminProfileController', 'added_youtube_link']);
+        // Edit Youtube Link
+        $router->get('/admin/profile/youtube_link/edit', ['AdminProfileController', 'edit_youtube_link']);
+        $router->get('/admin/profile/youtube_link/edit/:id', ['AdminProfileController', 'edit_youtube_link']);  
+        $router->post('/admin/profile/youtube_link/edited_youtube_link', ['AdminProfileController', 'edited_youtube_link']);
+        // Delete Youtube Link
+        $router->post('/admin/profile/youtube_link/delete', ['AdminProfileController', 'delete_youtube_link']);
 
         // 5. Admin Information
         $router->get('/admin/media-partner', ['AdminMediaPartnerController', 'index']);
