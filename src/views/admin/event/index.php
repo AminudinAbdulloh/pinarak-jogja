@@ -157,13 +157,17 @@
                                                 title="Edit Event">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <button type="button"
-                                                class="btn btn-danger btn-sm btn-delete-event"
-                                                data-event-id="<?php echo htmlspecialchars($event['id']); ?>"
-                                                data-event-title="<?php echo htmlspecialchars($event['title']); ?>"
-                                                title="Hapus Event">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+                                            <form method="POST" 
+                                                action="<?= BASEURL . '/admin/event/delete_event' ?>" 
+                                                style="display: inline;"
+                                                onsubmit="return confirm('Apakah kamu yakin ingin menghapus event \'<?= htmlspecialchars($event['title']) ?>\'?')">
+                                                <input type="hidden" name="id" value="<?= $event['id'] ?>">
+                                                <button type="submit" 
+                                                        class="btn btn-danger btn-sm" 
+                                                        title="Hapus Event">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

@@ -123,4 +123,30 @@ class AdminEventController extends BaseController{
         header('Location: ' . BASEURL . '/admin/event');
         exit;
     }
+
+    public function delete_event() {
+    try {
+        $id = $_POST['id'] ?? null;
+
+        if (!$id) {
+            $_SESSION['error_message'] = 'ID event tidak ditemukan.';
+            header('Location: ' . BASEURL . '/admin/event');
+            exit;
+        }
+
+        $result = $this->eventModel->delete_event($id);
+
+        if ($result) {
+            $_SESSION['success_message'] = 'Event berhasil dihapus.';
+        } else {
+            $_SESSION['error_message'] = 'Event tidak ditemukan atau gagal dihapus.';
+        }
+
+    } catch (Exception $e) {
+        $_SESSION['error_message'] = 'Terjadi kesalahan: ' . $e->getMessage();
+    }
+    
+    header('Location: ' . BASEURL . '/admin/event');
+    exit;
+}
 }
