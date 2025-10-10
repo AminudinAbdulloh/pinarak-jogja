@@ -23,6 +23,8 @@ class Routes {
 
         // 3. Admin Event
         $router->get('/admin/event', ['AdminEventController', 'index']);
+        $router->get('/admin/event/search/:search', ['AdminEventController', 'search']);
+        $router->get('/admin/event/search/:search/:page', ['AdminEventController', 'search']);
         $router->get('/admin/event/:page', ['AdminEventController', 'index']);
         $router->get('/admin/event/index', ['AdminEventController', 'index']);
         $router->get('/admin/event/add', ['AdminEventController', 'add']);

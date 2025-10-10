@@ -35,13 +35,14 @@
         </div>
         <div class="content-body">
             <!-- Search Form -->
-            <form method="GET" action="<?= BASEURL . '/admin/event' ?>" class="mb-3">
+            <form method="GET" action="<?= BASEURL . '/admin/event/search/redirect' ?>" class="mb-3" id="searchForm">
                 <div class="search-box">
                     <button type="submit" class="btn btn-outline-primary btn-sm">
                         <i class="fas fa-search"></i> Cari
                     </button>
                     <input type="text"
-                        name="search"
+                        name="q"
+                        id="searchInput"
                         class="form-control"
                         placeholder="Cari event berdasarkan judul, deskripsi, atau lokasi..."
                         value="<?= htmlspecialchars($search ?? '') ?>">
@@ -66,7 +67,9 @@
                 <?php else: ?>
                     <p class="text-muted">
                         <i class="fas fa-database"></i> Total Event: <strong><?= $total_events ?></strong>
-                        | Halaman <strong><?= $current_page ?></strong> dari <strong><?= $total_pages ?></strong>
+                        <?php if ($total_pages > 0): ?>
+                            | Halaman <strong><?= $current_page ?></strong> dari <strong><?= $total_pages ?></strong>
+                        <?php endif; ?>
                     </p>
                 <?php endif; ?>
             </div>
@@ -191,9 +194,15 @@
                             <!-- Tombol Previous -->
                             <li class="page-item <?= $current_page <= 1 ? 'disabled' : '' ?>">
                                 <?php 
-                                $prevUrl = $current_page > 1 
-                                    ? BASEURL . '/admin/event/' . ($current_page - 1) . (!empty($search) ? '?search=' . urlencode($search) : '')
-                                    : '#';
+                                if (!empty($search)) {
+                                    $prevUrl = $current_page > 1 
+                                        ? BASEURL . '/admin/event/search/' . urlencode($search) . ($current_page > 2 ? '/' . ($current_page - 1) : '')
+                                        : '#';
+                                } else {
+                                    $prevUrl = $current_page > 1 
+                                        ? BASEURL . '/admin/event' . ($current_page > 2 ? '/page/' . ($current_page - 1) : '')
+                                        : '#';
+                                }
                                 ?>
                                 <a class="page-link" 
                                    href="<?= $prevUrl ?>"
@@ -210,7 +219,12 @@
                             // Tampilkan halaman pertama jika tidak termasuk dalam range
                             if ($start_page > 1): ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="<?= BASEURL . '/admin/event' . (!empty($search) ? '?search=' . urlencode($search) : '') ?>">1</a>
+                                    <?php 
+                                    $firstPageUrl = !empty($search) 
+                                        ? BASEURL . '/admin/event/search/' . urlencode($search)
+                                        : BASEURL . '/admin/event';
+                                    ?>
+                                    <a class="page-link" href="<?= $firstPageUrl ?>">1</a>
                                 </li>
                                 <?php if ($start_page > 2): ?>
                                     <li class="page-item disabled">
@@ -221,9 +235,15 @@
 
                             // Tampilkan range halaman
                             for ($i = $start_page; $i <= $end_page; $i++): 
-                                $pageUrl = $i == 1 
-                                    ? BASEURL . '/admin/event' . (!empty($search) ? '?search=' . urlencode($search) : '')
-                                    : BASEURL . '/admin/event/' . $i . (!empty($search) ? '?search=' . urlencode($search) : '');
+                                if (!empty($search)) {
+                                    $pageUrl = $i == 1 
+                                        ? BASEURL . '/admin/event/search/' . urlencode($search)
+                                        : BASEURL . '/admin/event/search/' . urlencode($search) . '/' . $i;
+                                } else {
+                                    $pageUrl = $i == 1 
+                                        ? BASEURL . '/admin/event'
+                                        : BASEURL . '/admin/event/' . $i;
+                                }
                                 ?>
                                 <li class="page-item <?= $i == $current_page ? 'active' : '' ?>">
                                     <a class="page-link" href="<?= $pageUrl ?>">
@@ -240,7 +260,12 @@
                                     </li>
                                 <?php endif; ?>
                                 <li class="page-item">
-                                    <a class="page-link" href="<?= BASEURL . '/admin/event/' . $total_pages . (!empty($search) ? '?search=' . urlencode($search) : '') ?>">
+                                    <?php 
+                                    $lastPageUrl = !empty($search) 
+                                        ? BASEURL . '/admin/event/search/' . urlencode($search) . '/' . $total_pages
+                                        : BASEURL . '/admin/event/' . $total_pages;
+                                    ?>
+                                    <a class="page-link" href="<?= $lastPageUrl ?>">
                                         <?= $total_pages ?>
                                     </a>
                                 </li>
@@ -249,9 +274,15 @@
                             <!-- Tombol Next -->
                             <li class="page-item <?= $current_page >= $total_pages ? 'disabled' : '' ?>">
                                 <?php 
-                                $nextUrl = $current_page < $total_pages 
-                                    ? BASEURL . '/admin/event/' . ($current_page + 1) . (!empty($search) ? '?search=' . urlencode($search) : '')
-                                    : '#';
+                                if (!empty($search)) {
+                                    $nextUrl = $current_page < $total_pages 
+                                        ? BASEURL . '/admin/event/search/' . urlencode($search) . '/' . ($current_page + 1)
+                                        : '#';
+                                } else {
+                                    $nextUrl = $current_page < $total_pages 
+                                        ? BASEURL . '/admin/event/' . ($current_page + 1)
+                                        : '#';
+                                }
                                 ?>
                                 <a class="page-link" 
                                    href="<?= $nextUrl ?>"
@@ -273,3 +304,21 @@
         </div>
     </div>
 </div>
+
+<script>
+// Handle search form submission dengan redirect ke route parameter
+document.getElementById('searchForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const searchInput = document.getElementById('searchInput');
+    const searchValue = searchInput.value.trim();
+    
+    if (searchValue) {
+        // Redirect ke route dengan search parameter
+        window.location.href = '<?= BASEURL ?>/admin/event/search/' + encodeURIComponent(searchValue);
+    } else {
+        // Jika kosong, redirect ke index
+        window.location.href = '<?= BASEURL ?>/admin/event';
+    }
+});
+</script>
