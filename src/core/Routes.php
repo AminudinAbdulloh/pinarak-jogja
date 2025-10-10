@@ -42,10 +42,14 @@ class Routes {
         // 4. Admin Profile
         $router->get('/admin/profile', ['AdminProfileController', 'index']);
         $router->get('/admin/profile/index', ['AdminProfileController', 'index']);
+        // Add Youtube Link
+        $router->get('/admin/profile/youtube_link/add', ['AdminProfileController', 'add_youtube_link']);
+        $router->post('/admin/profile/youtube_link/added_youtube_link', ['AdminProfileController', 'added_youtube_link']);
+        // Add Profile
         $router->get('/admin/profile/add', ['AdminProfileController', 'add']);
-        $router->get('/admin/profile/add_profile', ['AdminProfileController', 'add_profile']);
+        $router->post('/admin/profile/add_profile', ['AdminProfileController', 'add_profile']);
         $router->get('/admin/profile/edit/:1', ['AdminProfileController', 'edit']);
-        $router->get('/admin/profile/edit/edit_profile', ['AdminProfileController', 'edit_profile']);
+        $router->post('/admin/profile/edit/edit_profile', ['AdminProfileController', 'edit_profile']);
 
         // 5. Admin Information
         $router->get('/admin/media-partner', ['AdminMediaPartnerController', 'index']);
