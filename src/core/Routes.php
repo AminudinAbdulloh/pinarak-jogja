@@ -23,9 +23,6 @@ class Routes {
 
         // 3. Admin Event
         $router->get('/admin/event', ['AdminEventController', 'index']);
-        $router->get('/admin/event/search/:search', ['AdminEventController', 'search']);
-        $router->get('/admin/event/search/:search/:page', ['AdminEventController', 'search']);
-        $router->get('/admin/event/:page', ['AdminEventController', 'index']);
         $router->get('/admin/event/index', ['AdminEventController', 'index']);
         $router->get('/admin/event/add', ['AdminEventController', 'add']);
         $router->post('/admin/event/add_event', ['AdminEventController', 'add_event']);
@@ -33,6 +30,11 @@ class Routes {
         $router->get('/admin/event/edit/:id', ['AdminEventController', 'edit']);
         $router->post('/admin/event/edit_event', ['AdminEventController', 'edit_event']);
         $router->post('/admin/event/delete_event', ['AdminEventController', 'delete_event']);
+        // Admin Event Pagination
+        $router->get('/admin/event/page/:page', ['AdminEventController', 'index']);
+        // Admin Event Search
+        $router->get('/admin/event/search/:search', ['AdminEventController', 'search']);
+        $router->get('/admin/event/search/:search/page/:page', ['AdminEventController', 'search']);
 
         // 4. Admin Profile
         $router->get('/admin/profile', ['AdminProfileController', 'index']);

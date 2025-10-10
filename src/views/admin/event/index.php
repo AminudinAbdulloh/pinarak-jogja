@@ -196,7 +196,7 @@
                                 <?php 
                                 if (!empty($search)) {
                                     $prevUrl = $current_page > 1 
-                                        ? BASEURL . '/admin/event/search/' . urlencode($search) . ($current_page > 2 ? '/' . ($current_page - 1) : '')
+                                        ? BASEURL . '/admin/event/search/' . urlencode($search) . ($current_page > 2 ? '/page' . ($current_page - 1) : '')
                                         : '#';
                                 } else {
                                     $prevUrl = $current_page > 1 
@@ -238,11 +238,11 @@
                                 if (!empty($search)) {
                                     $pageUrl = $i == 1 
                                         ? BASEURL . '/admin/event/search/' . urlencode($search)
-                                        : BASEURL . '/admin/event/search/' . urlencode($search) . '/' . $i;
+                                        : BASEURL . '/admin/event/search/' . urlencode($search) . '/page/' . $i;
                                 } else {
                                     $pageUrl = $i == 1 
                                         ? BASEURL . '/admin/event'
-                                        : BASEURL . '/admin/event/' . $i;
+                                        : BASEURL . '/admin/event/page/' . $i;
                                 }
                                 ?>
                                 <li class="page-item <?= $i == $current_page ? 'active' : '' ?>">
@@ -262,8 +262,8 @@
                                 <li class="page-item">
                                     <?php 
                                     $lastPageUrl = !empty($search) 
-                                        ? BASEURL . '/admin/event/search/' . urlencode($search) . '/' . $total_pages
-                                        : BASEURL . '/admin/event/' . $total_pages;
+                                        ? BASEURL . '/admin/event/search/' . urlencode($search) . '/page/' . $total_pages
+                                        : BASEURL . '/admin/event/page/' . $total_pages;
                                     ?>
                                     <a class="page-link" href="<?= $lastPageUrl ?>">
                                         <?= $total_pages ?>
@@ -276,11 +276,11 @@
                                 <?php 
                                 if (!empty($search)) {
                                     $nextUrl = $current_page < $total_pages 
-                                        ? BASEURL . '/admin/event/search/' . urlencode($search) . '/' . ($current_page + 1)
+                                        ? BASEURL . '/admin/event/search/' . urlencode($search) . '/page/' . ($current_page + 1)
                                         : '#';
                                 } else {
                                     $nextUrl = $current_page < $total_pages 
-                                        ? BASEURL . '/admin/event/' . ($current_page + 1)
+                                        ? BASEURL . '/admin/event/page/' . ($current_page + 1)
                                         : '#';
                                 }
                                 ?>
@@ -306,7 +306,7 @@
 </div>
 
 <script>
-// Handle search form submission dengan redirect ke route parameter
+// Handle search form submission dengan encoding yang aman
 document.getElementById('searchForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -314,8 +314,11 @@ document.getElementById('searchForm').addEventListener('submit', function(e) {
     const searchValue = searchInput.value.trim();
     
     if (searchValue) {
+        // Ganti spasi dengan tanda plus atau dash
+        const safeSearch = searchValue.replace(/\s+/g, '+');
+        
         // Redirect ke route dengan search parameter
-        window.location.href = '<?= BASEURL ?>/admin/event/search/' + encodeURIComponent(searchValue);
+        window.location.href = '<?= BASEURL ?>/admin/event/search/' + encodeURIComponent(safeSearch);
     } else {
         // Jika kosong, redirect ke index
         window.location.href = '<?= BASEURL ?>/admin/event';
