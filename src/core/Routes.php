@@ -24,15 +24,18 @@ class Routes {
         // 3. Admin Event
         $router->get('/admin/event', ['AdminEventController', 'index']);
         $router->get('/admin/event/index', ['AdminEventController', 'index']);
+        // Add Event
         $router->get('/admin/event/add', ['AdminEventController', 'add']);
         $router->post('/admin/event/add_event', ['AdminEventController', 'add_event']);
+        // Edit Event
         $router->get('/admin/event/edit', ['AdminEventController', 'edit']);
         $router->get('/admin/event/edit/:id', ['AdminEventController', 'edit']);
         $router->post('/admin/event/edit_event', ['AdminEventController', 'edit_event']);
+        // Delete Event
         $router->post('/admin/event/delete_event', ['AdminEventController', 'delete_event']);
-        // Admin Event Pagination
+        // Event Pagination
         $router->get('/admin/event/page/:page', ['AdminEventController', 'index']);
-        // Admin Event Search
+        // Event Search
         $router->get('/admin/event/search/:search', ['AdminEventController', 'search']);
         $router->get('/admin/event/search/:search/page/:page', ['AdminEventController', 'search']);
 
