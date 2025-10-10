@@ -4,20 +4,6 @@
         <p>Perbarui event yang sudah ada</p>
     </div>
 
-    <?php if (isset($_SESSION['success_message'])): ?>
-        <div class="notification notification-success" id="successNotification">
-            <i class="fas fa-check-circle"></i> <?= $_SESSION['success_message'] ?>
-        </div>
-        <?php unset($_SESSION['success_message']); ?>
-    <?php endif; ?>
-
-    <?php if (isset($_SESSION['error_message'])): ?>
-        <div class="notification notification-error" id="errorNotification">
-            <i class="fas fa-exclamation-circle"></i> <?= $_SESSION['error_message'] ?>
-        </div>
-        <?php unset($_SESSION['error_message']); ?>
-    <?php endif; ?>
-
     <div class="content-area">
         <div class="content-header">
             <h3>Form Edit Event</h3>
@@ -39,7 +25,7 @@
                         <div class="image-upload-area">
                             <div class="image-preview <?php echo $event['image'] ? 'has-image' : ''; ?>" id="imagePreview" onclick="document.getElementById('event_image').click()">
                                 <?php if ($event['image']): ?>
-                                    <img src="<?= BASEURL . '/' . htmlspecialchars($event['image']); ?>"
+                                    <img src="<?= BASEURL . '/' . htmlspecialchars($event['image']); ?> "
                                         alt="Current Image" style="max-width: 100%; max-height: 200px; object-fit: cover;">
                                 <?php else: ?>
                                     <i class="fas fa-image"></i>
