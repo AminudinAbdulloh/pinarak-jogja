@@ -26,6 +26,8 @@ class Routes {
         $router->get('/admin/event/index', ['AdminEventController', 'index']);
         $router->get('/admin/event/add', ['AdminEventController', 'add']);
         $router->post('/admin/event/add_event', ['AdminEventController', 'add_event']);
+        $router->get('/admin/event/edit', ['AdminEventController', 'edit']);
+        $router->get('/admin/event/edit/:id', ['AdminEventController', 'edit']);
         $router->post('/admin/event/edit_event', ['AdminEventController', 'edit_event']);
         $router->post('/admin/event/delete_event', ['AdminEventController', 'delete_event']);
 

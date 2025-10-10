@@ -152,7 +152,7 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="<?= BASEURL . '/admin/event/edit?id=' . urlencode($event['id']) ?>"
+                                            <a href="<?= BASEURL . '/admin/event/edit/' . urlencode($event['id']) ?>"
                                                 class="btn btn-warning btn-sm"
                                                 title="Edit Event">
                                                 <i class="fas fa-edit"></i>

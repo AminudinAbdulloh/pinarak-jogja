@@ -20,6 +20,24 @@ class EventModel extends Database {
         return $this->qry($query)->fetchAll();
     }
 
+    public function getById($id) {
+        $query = "SELECT 
+            e.id,
+            e.title,
+            e.description,
+            e.start_time,
+            e.location,
+            e.image,
+            e.status,
+            e.author_id,
+            a.username as publisher_name
+        FROM events e
+        LEFT JOIN admins a ON e.author_id = a.id
+        WHERE e.id = :id";
+        
+        return $this->qry($query, [':id' => $id])->fetch();
+    }
+
     public function highlight_event(){
         $query = "SELECT *
         FROM events
@@ -78,5 +96,29 @@ class EventModel extends Database {
         $params = [':id' => $id];
 
         return $this->qry($queryDelete, $params);
+    }
+
+    public function update_event($data) {
+        $query = "UPDATE events 
+                  SET title = :title, 
+                      description = :description, 
+                      start_time = :start_time, 
+                      location = :location, 
+                      image = :image, 
+                      status = :status,
+                      updated_at = CURRENT_TIMESTAMP
+                  WHERE id = :id";
+        
+        $params = [
+            ':id' => $data['id'],
+            ':title' => $data['title'],
+            ':description' => $data['description'],
+            ':start_time' => $data['start_time'],
+            ':location' => $data['location'],
+            ':image' => $data['image'],
+            ':status' => $data['status']
+        ];
+        
+        return $this->qry($query, $params);
     }
 }
