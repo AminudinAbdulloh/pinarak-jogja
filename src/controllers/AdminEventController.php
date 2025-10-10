@@ -186,7 +186,7 @@ class AdminEventController extends BaseController{
                 'location' => $_POST['location'],
                 'image' => $imagePath,
                 'status' => $_POST['status'] ?? 'draft',
-                'author_id' => 1 // Hardcode untuk sementara, nanti bisa diganti dengan session user
+                'author_id' => AuthMiddleware::getAdminId()
             ];
             
             // Simpan ke database
