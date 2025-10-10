@@ -347,6 +347,12 @@ body {
 #contacts table thead tr th:nth-child(4) { width: 120px; }
 
 /* Search Box Fixes */
+.pagination-wrapper {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
 .search-box {
     position: relative;
     margin-bottom: 20px;

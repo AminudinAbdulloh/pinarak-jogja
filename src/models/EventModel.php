@@ -4,8 +4,11 @@ class EventModel extends Database {
     public function __construct() {
         parent::__construct();
     }
-
-    public function getAll() {
+    public function getAll($limit = 6, $offset = 0, $search = '') {
+        // Pastikan limit dan offset adalah integer untuk keamanan
+        $limit = (int)$limit;
+        $offset = (int)$offset;
+        
         $query = "SELECT 
             e.id,
             e.title,
@@ -17,7 +20,42 @@ class EventModel extends Database {
             a.username as publisher_name
         FROM events e
         LEFT JOIN admins a ON e.author_id = a.id";
-        return $this->qry($query)->fetchAll();
+        
+        $params = [];
+        
+        // Tambahkan kondisi search jika ada
+        if (!empty($search)) {
+            $query .= " WHERE (e.title LIKE ? 
+                        OR e.description LIKE ? 
+                        OR e.location LIKE ?)";
+            $searchParam = "%$search%";
+            $params[] = $searchParam;
+            $params[] = $searchParam;
+            $params[] = $searchParam;
+        }
+        
+        // Tambahkan LIMIT dan OFFSET langsung ke query (sudah aman karena di-cast ke int)
+        $query .= " ORDER BY e.created_at DESC LIMIT $limit OFFSET $offset";
+        
+        return $this->qry($query, $params)->fetchAll();
+    }
+
+    public function countAll($search = '') {
+        $query = "SELECT COUNT(*) as total FROM events e";
+        
+        // Tambahkan kondisi search jika ada
+        if (!empty($search)) {
+            $query .= " WHERE (e.title LIKE ? 
+                        OR e.description LIKE ? 
+                        OR e.location LIKE ?)";
+            
+            $searchParam = "%$search%";
+            $result = $this->qry($query, [$searchParam, $searchParam, $searchParam])->fetch();
+        } else {
+            $result = $this->qry($query)->fetch();
+        }
+        
+        return $result['total'];
     }
 
     public function getById($id) {

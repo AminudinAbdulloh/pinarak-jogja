@@ -23,6 +23,7 @@ class Routes {
 
         // 3. Admin Event
         $router->get('/admin/event', ['AdminEventController', 'index']);
+        $router->get('/admin/event/:page', ['AdminEventController', 'index']);
         $router->get('/admin/event/index', ['AdminEventController', 'index']);
         $router->get('/admin/event/add', ['AdminEventController', 'add']);
         $router->post('/admin/event/add_event', ['AdminEventController', 'add_event']);

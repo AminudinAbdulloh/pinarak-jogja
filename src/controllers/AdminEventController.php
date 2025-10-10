@@ -9,26 +9,57 @@ class AdminEventController extends BaseController{
         $this->eventModel = $this->model('EventModel');
     }
 
-    public function index() {
+    public function index($page = null) {
         // Ambil notifikasi dari session jika ada
         $success_message = '';
         $error_message = '';
         
         if (isset($_SESSION['success_message'])) {
             $success_message = $_SESSION['success_message'];
-            unset($_SESSION['success_message']); // Hapus setelah ditampilkan
+            unset($_SESSION['success_message']);
         }
         
         if (isset($_SESSION['error_message'])) {
             $error_message = $_SESSION['error_message'];
-            unset($_SESSION['error_message']); // Hapus setelah ditampilkan
+            unset($_SESSION['error_message']);
+        }
+        
+        // Ambil parameter pagination dan search
+        // Prioritaskan parameter dari URL segment, jika tidak ada ambil dari GET
+        $page = $page ? (int)$page : (isset($_GET['page']) ? (int)$_GET['page'] : 1);
+        $page = $page < 1 ? 1 : $page;
+        
+        $limit = 6; // Jumlah data per halaman
+        $offset = ($page - 1) * $limit;
+        
+        $search = isset($_GET['search']) ? trim($_GET['search']) : '';
+        
+        // Ambil data events dengan pagination
+        $events = $this->eventModel->getAll($limit, $offset, $search);
+        
+        // Hitung total events untuk pagination
+        $totalEvents = $this->eventModel->countAll($search);
+        $totalPages = ceil($totalEvents / $limit);
+        
+        // Pastikan tidak ada halaman kosong
+        if ($totalPages > 0 && $page > $totalPages) {
+            $redirectUrl = BASEURL . '/admin/event/page/' . $totalPages;
+            if (!empty($search)) {
+                $redirectUrl .= '?search=' . urlencode($search);
+            }
+            header('Location: ' . $redirectUrl);
+            exit;
         }
         
         $data = [
             'title' => 'Dashboard - Event',
-            'events' => $this->eventModel->getAll(),
+            'events' => $events,
             'success_message' => $success_message,
-            'error_message' => $error_message
+            'error_message' => $error_message,
+            'current_page' => $page,
+            'total_pages' => $totalPages,
+            'total_events' => $totalEvents,
+            'search' => $search
         ];
 
         $this->view('templates/admin/header', $data);

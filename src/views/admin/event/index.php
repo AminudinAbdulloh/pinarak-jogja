@@ -35,7 +35,7 @@
         </div>
         <div class="content-body">
             <!-- Search Form -->
-            <form method="GET" class="mb-3">
+            <form method="GET" action="<?= BASEURL . '/admin/event' ?>" class="mb-3">
                 <div class="search-box">
                     <button type="submit" class="btn btn-outline-primary btn-sm">
                         <i class="fas fa-search"></i> Cari
@@ -45,7 +45,6 @@
                         class="form-control"
                         placeholder="Cari event berdasarkan judul, deskripsi, atau lokasi..."
                         value="<?= htmlspecialchars($search ?? '') ?>">
-                    <input type="hidden" name="page" value="1">
                 </div>
                 <div class="mt-2">
                     <?php if (!empty($search)): ?>
@@ -56,14 +55,21 @@
                 </div>
             </form>
 
-            <!-- Info hasil pencarian -->
-            <?php if (!empty($search)): ?>
-                <div class="alert alert-info">
-                    <i class="fas fa-info-circle"></i>
-                    Menampilkan hasil pencarian untuk "<strong><?= htmlspecialchars($search) ?></strong>":
-                    <?= count($events) ?> event ditemukan
-                </div>
-            <?php endif; ?>
+            <!-- Info hasil pencarian dan total data -->
+            <div class="mb-3">
+                <?php if (!empty($search)): ?>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        Menampilkan hasil pencarian untuk "<strong><?= htmlspecialchars($search) ?></strong>":
+                        <?= $total_events ?> event ditemukan
+                    </div>
+                <?php else: ?>
+                    <p class="text-muted">
+                        <i class="fas fa-database"></i> Total Event: <strong><?= $total_events ?></strong>
+                        | Halaman <strong><?= $current_page ?></strong> dari <strong><?= $total_pages ?></strong>
+                    </p>
+                <?php endif; ?>
+            </div>
 
             <div class="table-responsive">
                 <table class="table">
@@ -176,6 +182,94 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Pagination -->
+            <?php if ($total_pages > 1): ?>
+                <div class="pagination-wrapper">
+                    <nav aria-label="Event pagination">
+                        <ul class="pagination justify-content-center">
+                            <!-- Tombol Previous -->
+                            <li class="page-item <?= $current_page <= 1 ? 'disabled' : '' ?>">
+                                <?php 
+                                $prevUrl = $current_page > 1 
+                                    ? BASEURL . '/admin/event/' . ($current_page - 1) . (!empty($search) ? '?search=' . urlencode($search) : '')
+                                    : '#';
+                                ?>
+                                <a class="page-link" 
+                                   href="<?= $prevUrl ?>"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+
+                            <?php
+                            // Logika untuk menampilkan nomor halaman
+                            $start_page = max(1, $current_page - 2);
+                            $end_page = min($total_pages, $current_page + 2);
+
+                            // Tampilkan halaman pertama jika tidak termasuk dalam range
+                            if ($start_page > 1): ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="<?= BASEURL . '/admin/event' . (!empty($search) ? '?search=' . urlencode($search) : '') ?>">1</a>
+                                </li>
+                                <?php if ($start_page > 2): ?>
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                <?php endif;
+                            endif;
+
+                            // Tampilkan range halaman
+                            for ($i = $start_page; $i <= $end_page; $i++): 
+                                $pageUrl = $i == 1 
+                                    ? BASEURL . '/admin/event' . (!empty($search) ? '?search=' . urlencode($search) : '')
+                                    : BASEURL . '/admin/event/' . $i . (!empty($search) ? '?search=' . urlencode($search) : '');
+                                ?>
+                                <li class="page-item <?= $i == $current_page ? 'active' : '' ?>">
+                                    <a class="page-link" href="<?= $pageUrl ?>">
+                                        <?= $i ?>
+                                    </a>
+                                </li>
+                            <?php endfor;
+
+                            // Tampilkan halaman terakhir jika tidak termasuk dalam range
+                            if ($end_page < $total_pages): ?>
+                                <?php if ($end_page < $total_pages - 1): ?>
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                <?php endif; ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="<?= BASEURL . '/admin/event/' . $total_pages . (!empty($search) ? '?search=' . urlencode($search) : '') ?>">
+                                        <?= $total_pages ?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+
+                            <!-- Tombol Next -->
+                            <li class="page-item <?= $current_page >= $total_pages ? 'disabled' : '' ?>">
+                                <?php 
+                                $nextUrl = $current_page < $total_pages 
+                                    ? BASEURL . '/admin/event/' . ($current_page + 1) . (!empty($search) ? '?search=' . urlencode($search) : '')
+                                    : '#';
+                                ?>
+                                <a class="page-link" 
+                                   href="<?= $nextUrl ?>"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <!-- Info halaman -->
+                    <div class="text-center mt-2">
+                        <small class="text-muted">
+                            Menampilkan <?= count($events) ?> dari <?= $total_events ?> event
+                        </small>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
