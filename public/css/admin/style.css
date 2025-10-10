@@ -243,6 +243,7 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    table-layout: fixed;
 }
 
 .table th,
@@ -250,6 +251,10 @@ body {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #eee;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    vertical-align: top;
 }
 
 .table th {
@@ -267,6 +272,79 @@ body {
     height: auto;
     border-radius: 5px;
 }
+
+/* Specific column widths untuk berbagai tabel */
+/* Profile Table */
+#profileTable td:nth-child(1) { width: 80px; }  /* Foto */
+#profileTable td:nth-child(2) { width: 180px; } /* Nama */
+#profileTable td:nth-child(3) { width: 150px; } /* Jabatan */
+#profileTable td:nth-child(4) { width: 100px; } /* Status */
+#profileTable td:nth-child(5) { width: 130px; } /* Publisher */
+#profileTable td:nth-child(6) { width: 120px; } /* Aksi */
+
+/* Article Table */
+#articleTable td:nth-child(1) { width: 80px; }  /* Gambar */
+#articleTable td:nth-child(2) { width: 200px; } /* Judul */
+#articleTable td:nth-child(3) { width: 300px; } /* Konten */
+#articleTable td:nth-child(4) { width: 100px; } /* Status */
+#articleTable td:nth-child(5) { width: 120px; } /* Aksi */
+
+/* Event Table - untuk tabel event */
+#events .table thead tr th:nth-child(1) { width: 100px; } /* Gambar - diperbesar */
+#events .table thead tr th:nth-child(2) { width: 180px; } /* Judul */
+#events .table thead tr th:nth-child(3) { width: 200px; } /* Deskripsi */
+#events .table thead tr th:nth-child(4) { width: 140px; } /* Tanggal & Waktu */
+#events .table thead tr th:nth-child(5) { width: 150px; } /* Lokasi */
+#events .table thead tr th:nth-child(6) { width: 130px; } /* Publisher */
+#events .table thead tr th:nth-child(7) { width: 110px; } /* Status - diperbesar */
+#events .table thead tr th:nth-child(8) { width: 120px; } /* Aksi */
+
+/* Header mengikuti width body */
+.table thead tr th:nth-child(1) { width: 80px; }
+.table thead tr th:nth-child(2) { width: 180px; }
+.table thead tr th:nth-child(3) { width: 220px; }
+.table thead tr th:nth-child(4) { width: 130px; }
+.table thead tr th:nth-child(5) { width: 150px; }
+.table thead tr th:nth-child(6) { width: 120px; }
+.table thead tr th:nth-child(7) { width: 100px; }
+.table thead tr th:nth-child(8) { width: 120px; }
+
+/* YouTube Links Table - 4 kolom */
+.content-area:has(th:contains("Link YouTube")) table tbody tr td:nth-child(1) { width: 250px; } /* Judul Video */
+.content-area:has(th:contains("Link YouTube")) table tbody tr td:nth-child(2) { width: 300px; } /* Link YouTube */
+.content-area:has(th:contains("Link YouTube")) table tbody tr td:nth-child(3) { width: 150px; } /* Publisher */
+.content-area:has(th:contains("Link YouTube")) table tbody tr td:nth-child(4) { width: 120px; } /* Aksi */
+
+.content-area:has(th:contains("Link YouTube")) table thead tr th:nth-child(1) { width: 250px; }
+.content-area:has(th:contains("Link YouTube")) table thead tr th:nth-child(2) { width: 300px; }
+.content-area:has(th:contains("Link YouTube")) table thead tr th:nth-child(3) { width: 150px; }
+.content-area:has(th:contains("Link YouTube")) table thead tr th:nth-child(4) { width: 120px; }
+
+/* Media Partner Table - 6 kolom */
+#media-partners table tbody tr td:nth-child(1) { width: 100px; } /* Logo */
+#media-partners table tbody tr td:nth-child(2) { width: 250px; } /* Nama */
+#media-partners table tbody tr td:nth-child(3) { width: 150px; } /* Tipe Partnership */
+#media-partners table tbody tr td:nth-child(4) { width: 180px; } /* Website */
+#media-partners table tbody tr td:nth-child(5) { width: 140px; } /* Dibuat Oleh */
+#media-partners table tbody tr td:nth-child(6) { width: 120px; } /* Aksi */
+
+#media-partners table thead tr th:nth-child(1) { width: 100px; }
+#media-partners table thead tr th:nth-child(2) { width: 250px; }
+#media-partners table thead tr th:nth-child(3) { width: 150px; }
+#media-partners table thead tr th:nth-child(4) { width: 180px; }
+#media-partners table thead tr th:nth-child(5) { width: 140px; }
+#media-partners table thead tr th:nth-child(6) { width: 120px; }
+
+/* Contact Table - Jika ada tabel di halaman contact */
+#contacts table tbody tr td:nth-child(1) { width: 200px; }
+#contacts table tbody tr td:nth-child(2) { width: 250px; }
+#contacts table tbody tr td:nth-child(3) { width: 200px; }
+#contacts table tbody tr td:nth-child(4) { width: 120px; }
+
+#contacts table thead tr th:nth-child(1) { width: 200px; }
+#contacts table thead tr th:nth-child(2) { width: 250px; }
+#contacts table thead tr th:nth-child(3) { width: 200px; }
+#contacts table thead tr th:nth-child(4) { width: 120px; }
 
 /* Search Box Fixes */
 .search-box {
