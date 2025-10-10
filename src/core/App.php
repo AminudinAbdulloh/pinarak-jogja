@@ -5,8 +5,6 @@ class App {
     private $parameter = [];
     private const DEFAULT_GET = 'GET';
     private const DEFAULT_POST = 'POST';
-    private const DEFAULT_PUT = 'PUT';
-    private const DEFAULT_DELETE = 'DELETE';
     private $handlers = [];
 
     public function setDefaultController($controller) {
@@ -23,14 +21,6 @@ class App {
 
     public function post($uri, $callback) {
         $this->setHandler(self::DEFAULT_POST, $uri, $callback);
-    }
-
-    public function put($uri, $callback) {
-        $this->setHandler(self::DEFAULT_PUT, $uri, $callback);
-    }
-
-    public function delete($uri, $callback) {
-        $this->setHandler(self::DEFAULT_DELETE, $uri, $callback);
     }
 
     private function setHandler(string $method, string $path, $handler) {

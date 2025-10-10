@@ -27,6 +27,7 @@ class Routes {
         $router->get('/admin/event/add', ['AdminEventController', 'add']);
         $router->post('/admin/event/add_event', ['AdminEventController', 'add_event']);
         $router->post('/admin/event/edit_event', ['AdminEventController', 'edit_event']);
+        $router->post('/admin/event/delete_event', ['AdminEventController', 'delete_event']);
 
         // 4. Admin Profile
         $router->get('/admin/profile', ['AdminProfileController', 'index']);
@@ -50,8 +51,6 @@ class Routes {
         $router->get('/admin/article/index', ['AdminArticleController', 'index']);
         $router->get('/admin/article/add', ['AdminArticleController', 'add']);
         $router->post('/admin/article/add', ['AdminArticleController', 'add']);
-        $router->put('/admin/article/edit/:id', ['AdminArticleController', 'edit']);
-        $router->delete('/admin/article/delete/:id', ['AdminArticleController', 'delete']);
 
         $router->run();
     }
