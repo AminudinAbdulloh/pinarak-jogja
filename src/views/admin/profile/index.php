@@ -20,7 +20,7 @@
     <div class="content-area" style="margin-bottom: 30px;">
         <div class="content-header">
             <h3>Link YouTube Aktif</h3>
-            <a href="youtube/add/">
+            <a href="<?= BASEURL . '/admin/profile/youtube_link/add' ?>">
                 <button class="btn btn-primary">
                     <i class="fas fa-plus"></i> Tambah Link YouTube
                 </button>
