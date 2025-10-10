@@ -123,7 +123,9 @@ class EventModel extends Database {
 
         // Jika ada gambar, hapus file-nya dari folder uploads
         if (!empty($event['image'])) {
-            $filePath = '../public/' . $event['image'];
+            // Dari src/models/ ke public/
+            $filePath = __DIR__ . '/../../public/' . $event['image'];
+            
             if (file_exists($filePath)) {
                 unlink($filePath);
             }
