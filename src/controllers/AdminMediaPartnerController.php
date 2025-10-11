@@ -203,8 +203,137 @@ class AdminMediaPartnerController extends BaseController{
         exit;
     }
 
-    public function edit($id) {
-        echo "Edit from article = " . $id;
+    public function edit($id = null) {
+        try {
+            // Jika id tidak ada di parameter, coba ambil dari GET
+            if ($id === null && isset($_GET['id'])) {
+                $id = $_GET['id'];
+            }
+
+            if (!$id) {
+                $_SESSION['error_message'] = 'ID media partner tidak ditemukan.';
+                header('Location: ' . BASEURL . '/admin/media-partner');
+                exit;
+            }
+
+            // Ambil data database
+            $media_partner = $this->mediaPartnerModel->getById($id);
+
+            if (!$media_partner) {
+                $_SESSION['error_message'] = 'Media Partner tidak ditemukan.';
+                header('Location: ' . BASEURL . '/admin/media-partner');
+                exit;
+            }
+
+            $data = [
+                'title' => 'Dashboard - Edit Media Partner',
+                'media_partner' => $media_partner
+            ];
+
+            $this->view('templates/admin/header', $data);
+            $this->view('admin/media-partner/edit', $data);
+            $this->view('templates/admin/footer');
+
+        } catch (Exception $e) {
+            $_SESSION['error_message'] = 'Terjadi kesalahan: ' . $e->getMessage();
+            header('Location: ' . BASEURL . '/admin/media-partner');
+            exit;
+        }
+    }
+
+    public function edit_media_partner() {
+        try {
+            $id = $_POST['id'] ?? null;
+
+            if (!$id) {
+                $_SESSION['error_message'] = 'ID media partner tidak ditemukan.';
+                header('Location: ' . BASEURL . '/admin/media-partner');
+                exit;
+            }
+
+            // Ambil data lama untuk cek gambar
+            $oldMediaPartner = $this->mediaPartnerModel->getById($id);
+
+            if (!$oldMediaPartner) {
+                $_SESSION['error_message'] = 'Media Partner tidak ditemukan.';
+                header('Location: ' . BASEURL . '/admin/media-partner');
+                exit;
+            }
+
+            // Handle upload gambar baru
+            $imagePath = $oldMediaPartner['logo']; // Default gunakan gambar lama
+
+            if (isset($_FILES['logo']) && $_FILES['logo']['error'] === 0) {
+                $uploadDir = '../public/uploads/media-partners/';
+                
+                // Buat folder jika belum ada
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
+                
+                // Validasi tipe file
+                $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+                $fileType = $_FILES['logo']['type'];
+                
+                if (!in_array($fileType, $allowedTypes)) {
+                    $_SESSION['error_message'] = 'Format file tidak valid. Hanya JPG, PNG, dan WebP yang diperbolehkan.';
+                    header('Location: ' . BASEURL . '/admin/media-partner/edit/' . $id);
+                    exit;
+                }
+                
+                // Validasi ukuran file (max 5MB)
+                $maxSize = 5 * 1024 * 1024;
+                if ($_FILES['logo']['size'] > $maxSize) {
+                    $_SESSION['error_message'] = 'Ukuran file terlalu besar. Maksimal 5MB.';
+                    header('Location: ' . BASEURL . '/admin/media-partner/edit/' . $id);
+                    exit;
+                }
+                
+                // Upload file baru
+                $fileName = time() . '_' . $_FILES['logo']['name'];
+                $targetPath = $uploadDir . $fileName;
+                
+                if (move_uploaded_file($_FILES['logo']['tmp_name'], $targetPath)) {
+                    // Hapus gambar lama jika ada
+                    if (!empty($oldMediaPartner['logo'])) {
+                        $oldImagePath = '../public/' . $oldMediaPartner['logo'];
+                        if (file_exists($oldImagePath)) {
+                            unlink($oldImagePath);
+                        }
+                    }
+                    
+                    $imagePath = 'uploads/media-partners/' . $fileName;
+                } else {
+                    $_SESSION['error_message'] = 'Gagal mengupload gambar.';
+                    header('Location: ' . BASEURL . '/admin/media-partner/edit?id=' . $id);
+                    exit;
+                }
+            }
+            
+            // Siapkan data untuk diupdate
+            $mediaPartnerData = [
+                'id' => $id,
+                'name' => $_POST['name'],
+                'description' => $_POST['description'],
+                'website' => $_POST['website'],
+                'logo' => $imagePath,
+            ];
+            
+            // Update ke database
+            $result = $this->mediaPartnerModel->update_media_partner($mediaPartnerData);
+            
+            if ($result) {
+                $_SESSION['success_message'] = 'Media Partner berhasil diperbarui!';
+            } else {
+                $_SESSION['error_message'] = 'Gagal memperbarui media partner. Silakan coba lagi.';
+            }
+            
+        } catch (Exception $e) {
+            $_SESSION['error_message'] = 'Terjadi kesalahan: ' . $e->getMessage();
+        }
+        
+        header('Location: ' . BASEURL . '/admin/media-partner');
+        exit;
     }
 
     public function delete_media_partner() {

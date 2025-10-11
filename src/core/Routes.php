@@ -76,7 +76,11 @@ class Routes {
         // Add Media Partner
         $router->get('/admin/media-partner/add', ['AdminMediaPartnerController', 'add']);
         $router->post('/admin/media-partner/add_media_partner', ['AdminMediaPartnerController', 'add_media_partner']);
-        // Delete Profile
+        // Edit Media Partner
+        $router->get('/admin/media-partner/edit', ['AdminMediaPartnerController', 'edit']);
+        $router->get('/admin/media-partner/edit/:id', ['AdminMediaPartnerController', 'edit']);
+        $router->post('/admin/media-partner/edit_media_partner', ['AdminMediaPartnerController', 'edit_media_partner']);
+        // Delete Media Partner
         $router->post('/admin/media-partner/delete_media_partner', ['AdminMediaPartnerController', 'delete_media_partner']);
 
         // 6. Admin Contact

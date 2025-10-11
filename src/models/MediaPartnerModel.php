@@ -18,6 +18,21 @@ class MediaPartnerModel extends Database {
         return $this->qry($query)->fetchAll();
     }
 
+    public function getById($id) {
+        $query = "SELECT 
+            mp.id,
+            mp.name,
+            mp.logo,
+            mp.description,
+            mp.website,
+            a.username as author_name
+        FROM media_partners mp
+        LEFT JOIN admins a ON mp.author_id = a.id
+        WHERE mp.id = :id";
+        
+        return $this->qry($query, [':id' => $id])->fetch();
+    }
+
     public function getAllWithPagination($limit = 6, $offset = 0, $search = '') {
         $limit = (int)$limit;
         $offset = (int)$offset;
@@ -74,6 +89,25 @@ class MediaPartnerModel extends Database {
             ':author_id' => $data['author_id']
         ];
         
+        return $this->qry($query, $params);
+    }
+
+    public function update_media_partner($data) {
+        $query = "UPDATE media_partners
+                SET name = :name,
+                    logo = :logo,
+                    description = :description,
+                    website = :website
+                WHERE id = :id";
+
+        $params = [
+            ':id' => $data['id'],
+            ':name' => $data['name'],
+            ':logo' => $data['logo'],
+            ':description' => $data['description'],
+            ':website' => $data['website']
+        ];
+
         return $this->qry($query, $params);
     }
 

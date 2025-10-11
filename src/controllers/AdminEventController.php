@@ -335,7 +335,7 @@ class AdminEventController extends BaseController{
                     $imagePath = 'uploads/events/' . $fileName;
                 } else {
                     $_SESSION['error_message'] = 'Gagal mengupload gambar.';
-                    header('Location: ' . BASEURL . '/admin/event/edit?id=' . $id);
+                    header('Location: ' . BASEURL . '/admin/event/edit/' . $id);
                     exit;
                 }
             }

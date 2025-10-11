@@ -149,7 +149,7 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="/pinarak-jogja-main/admin/media-partners/edit?id=<?php echo urlencode($partner['id']); ?>"
+                                            <a href="<?= BASEURL . '/admin/media-partner/edit/' . urlencode($partner['id']); ?>"
                                                 class="btn btn-warning btn-sm"
                                                 title="Edit Media Partner">
                                                 <i class="fas fa-edit"></i>
