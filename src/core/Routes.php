@@ -69,6 +69,7 @@ class Routes {
         // 5. Admin Media Partner
         $router->get('/admin/media-partner', ['AdminMediaPartnerController', 'index']);
         $router->get('/admin/media-partner/add', ['AdminMediaPartnerController', 'add']);
+        $router->post('/admin/media-partner/add_media_partner', ['AdminMediaPartnerController', 'add_media_partner']);
 
         // 6. Admin Contact
         $router->get('/admin/contact', ['AdminContactController', 'index']);

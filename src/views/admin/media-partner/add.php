@@ -13,7 +13,7 @@
         </div>
 
         <div class="content-body">
-            <form method="POST" enctype="multipart/form-data" id="addMediaPartnerForm">
+            <form method="POST" action="<?= BASEURL . '/admin/media-partner/add_media_partner' ?>" enctype="multipart/form-data" id="addMediaPartnerForm">
                 <!-- Logo Upload Section -->
                 <div class="image-section">
                     <div class="form-group">

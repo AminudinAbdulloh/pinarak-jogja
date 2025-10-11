@@ -114,8 +114,8 @@
                             <?php foreach ($media_partners as $partner): ?>
                                 <tr>
                                     <td>
-                                        <?php if (!empty($partner['logo']) && file_exists('../../' . $partner['logo'])): ?>
-                                            <img src="../../<?php echo htmlspecialchars($partner['logo']); ?>"
+                                        <?php if (!empty($partner['logo'])): ?>
+                                            <img src="<?= BASEURL . '/' . htmlspecialchars($partner['logo']); ?>"
                                                 alt="<?php echo htmlspecialchars($partner['name']); ?>"
                                                 style="width: 80px; height: 40px; object-fit: contain; border-radius: 5px; border: 1px solid #ddd;">
                                         <?php else: ?>
@@ -126,15 +126,6 @@
                                     </td>
                                     <td>
                                         <strong><?php echo htmlspecialchars($partner['name']); ?></strong>
-                                        <?php if (!empty($partner['description'])): ?>
-                                            <br>
-                                            <small class="text-muted">
-                                                <?php 
-                                                $description = $partner['description'];
-                                                echo htmlspecialchars(strlen($description) > 50 ? substr($description, 0, 50) . '...' : $description);
-                                                ?>
-                                            </small>
-                                        <?php endif; ?>
                                     </td>
                                     <td>
                                         <?php if (!empty($partner['website'])): ?>
