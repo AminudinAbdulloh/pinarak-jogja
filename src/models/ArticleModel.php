@@ -13,6 +13,17 @@ class ArticleModel extends Database {
         return $this->qry($query)->fetchAll();
     }
 
+    public function getById($id) {
+        $query = "SELECT 
+            a.*,
+            ad.username as publisher_name
+        FROM articles a
+        LEFT JOIN admins ad ON a.author_id = ad.id
+        WHERE a.id = :id";
+        
+        return $this->qry($query, [':id' => $id])->fetch();
+    }
+
     public function getAllWithPagination($limit = 6, $offset = 0, $search = '') {
         // Pastikan limit dan offset adalah integer untuk keamanan
         $limit = (int)$limit;
@@ -94,5 +105,27 @@ class ArticleModel extends Database {
         $params = [':id' => $id];
 
         return $this->qry($queryDelete, $params);
+    }
+
+    public function update_article($data) {
+        $query = "UPDATE articles 
+                  SET title = :title, 
+                      content = :content, 
+                      excerpt = :excerpt, 
+                      image = :image, 
+                      status = :status,
+                      updated_at = CURRENT_TIMESTAMP
+                  WHERE id = :id";
+        
+        $params = [
+            ':id' => $data['id'],
+            ':title' => $data['title'],
+            ':content' => $data['content'],
+            ':excerpt' => $data['excerpt'],
+            ':image' => $data['image'],
+            ':status' => $data['status']
+        ];
+        
+        return $this->qry($query, $params);
     }
 }

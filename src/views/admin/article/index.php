@@ -129,7 +129,7 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="/pinarak-jogja-main/admin/articles/edit/<?php echo urlencode($article['id']); ?>"
+                                            <a href="<?= BASEURL . '/admin/article/edit/' . urlencode($article['id']); ?>"
                                                 class="btn btn-warning btn-sm"
                                                 title="Edit Artikel">
                                                 <i class="fas fa-edit"></i>

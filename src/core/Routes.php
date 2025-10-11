@@ -100,6 +100,10 @@ class Routes {
         // Add Article
         $router->get('/admin/article/add', ['AdminArticleController', 'add']);
         $router->post('/admin/article/add_article', ['AdminArticleController', 'add_article']);
+        // Edit Article
+        $router->get('/admin/article/edit', ['AdminArticleController', 'edit']);
+        $router->get('/admin/article/edit/:id', ['AdminArticleController', 'edit']);
+        $router->post('/admin/article/edit_article', ['AdminArticleController', 'edit_article']);
         // Delete Article
         $router->post('/admin/article/delete_article', ['AdminArticleController', 'delete_article']);
 

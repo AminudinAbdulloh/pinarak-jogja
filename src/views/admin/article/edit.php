@@ -7,13 +7,15 @@
     <div class="content-area">
         <div class="content-header">
             <h3>Form Tambah Artikel</h3>
-            <a href="<?= BASEURL . '/admin/article'?>" class="btn btn-warning">
+            <a href="<?= BASEURL . '/admin/article' ?>" class="btn btn-warning">
                 <i class="fas fa-arrow-left"></i> Kembali ke Artikel
             </a>
         </div>
 
         <div class="content-body">
-            <form method="POST" action="<?= BASEURL . '/admin/article/add_article' ?>" enctype="multipart/form-data" id="addArticleForm">
+            <form method="POST" action="<?= BASEURL . '/admin/article/edit_article' ?>" enctype="multipart/form-data" id="addArticleForm">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($article['id']); ?>">
+
                 <!-- Featured Image Upload Section -->
                 <div class="image-section">
                     <div class="form-group">
@@ -22,9 +24,14 @@
                         </label>
                         <div class="image-upload-area">
                             <div class="image-preview" id="imagePreview" onclick="document.getElementById('featured_image').click()">
-                                <i class="fas fa-image"></i>
-                                <p>Klik untuk upload gambar</p>
-                                <small>Gambar utama artikel</small>
+                                <?php if ($article['image']): ?>
+                                    <img src="<?= BASEURL . '/' . htmlspecialchars($article['image']); ?> "
+                                        alt="Current Image" style="max-width: 100%; max-height: 200px; object-fit: cover;">
+                                <?php else: ?>
+                                    <i class="fas fa-image"></i>
+                                    <p>Klik untuk upload gambar</p>
+                                    <small>Gambar utama artikel</small>
+                                <?php endif; ?>
                             </div>
                             <input type="file" class="form-control" id="featured_image" name="featured_image"
                                 accept="image/*" onchange="previewImage(this)" style="display: none;">
@@ -40,7 +47,7 @@
                     </label>
                     <input type="text" class="form-control" id="title" name="title" required
                         placeholder="Masukkan judul artikel yang menarik"
-                        value="<?php echo isset($_POST['title']) ? htmlspecialchars($_POST['title']) : ''; ?>">
+                        value="<?php echo htmlspecialchars($article['title']); ?>">
                 </div>
 
                 <div class="form-group">
@@ -48,7 +55,7 @@
                         <i class="fas fa-align-left"></i> Ringkasan Artikel
                     </label>
                     <textarea class="form-control" id="excerpt" name="excerpt" rows="3"
-                        placeholder="Ringkasan singkat artikel (opsional)"><?php echo isset($_POST['excerpt']) ? htmlspecialchars($_POST['excerpt']) : ''; ?></textarea>
+                        placeholder="Ringkasan singkat artikel (opsional)"><?php echo htmlspecialchars($article['excerpt']); ?></textarea>
                 </div>
 
                 <!-- Content Section -->
@@ -81,8 +88,8 @@
                             </button>
                         </div>
                         <div class="editor-content" id="content" contenteditable="true"
-                            placeholder="Tulis konten artikel di sini..."><?php echo isset($_POST['content']) ? $_POST['content'] : ''; ?></div>
-                        <textarea name="content" id="contentHidden" style="display: none;"><?php echo isset($_POST['content']) ? htmlspecialchars($_POST['content']) : ''; ?></textarea>
+                            placeholder="Tulis konten artikel di sini..."><?php echo htmlspecialchars($article['content']); ?></div>
+                        <textarea name="content" id="contentHidden" style="display: none;"><?php echo htmlspecialchars($article['content']); ?></textarea>
                     </div>
                 </div>
 
@@ -104,10 +111,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Simpan Artikel
                     </button>
-                    <button type="button" class="btn btn-warning" onclick="resetForm('addArticleForm', '<i class=\'fas fa-image\'></i><p>Klik untuk upload gambar</p><small>Gambar utama artikel</small>')">
-                        <i class="fas fa-undo"></i> Reset Form
-                    </button>
-                    <a href="<?= BASEURL . '/admin/articles' ?>" class="btn btn-danger">
+                    <a href="<?= BASEURL . '/admin/article' ?>" class="btn btn-danger">
                         <i class="fas fa-times"></i> Batal
                     </a>
                 </div>
