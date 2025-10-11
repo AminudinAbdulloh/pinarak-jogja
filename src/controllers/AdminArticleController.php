@@ -4,6 +4,7 @@ class AdminArticleController extends BaseController{
     private $articleModel;
 
     public function __construct() {
+        AuthMiddleware::checkAuth();
         $this->articleModel = $this->model('ArticleModel');
     }
 

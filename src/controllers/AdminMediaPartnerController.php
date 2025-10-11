@@ -4,6 +4,7 @@ class AdminMediaPartnerController extends BaseController{
     private $mediaPartnerModel;
 
     public function __construct() {
+        AuthMiddleware::checkAuth();
         $this->mediaPartnerModel = $this->model('MediaPartnerModel');
     }
 

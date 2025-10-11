@@ -202,7 +202,7 @@ class AdminEventController extends BaseController{
             $_SESSION['error_message'] = 'Terjadi kesalahan: ' . $e->getMessage();
         }
         
-        // Redirect ke halaman index event
+        // Redirect ke halaman index
         header('Location: ' . BASEURL . '/admin/event');
         exit;
     }

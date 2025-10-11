@@ -85,6 +85,11 @@ class Routes {
 
         // 6. Admin Contact
         $router->get('/admin/contact', ['AdminContactController', 'index']);
+        $router->get('/admin/contact/index', ['AdminContactController', 'index']);
+        // Edit Contact
+        $router->get('/admin/contact/edit', ['AdminContactController', 'edit']);
+        $router->get('/admin/contact/edit/:id', ['AdminContactController', 'edit']);
+        $router->post('/admin/contact/edit_contact', ['AdminContactController', 'edit_contact']);
 
         // 7. Admin Setting
         $router->get('/admin/setting', ['AdminSettingController', 'index']);
