@@ -9,11 +9,27 @@ class AdminContactController extends BaseController{
     }
 
     public function index() {
+        // Ambil notifikasi dari session jika ada
+        $success_message = '';
+        $error_message = '';
+        
+        if (isset($_SESSION['success_message'])) {
+            $success_message = $_SESSION['success_message'];
+            unset($_SESSION['success_message']);
+        }
+        
+        if (isset($_SESSION['error_message'])) {
+            $error_message = $_SESSION['error_message'];
+            unset($_SESSION['error_message']);
+        }
+
         $contacts = $this->contactModel->getAll();
 
         $data = [
             'title' => 'Dashboard - Contact',
-            'contacts' => $contacts
+            'contacts' => $contacts,
+            'success_message' => $success_message,
+            'error_message' => $error_message
         ];
 
         $this->view('templates/admin/header', $data);
