@@ -274,77 +274,85 @@ body {
 }
 
 /* Specific column widths untuk berbagai tabel */
-/* Profile Table */
-#profileTable td:nth-child(1) { width: 80px; }  /* Foto */
-#profileTable td:nth-child(2) { width: 180px; } /* Nama */
-#profileTable td:nth-child(3) { width: 150px; } /* Jabatan */
-#profileTable td:nth-child(4) { width: 100px; } /* Status */
-#profileTable td:nth-child(5) { width: 130px; } /* Publisher */
-#profileTable td:nth-child(6) { width: 120px; } /* Aksi */
+/* Profile Table - 6 kolom */
+#profileTable td:nth-child(1) { width: 8%; }  /* Foto */
+#profileTable td:nth-child(2) { width: 25%; } /* Nama */
+#profileTable td:nth-child(3) { width: 20%; } /* Jabatan */
+#profileTable td:nth-child(4) { width: 12%; } /* Status */
+#profileTable td:nth-child(5) { width: 20%; } /* Publisher */
+#profileTable td:nth-child(6) { width: 15%; } /* Aksi */
+
+#profiles .table thead tr th:nth-child(1) { width: 8%; }
+#profiles .table thead tr th:nth-child(2) { width: 25%; }
+#profiles .table thead tr th:nth-child(3) { width: 20%; }
+#profiles .table thead tr th:nth-child(4) { width: 12%; }
+#profiles .table thead tr th:nth-child(5) { width: 20%; }
+#profiles .table thead tr th:nth-child(6) { width: 15%; }
 
 /* Article Table */
-#articleTable td:nth-child(1) { width: 80px; }  /* Gambar */
-#articleTable td:nth-child(2) { width: 200px; } /* Judul */
-#articleTable td:nth-child(3) { width: 300px; } /* Konten */
-#articleTable td:nth-child(4) { width: 100px; } /* Status */
-#articleTable td:nth-child(5) { width: 120px; } /* Aksi */
+#articleTable td:nth-child(1) { width: 10%; }  /* Gambar */
+#articleTable td:nth-child(2) { width: 25%; } /* Judul */
+#articleTable td:nth-child(3) { width: 40%; } /* Konten */
+#articleTable td:nth-child(4) { width: 10%; } /* Status */
+#articleTable td:nth-child(5) { width: 15%; } /* Aksi */
 
-/* Event Table - untuk tabel event */
-#events .table thead tr th:nth-child(1) { width: 100px; } /* Gambar - diperbesar */
-#events .table thead tr th:nth-child(2) { width: 180px; } /* Judul */
-#events .table thead tr th:nth-child(3) { width: 200px; } /* Deskripsi */
-#events .table thead tr th:nth-child(4) { width: 140px; } /* Tanggal & Waktu */
-#events .table thead tr th:nth-child(5) { width: 150px; } /* Lokasi */
-#events .table thead tr th:nth-child(6) { width: 130px; } /* Publisher */
-#events .table thead tr th:nth-child(7) { width: 110px; } /* Status - diperbesar */
-#events .table thead tr th:nth-child(8) { width: 120px; } /* Aksi */
+/* Event Table - 8 kolom */
+#events .table thead tr th:nth-child(1) { width: 8%; } /* Gambar */
+#events .table thead tr th:nth-child(2) { width: 10%; } /* Judul */
+#events .table thead tr th:nth-child(3) { width: 15%; } /* Deskripsi */
+#events .table thead tr th:nth-child(4) { width: 13%; } /* Tanggal & Waktu */
+#events .table thead tr th:nth-child(5) { width: 15%; } /* Lokasi */
+#events .table thead tr th:nth-child(6) { width: 12%; } /* Publisher */
+#events .table thead tr th:nth-child(7) { width: 10%; } /* Status */
+#events .table thead tr th:nth-child(8) { width: 9%; } /* Aksi */
 
-/* Header mengikuti width body */
-.table thead tr th:nth-child(1) { width: 80px; }
-.table thead tr th:nth-child(2) { width: 180px; }
-.table thead tr th:nth-child(3) { width: 220px; }
-.table thead tr th:nth-child(4) { width: 130px; }
-.table thead tr th:nth-child(5) { width: 150px; }
-.table thead tr th:nth-child(6) { width: 120px; }
-.table thead tr th:nth-child(7) { width: 100px; }
-.table thead tr th:nth-child(8) { width: 120px; }
+#events .table tbody tr td:nth-child(1) { width: 8%; }
+#events .table tbody tr td:nth-child(2) { width: 10%; }
+#events .table tbody tr td:nth-child(3) { width: 15%; }
+#events .table tbody tr td:nth-child(4) { width: 13%; }
+#events .table tbody tr td:nth-child(5) { width: 15%; }
+#events .table tbody tr td:nth-child(6) { width: 12%; }
+#events .table tbody tr td:nth-child(7) { width: 10%; }
+#events .table tbody tr td:nth-child(8) { width: 9%; }
 
 /* YouTube Links Table - 4 kolom */
-.content-area:has(th:contains("Link YouTube")) table tbody tr td:nth-child(1) { width: 250px; } /* Judul Video */
-.content-area:has(th:contains("Link YouTube")) table tbody tr td:nth-child(2) { width: 300px; } /* Link YouTube */
-.content-area:has(th:contains("Link YouTube")) table tbody tr td:nth-child(3) { width: 150px; } /* Publisher */
-.content-area:has(th:contains("Link YouTube")) table tbody tr td:nth-child(4) { width: 120px; } /* Aksi */
+.content-area table thead tr th:first-child:has(~ th:nth-child(2):contains("Link")) { width: 30%; } /* Judul Video */
+.content-area table tbody tr td:nth-child(1):has(~ td:nth-child(4)) { width: 30%; } /* Fallback untuk Judul */
 
-.content-area:has(th:contains("Link YouTube")) table thead tr th:nth-child(1) { width: 250px; }
-.content-area:has(th:contains("Link YouTube")) table thead tr th:nth-child(2) { width: 300px; }
-.content-area:has(th:contains("Link YouTube")) table thead tr th:nth-child(3) { width: 150px; }
-.content-area:has(th:contains("Link YouTube")) table thead tr th:nth-child(4) { width: 120px; }
+/* Lebih spesifik untuk YouTube table */
+#profiles .content-area:first-of-type table thead tr th:nth-child(1) { width: 30%; }
+#profiles .content-area:first-of-type table thead tr th:nth-child(2) { width: 40%; }
+#profiles .content-area:first-of-type table thead tr th:nth-child(3) { width: 15%; }
+#profiles .content-area:first-of-type table thead tr th:nth-child(4) { width: 15%; }
 
-/* Media Partner Table - 6 kolom */
-#media-partners table tbody tr td:nth-child(1) { width: 100px; } /* Logo */
-#media-partners table tbody tr td:nth-child(2) { width: 250px; } /* Nama */
-#media-partners table tbody tr td:nth-child(3) { width: 150px; } /* Tipe Partnership */
-#media-partners table tbody tr td:nth-child(4) { width: 180px; } /* Website */
-#media-partners table tbody tr td:nth-child(5) { width: 140px; } /* Dibuat Oleh */
-#media-partners table tbody tr td:nth-child(6) { width: 120px; } /* Aksi */
+#profiles .content-area:first-of-type table tbody tr td:nth-child(1) { width: 30%; }
+#profiles .content-area:first-of-type table tbody tr td:nth-child(2) { width: 40%; }
+#profiles .content-area:first-of-type table tbody tr td:nth-child(3) { width: 15%; }
+#profiles .content-area:first-of-type table tbody tr td:nth-child(4) { width: 15%; }
 
-#media-partners table thead tr th:nth-child(1) { width: 100px; }
-#media-partners table thead tr th:nth-child(2) { width: 250px; }
-#media-partners table thead tr th:nth-child(3) { width: 150px; }
-#media-partners table thead tr th:nth-child(4) { width: 180px; }
-#media-partners table thead tr th:nth-child(5) { width: 140px; }
-#media-partners table thead tr th:nth-child(6) { width: 120px; }
+/* Media Partner Table - 5 kolom */
+#media-partners table tbody tr td:nth-child(1) { width: 10%; } /* Logo */
+#media-partners table tbody tr td:nth-child(2) { width: 30%; } /* Nama */
+#media-partners table tbody tr td:nth-child(3) { width: 25%; } /* Website */
+#media-partners table tbody tr td:nth-child(4) { width: 20%; } /* Dibuat Oleh */
+#media-partners table tbody tr td:nth-child(5) { width: 15%; } /* Aksi */
+
+#media-partners table thead tr th:nth-child(1) { width: 10%; }
+#media-partners table thead tr th:nth-child(2) { width: 30%; }
+#media-partners table thead tr th:nth-child(3) { width: 25%; }
+#media-partners table thead tr th:nth-child(4) { width: 20%; }
+#media-partners table thead tr th:nth-child(5) { width: 15%; }
 
 /* Contact Table - Jika ada tabel di halaman contact */
-#contacts table tbody tr td:nth-child(1) { width: 200px; }
-#contacts table tbody tr td:nth-child(2) { width: 250px; }
-#contacts table tbody tr td:nth-child(3) { width: 200px; }
-#contacts table tbody tr td:nth-child(4) { width: 120px; }
+#contacts table tbody tr td:nth-child(1) { width: 25%; }
+#contacts table tbody tr td:nth-child(2) { width: 35%; }
+#contacts table tbody tr td:nth-child(3) { width: 25%; }
+#contacts table tbody tr td:nth-child(4) { width: 15%; }
 
-#contacts table thead tr th:nth-child(1) { width: 200px; }
-#contacts table thead tr th:nth-child(2) { width: 250px; }
-#contacts table thead tr th:nth-child(3) { width: 200px; }
-#contacts table thead tr th:nth-child(4) { width: 120px; }
+#contacts table thead tr th:nth-child(1) { width: 25%; }
+#contacts table thead tr th:nth-child(2) { width: 35%; }
+#contacts table thead tr th:nth-child(3) { width: 25%; }
+#contacts table thead tr th:nth-child(4) { width: 15%; }
 
 /* Search Box Fixes */
 .pagination-wrapper {
