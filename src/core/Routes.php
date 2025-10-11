@@ -8,6 +8,7 @@ class Routes {
 
         // Public
         $router->get('/articles', ['ArticleController', 'index']);
+        $router->get('/articles/detail/:id', ['ArticleController', 'detail']);
         $router->get('/profiles', ['ProfileController', 'index']);
         $router->get('/informations', ['InformationController', 'index']);
         $router->get('/contacts', ['ContactController', 'index']);

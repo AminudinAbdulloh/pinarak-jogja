@@ -42,6 +42,34 @@ function formatRupiah($angka) {
     return 'Rp ' . number_format($angka, 0, ',', '.');
 }
 
-function formatDate($date) {
-    return date('d M Y H:i', strtotime($date));
+function formatDate($date, $format = 'd M Y H:i') {
+    // Daftar bulan dalam Bahasa Indonesia
+    $bulanIndo = [
+        1 => 'Januari',
+        2 => 'Februari',
+        3 => 'Maret',
+        4 => 'April',
+        5 => 'Mei',
+        6 => 'Juni',
+        7 => 'Juli',
+        8 => 'Agustus',
+        9 => 'September',
+        10 => 'Oktober',
+        11 => 'November',
+        12 => 'Desember'
+    ];
+
+    $timestamp = strtotime($date);
+    if (!$timestamp) return '-'; // jika tanggal tidak valid
+
+    // Jika user minta format "11 Oktober 2025"
+    if ($format === 'indo') {
+        $hari = date('d', $timestamp);
+        $bulan = $bulanIndo[(int)date('m', $timestamp)];
+        $tahun = date('Y', $timestamp);
+        return "$hari $bulan $tahun";
+    }
+
+    // Format default atau kustom sesuai parameter kedua
+    return date($format, $timestamp);
 }

@@ -16,7 +16,7 @@
                             <p><?php echo truncateText(strip_tags($article['content']), 150); ?></p>
                         <?php endif; ?>
 
-                        <a href="">
+                        <a href="<?= BASEURL . '/articles/detail/' . $article['id'] ?>">
                             Baca Selengkapnya →
                         </a>
                     </div>

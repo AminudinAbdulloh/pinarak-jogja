@@ -13,6 +13,33 @@ class ArticleModel extends Database {
         return $this->qry($query)->fetchAll();
     }
 
+    public function getAllPublished() {
+        $query = "SELECT a.*, ad.username as author_name 
+        FROM articles a 
+        LEFT JOIN admins ad ON a.author_id = ad.id 
+        WHERE a.status = 'published'
+        ORDER BY a.created_at DESC";
+        return $this->qry($query)->fetchAll();
+    }
+
+    public function getRelatedArticles($excludeId, $limit = 3) {
+        // pastikan integer agar aman dari injection
+        $limit = (int)$limit;
+
+        $query = "SELECT a.*, ad.username as author_name 
+                FROM articles a 
+                LEFT JOIN admins ad ON a.author_id = ad.id 
+                WHERE a.status = 'published' AND a.id != :excludeId
+                ORDER BY a.created_at DESC 
+                LIMIT $limit"; // limit disisipkan langsung
+
+        $stmt = $this->qry($query, [
+            ':excludeId' => $excludeId
+        ]);
+
+        return $stmt->fetchAll();
+    }
+
     public function getById($id) {
         $query = "SELECT 
             a.*,
