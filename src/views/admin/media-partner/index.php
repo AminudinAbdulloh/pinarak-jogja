@@ -26,7 +26,7 @@
             </a>
         </div>
         <div class="content-body">
-            <!-- Search and Filter Form -->
+            <!-- Search Form -->
             <form method="GET" class="mb-3">
                 <div class="row">
                     <div class="col-md-6">
@@ -41,21 +41,8 @@
                                 value="<?= htmlspecialchars($search ?? '') ?>">
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <select name="type" class="form-control">
-                            <option value="">Semua Tipe Partnership</option>
-                            <?php if (!empty($partnership_types)): ?>
-                                <?php foreach ($partnership_types as $type): ?>
-                                    <option value="<?= htmlspecialchars($type['partnership_type']) ?>"
-                                        <?= ($partnership_type ?? '') === $type['partnership_type'] ? 'selected' : '' ?>>
-                                        <?= isset($type['partnership_type']) ? ucfirst(str_replace('_', ' ', $type['partnership_type'])) : '' ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </select>
-                    </div>
                     <div class="col-md-2">
-                        <?php if (!empty($search ?? '') || !empty($partnership_type ?? '')): ?>
+                        <?php if (!empty($search ?? '')): ?>
                             <a href="/pinarak-jogja-main/admin/media-partners/" class="btn btn-outline-secondary">
                                 <i class="fas fa-times"></i> Reset
                             </a>
@@ -66,17 +53,10 @@
             </form>
 
             <!-- Info hasil pencarian -->
-            <?php if (!empty($search ?? '') || !empty($partnership_type ?? '')): ?>
+            <?php if (!empty($search ?? '')): ?>
                 <div class="alert alert-info">
                     <i class="fas fa-info-circle"></i>
-                    <?php if (!empty($search ?? '') && !empty($partnership_type ?? '')): ?>
-                        Menampilkan hasil pencarian untuk "<strong><?= htmlspecialchars($search) ?></strong>"
-                        dengan tipe "<strong><?= ucfirst(str_replace('_', ' ', $partnership_type)) ?></strong>":
-                    <?php elseif (!empty($search ?? '')): ?>
-                        Menampilkan hasil pencarian untuk "<strong><?= htmlspecialchars($search) ?></strong>":
-                    <?php else: ?>
-                        Menampilkan data dengan tipe "<strong><?= ucfirst(str_replace('_', ' ', $partnership_type)) ?></strong>":
-                    <?php endif; ?>
+                    Menampilkan hasil pencarian untuk "<strong><?= htmlspecialchars($search) ?></strong>":
                     <?= $total_records ?? 0 ?> media partner ditemukan
                 </div>
             <?php endif; ?>
@@ -100,7 +80,6 @@
                         <tr>
                             <th>Logo</th>
                             <th>Nama</th>
-                            <th>Tipe Partnership</th>
                             <th>Website</th>
                             <th>Dibuat Oleh</th>
                             <th>Aksi</th>
@@ -112,13 +91,13 @@
                                 <td colspan="6" class="text-center py-5">
                                     <i class="fas fa-handshake fa-3x text-muted mb-3"></i>
                                     <h5 class="text-muted">
-                                        <?php if (!empty($search ?? '') || !empty($partnership_type ?? '')): ?>
+                                        <?php if (!empty($search ?? '')): ?>
                                             Tidak ada media partner yang sesuai dengan kriteria pencarian
                                         <?php else: ?>
                                             Belum ada media partner yang tersedia
                                         <?php endif; ?>
                                     </h5>
-                                    <?php if (!empty($search ?? '') || !empty($partnership_type ?? '')): ?>
+                                    <?php if (!empty($search ?? '')): ?>
                                         <p class="text-muted">Coba gunakan kriteria pencarian yang berbeda</p>
                                         <a href="/pinarak-jogja-main/admin/media-partners/" class="btn btn-outline-primary">
                                             <i class="fas fa-times"></i> Reset Filter
@@ -156,11 +135,6 @@
                                                 ?>
                                             </small>
                                         <?php endif; ?>
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-primary">
-                                            <?= ucfirst(str_replace('_', ' ', $partner['partnership_type'])) ?>
-                                        </span>
                                     </td>
                                     <td>
                                         <?php if (!empty($partner['website'])): ?>
@@ -212,7 +186,7 @@
                         <!-- Previous Button -->
                         <?php if (($current_page ?? 1) > 1): ?>
                             <li class="page-item">
-                                <a class="page-link" href="?page=<?= ($current_page ?? 1) - 1 ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?><?= !empty($partnership_type ?? '') ? '&type=' . urlencode($partnership_type) : '' ?>">
+                                <a class="page-link" href="?page=<?= ($current_page ?? 1) - 1 ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">
                                     <i class="fas fa-chevron-left"></i> Previous
                                 </a>
                             </li>
@@ -232,7 +206,7 @@
                         // Show first page if not in range
                         if ($start_page > 1): ?>
                             <li class="page-item">
-                                <a class="page-link" href="?page=1<?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?><?= !empty($partnership_type ?? '') ? '&type=' . urlencode($partnership_type) : '' ?>">1</a>
+                                <a class="page-link" href="?page=1<?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">1</a>
                             </li>
                             <?php if ($start_page > 2): ?>
                                 <li class="page-item disabled">
@@ -244,7 +218,7 @@
                         <!-- Main page range -->
                         <?php for ($i = $start_page; $i <= $end_page; $i++): ?>
                             <li class="page-item <?= $i == ($current_page ?? 1) ? 'active' : '' ?>">
-                                <a class="page-link" href="?page=<?= $i ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?><?= !empty($partnership_type ?? '') ? '&type=' . urlencode($partnership_type) : '' ?>">
+                                <a class="page-link" href="?page=<?= $i ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">
                                     <?= $i ?>
                                 </a>
                             </li>
@@ -258,7 +232,7 @@
                                 </li>
                             <?php endif; ?>
                             <li class="page-item">
-                                <a class="page-link" href="?page=<?= $total_pages ?? 1 ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?><?= !empty($partnership_type ?? '') ? '&type=' . urlencode($partnership_type) : '' ?>">
+                                <a class="page-link" href="?page=<?= $total_pages ?? 1 ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">
                                     <?= $total_pages ?? 1 ?>
                                 </a>
                             </li>
@@ -267,7 +241,7 @@
                         <!-- Next Button -->
                         <?php if (($current_page ?? 1) < ($total_pages ?? 1)): ?>
                             <li class="page-item">
-                                <a class="page-link" href="?page=<?= ($current_page ?? 1) + 1 ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?><?= !empty($partnership_type ?? '') ? '&type=' . urlencode($partnership_type) : '' ?>">
+                                <a class="page-link" href="?page=<?= ($current_page ?? 1) + 1 ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">
                                     Next <i class="fas fa-chevron-right"></i>
                                 </a>
                             </li>
@@ -287,9 +261,6 @@
                         <form method="GET" class="d-inline-flex align-items-center">
                             <?php if (!empty($search ?? '')): ?>
                                 <input type="hidden" name="search" value="<?= htmlspecialchars($search) ?>">
-                            <?php endif; ?>
-                            <?php if (!empty($partnership_type ?? '')): ?>
-                                <input type="hidden" name="type" value="<?= htmlspecialchars($partnership_type) ?>">
                             <?php endif; ?>
                             <label class="mb-0 me-2">Lompat ke halaman:</label>
                             <input type="number"
