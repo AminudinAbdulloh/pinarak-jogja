@@ -6,13 +6,21 @@
 
     <?php if (!empty($success_message)): ?>
         <div class="notification notification-success" id="successNotification">
-            <i class="fas fa-check-circle"></i> <?= htmlspecialchars($success_message) ?>
+            <i class="fas fa-check-circle"></i> 
+            <span><?= htmlspecialchars($success_message) ?></span>
+            <span class="notification-close" onclick="closeNotification(this)">
+                <i class="fas fa-times"></i>
+            </span>
         </div>
     <?php endif; ?>
 
     <?php if (!empty($error_message)): ?>
         <div class="notification notification-error" id="errorNotification">
-            <i class="fas fa-exclamation-circle"></i> <?= htmlspecialchars($error_message) ?>
+            <i class="fas fa-exclamation-circle"></i> 
+            <span><?= htmlspecialchars($error_message) ?></span>
+            <span class="notification-close" onclick="closeNotification(this)">
+                <i class="fas fa-times"></i>
+            </span>
         </div>
     <?php endif; ?>
 
@@ -58,19 +66,6 @@
                     <i class="fas fa-info-circle"></i>
                     Menampilkan hasil pencarian untuk "<strong><?= htmlspecialchars($search) ?></strong>":
                     <?= $total_records ?? 0 ?> media partner ditemukan
-                </div>
-            <?php endif; ?>
-
-            <!-- Pagination Info -->
-            <?php if (($total_records ?? 0) > 0): ?>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <small class="text-muted">
-                        Menampilkan <?= ($offset ?? 0) + 1 ?> - <?= min(($offset ?? 0) + ($items_per_page ?? 10), $total_records ?? 0) ?>
-                        dari <?= $total_records ?? 0 ?> media partner
-                    </small>
-                    <small class="text-muted">
-                        Halaman <?= $current_page ?? 1 ?> dari <?= $total_pages ?? 1 ?>
-                    </small>
                 </div>
             <?php endif; ?>
 
@@ -171,100 +166,119 @@
             </div>
 
             <!-- Pagination -->
-            <?php if (($total_pages ?? 1) > 1): ?>
-                <nav aria-label="Media partner pagination" class="mt-4">
-                    <ul class="pagination justify-content-center">
-                        <!-- Previous Button -->
-                        <?php if (($current_page ?? 1) > 1): ?>
-                            <li class="page-item">
-                                <a class="page-link" href="?page=<?= ($current_page ?? 1) - 1 ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">
-                                    <i class="fas fa-chevron-left"></i> Previous
+            <?php if ($total_pages > 1): ?>
+                <div class="pagination-wrapper">
+                    <nav aria-label="Media Partner pagination">
+                        <ul class="pagination justify-content-center">
+                            <!-- Tombol Previous -->
+                            <li class="page-item <?= $current_page <= 1 ? 'disabled' : '' ?>">
+                                <?php 
+                                if (!empty($search)) {
+                                    $prevUrl = $current_page > 1 
+                                        ? BASEURL . '/admin/media-partner/search/' . urlencode($search) . ($current_page > 2 ? '/page' . ($current_page - 1) : '')
+                                        : '#';
+                                } else {
+                                    $prevUrl = $current_page > 1 
+                                        ? BASEURL . '/admin/media-partner' . ($current_page > 2 ? '/page/' . ($current_page - 1) : '')
+                                        : '#';
+                                }
+                                ?>
+                                <a class="page-link" 
+                                   href="<?= $prevUrl ?>"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                        <?php else: ?>
-                            <li class="page-item disabled">
-                                <span class="page-link">
-                                    <i class="fas fa-chevron-left"></i> Previous
-                                </span>
-                            </li>
-                        <?php endif; ?>
 
-                        <!-- Page Numbers -->
-                        <?php
-                        $start_page = max(1, ($current_page ?? 1) - 2);
-                        $end_page = min(($total_pages ?? 1), ($current_page ?? 1) + 2);
+                            <?php
+                            // Logika untuk menampilkan nomor halaman
+                            $start_page = max(1, $current_page - 2);
+                            $end_page = min($total_pages, $current_page + 2);
 
-                        // Show first page if not in range
-                        if ($start_page > 1): ?>
-                            <li class="page-item">
-                                <a class="page-link" href="?page=1<?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">1</a>
-                            </li>
-                            <?php if ($start_page > 2): ?>
-                                <li class="page-item disabled">
-                                    <span class="page-link">...</span>
+                            // Tampilkan halaman pertama jika tidak termasuk dalam range
+                            if ($start_page > 1): ?>
+                                <li class="page-item">
+                                    <?php 
+                                    $firstPageUrl = !empty($search) 
+                                        ? BASEURL . '/admin/media-partner/search/' . urlencode($search)
+                                        : BASEURL . '/admin/media-partner';
+                                    ?>
+                                    <a class="page-link" href="<?= $firstPageUrl ?>">1</a>
+                                </li>
+                                <?php if ($start_page > 2): ?>
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                <?php endif;
+                            endif;
+
+                            // Tampilkan range halaman
+                            for ($i = $start_page; $i <= $end_page; $i++): 
+                                if (!empty($search)) {
+                                    $pageUrl = $i == 1 
+                                        ? BASEURL . '/admin/media-partner/search/' . urlencode($search)
+                                        : BASEURL . '/admin/media-partner/search/' . urlencode($search) . '/page/' . $i;
+                                } else {
+                                    $pageUrl = $i == 1 
+                                        ? BASEURL . '/admin/media-partner'
+                                        : BASEURL . '/admin/media-partner/page/' . $i;
+                                }
+                                ?>
+                                <li class="page-item <?= $i == $current_page ? 'active' : '' ?>">
+                                    <a class="page-link" href="<?= $pageUrl ?>">
+                                        <?= $i ?>
+                                    </a>
+                                </li>
+                            <?php endfor;
+
+                            // Tampilkan halaman terakhir jika tidak termasuk dalam range
+                            if ($end_page < $total_pages): ?>
+                                <?php if ($end_page < $total_pages - 1): ?>
+                                    <li class="page-item disabled">
+                                        <span class="page-link">...</span>
+                                    </li>
+                                <?php endif; ?>
+                                <li class="page-item">
+                                    <?php 
+                                    $lastPageUrl = !empty($search) 
+                                        ? BASEURL . '/admin/media-partner/search/' . urlencode($search) . '/page/' . $total_pages
+                                        : BASEURL . '/admin/media-partner/page/' . $total_pages;
+                                    ?>
+                                    <a class="page-link" href="<?= $lastPageUrl ?>">
+                                        <?= $total_pages ?>
+                                    </a>
                                 </li>
                             <?php endif; ?>
-                        <?php endif; ?>
 
-                        <!-- Main page range -->
-                        <?php for ($i = $start_page; $i <= $end_page; $i++): ?>
-                            <li class="page-item <?= $i == ($current_page ?? 1) ? 'active' : '' ?>">
-                                <a class="page-link" href="?page=<?= $i ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">
-                                    <?= $i ?>
+                            <!-- Tombol Next -->
+                            <li class="page-item <?= $current_page >= $total_pages ? 'disabled' : '' ?>">
+                                <?php 
+                                if (!empty($search)) {
+                                    $nextUrl = $current_page < $total_pages 
+                                        ? BASEURL . '/admin/media-partner/search/' . urlencode($search) . '/page/' . ($current_page + 1)
+                                        : '#';
+                                } else {
+                                    $nextUrl = $current_page < $total_pages 
+                                        ? BASEURL . '/admin/media-partner/page/' . ($current_page + 1)
+                                        : '#';
+                                }
+                                ?>
+                                <a class="page-link" 
+                                   href="<?= $nextUrl ?>"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
-                        <?php endfor; ?>
+                        </ul>
+                    </nav>
 
-                        <!-- Show last page if not in range -->
-                        <?php if ($end_page < ($total_pages ?? 1)): ?>
-                            <?php if ($end_page < ($total_pages ?? 1) - 1): ?>
-                                <li class="page-item disabled">
-                                    <span class="page-link">...</span>
-                                </li>
-                            <?php endif; ?>
-                            <li class="page-item">
-                                <a class="page-link" href="?page=<?= $total_pages ?? 1 ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">
-                                    <?= $total_pages ?? 1 ?>
-                                </a>
-                            </li>
-                        <?php endif; ?>
-
-                        <!-- Next Button -->
-                        <?php if (($current_page ?? 1) < ($total_pages ?? 1)): ?>
-                            <li class="page-item">
-                                <a class="page-link" href="?page=<?= ($current_page ?? 1) + 1 ?><?= !empty($search ?? '') ? '&search=' . urlencode($search) : '' ?>">
-                                    Next <i class="fas fa-chevron-right"></i>
-                                </a>
-                            </li>
-                        <?php else: ?>
-                            <li class="page-item disabled">
-                                <span class="page-link">
-                                    Next <i class="fas fa-chevron-right"></i>
-                                </span>
-                            </li>
-                        <?php endif; ?>
-                    </ul>
-                </nav>
-
-                <!-- Jump to page -->
-                <?php if (($total_pages ?? 1) > 10): ?>
-                    <div class="text-center mt-3">
-                        <form method="GET" class="d-inline-flex align-items-center">
-                            <?php if (!empty($search ?? '')): ?>
-                                <input type="hidden" name="search" value="<?= htmlspecialchars($search) ?>">
-                            <?php endif; ?>
-                            <label class="mb-0 me-2">Lompat ke halaman:</label>
-                            <input type="number"
-                                name="page"
-                                min="1"
-                                max="<?= $total_pages ?? 1 ?>"
-                                value="<?= $current_page ?? 1 ?>"
-                                class="form-control form-control-sm mx-2"
-                                style="width: 80px;">
-                            <button type="submit" class="btn btn-outline-primary btn-sm">Go</button>
-                        </form>
+                    <!-- Info halaman -->
+                    <div class="text-center mt-2">
+                        <small class="text-muted">
+                            Menampilkan <?= count($media_partners) ?> dari <?= $total_media_partners ?> media partner
+                        </small>
                     </div>
-                <?php endif; ?>
+                </div>
             <?php endif; ?>
         </div>
     </div>
