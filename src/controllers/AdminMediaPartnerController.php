@@ -70,6 +70,70 @@ class AdminMediaPartnerController extends BaseController{
         $this->view('templates/admin/footer');
     }
 
+    public function search($search = null, $page = null) {
+        // Ambil notifikasi dari session jika ada
+        $success_message = '';
+        $error_message = '';
+        
+        if (isset($_SESSION['success_message'])) {
+            $success_message = $_SESSION['success_message'];
+            unset($_SESSION['success_message']);
+        }
+        
+        if (isset($_SESSION['error_message'])) {
+            $error_message = $_SESSION['error_message'];
+            unset($_SESSION['error_message']);
+        }
+        
+        // Decode search parameter (karena di-encode di URL)
+        $search = $search ? urldecode($search) : '';
+        
+        // Jika search kosong, redirect ke index
+        if (empty($search)) {
+            header('Location: ' . BASEURL . '/admin/media-partner');
+            exit;
+        }
+        
+        // Ambil parameter pagination
+        $page = $page ? (int)$page : 1;
+        $page = $page < 1 ? 1 : $page;
+        
+        $limit = 6; // Jumlah data per halaman
+        $offset = ($page - 1) * $limit;
+        
+        // Ambil data media partner dengan pagination dan search
+        $media_partners = $this->mediaPartnerModel->getAllWithPagination($limit, $offset, $search);
+        
+        // Hitung total media partner untuk pagination
+        $totalMediaPartners = $this->mediaPartnerModel->countAll($search);
+        $totalPages = ceil($totalMediaPartners / $limit);
+        
+        // Pastikan tidak ada halaman kosong
+        if ($totalPages > 0 && $page > $totalPages) {
+            $redirectUrl = BASEURL . '/admin/media-partner/search/' . urlencode($search);
+            if ($totalPages > 1) {
+                $redirectUrl .= '/page/' . $totalPages;
+            }
+            header('Location: ' . $redirectUrl);
+            exit;
+        }
+        
+        $data = [
+            'title' => 'Dashboard - Media Partner',
+            'media_partners' => $media_partners,
+            'success_message' => $success_message,
+            'error_message' => $error_message,
+            'current_page' => $page,
+            'total_pages' => $totalPages,
+            'total_media_partners' => $totalMediaPartners,
+            'search' => $search
+        ];
+
+        $this->view('templates/admin/header', $data);
+        $this->view('admin/media-partner/index', $data);
+        $this->view('templates/admin/footer');
+    }
+
     public function add_media_partner() {
         try {
             // Handle upload gambar

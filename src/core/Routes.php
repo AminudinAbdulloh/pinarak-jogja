@@ -70,6 +70,9 @@ class Routes {
         $router->get('/admin/media-partner', ['AdminMediaPartnerController', 'index']);
         // Media Partner Pagination
         $router->get('/admin/media-partner/page/:page', ['AdminMediaPartnerController', 'index']);
+        // Media Partner Search
+        $router->get('/admin/media-partner/search/:search', ['AdminMediaPartnerController', 'search']);
+        $router->get('/admin/media-partner/search/:search/page/:page', ['AdminMediaPartnerController', 'search']);
         // Add Media Partner
         $router->get('/admin/media-partner/add', ['AdminMediaPartnerController', 'add']);
         $router->post('/admin/media-partner/add_media_partner', ['AdminMediaPartnerController', 'add_media_partner']);

@@ -36,9 +36,8 @@ class MediaPartnerModel extends Database {
         
         // Tambahkan kondisi search jika ada
         if (!empty($search)) {
-            $query .= " WHERE (p.name LIKE ?)";
+            $query .= " WHERE mp.name LIKE ?";
             $searchParam = "%$search%";
-            $params[] = $searchParam;
             $params[] = $searchParam;
         }
         
@@ -48,19 +47,18 @@ class MediaPartnerModel extends Database {
         return $this->qry($query, $params)->fetchAll();
     }
 
+
     public function countAll($search = '') {
-        $query = "SELECT COUNT(*) as total FROM media_partners p";
-        
-        // Tambahkan kondisi search jika ada
+    $query = "SELECT COUNT(*) as total FROM media_partners mp";
+        $params = [];
+
         if (!empty($search)) {
-            $query .= " WHERE (p.full_name LIKE ?)";
-            
+            $query .= " WHERE mp.name LIKE ?";
             $searchParam = "%$search%";
-            $result = $this->qry($query, [$searchParam, $searchParam])->fetch();
-        } else {
-            $result = $this->qry($query)->fetch();
+            $params[] = $searchParam;
         }
-        
+
+        $result = $this->qry($query, $params)->fetch();
         return $result['total'];
     }
 

@@ -35,39 +35,44 @@
         </div>
         <div class="content-body">
             <!-- Search Form -->
-            <form method="GET" class="mb-3">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="search-box">
-                            <button type="submit" class="btn btn-outline-primary btn-sm">
-                                <i class="fas fa-search"></i> Cari
-                            </button>
-                            <input type="text"
-                                name="search"
-                                class="form-control"
-                                placeholder="Cari media partner berdasarkan nama, deskripsi, atau website..."
-                                value="<?= htmlspecialchars($search ?? '') ?>">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <?php if (!empty($search ?? '')): ?>
-                            <a href="/pinarak-jogja-main/admin/media-partners/" class="btn btn-outline-secondary">
-                                <i class="fas fa-times"></i> Reset
-                            </a>
-                        <?php endif; ?>
-                        <input type="hidden" name="page" value="1">
-                    </div>
+            <form method="GET" action="<?= BASEURL . '/admin/media-partner/search/redirect' ?>" class="mb-3" id="searchForm">
+                <div class="search-box">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-search"></i> Cari
+                    </button>
+                    <input type="text"
+                        name="q"
+                        id="searchInput"
+                        class="form-control"
+                        placeholder="Cari media partner berdasarkan nama"
+                        value="<?= htmlspecialchars($search ?? '') ?>">
+                </div>
+                <div class="mt-2">
+                    <?php if (!empty($search)): ?>
+                        <a href="<?= BASEURL . '/admin/media-partner' ?>" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-times"></i> Reset
+                        </a>
+                    <?php endif; ?>
                 </div>
             </form>
 
-            <!-- Info hasil pencarian -->
-            <?php if (!empty($search ?? '')): ?>
-                <div class="alert alert-info">
-                    <i class="fas fa-info-circle"></i>
-                    Menampilkan hasil pencarian untuk "<strong><?= htmlspecialchars($search) ?></strong>":
-                    <?= $total_records ?? 0 ?> media partner ditemukan
-                </div>
-            <?php endif; ?>
+            <!-- Info hasil pencarian dan total data -->
+            <div class="mb-3">
+                <?php if (!empty($search)): ?>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        Menampilkan hasil pencarian untuk "<strong><?= htmlspecialchars($search) ?></strong>":
+                        <?= $total_media_partners ?> media partner ditemukan
+                    </div>
+                <?php else: ?>
+                    <p class="text-muted">
+                        <i class="fas fa-database"></i> Total Media Partner: <strong><?= $total_media_partners ?></strong>
+                        <?php if ($total_pages > 0): ?>
+                            | Halaman <strong><?= $current_page ?></strong> dari <strong><?= $total_pages ?></strong>
+                        <?php endif; ?>
+                    </p>
+                <?php endif; ?>
+            </div>
 
             <div class="table-responsive">
                 <table class="table">
@@ -283,3 +288,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Handle search form submission dengan encoding yang aman
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const searchInput = document.getElementById('searchInput');
+        const searchValue = searchInput.value.trim();
+        
+        if (searchValue) {
+            // Ganti spasi dengan tanda plus atau dash
+            const safeSearch = searchValue.replace(/\s+/g, '+');
+            
+            // Redirect ke route dengan search parameter
+            window.location.href = '<?= BASEURL ?>/admin/event/search/' + encodeURIComponent(safeSearch);
+        } else {
+            // Jika kosong, redirect ke index
+            window.location.href = '<?= BASEURL ?>/admin/event';
+        }
+    });
+</script>
