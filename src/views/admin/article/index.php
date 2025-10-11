@@ -4,6 +4,26 @@
         <p>Kelola semua artikel dan konten</p>
     </div>
 
+    <?php if (!empty($success_message)): ?>
+        <div class="notification notification-success" id="successNotification">
+            <i class="fas fa-check-circle"></i> 
+            <span><?= htmlspecialchars($success_message) ?></span>
+            <span class="notification-close" onclick="closeNotification(this)">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+    <?php endif; ?>
+
+    <?php if (!empty($error_message)): ?>
+        <div class="notification notification-error" id="errorNotification">
+            <i class="fas fa-exclamation-circle"></i> 
+            <span><?= htmlspecialchars($error_message) ?></span>
+            <span class="notification-close" onclick="closeNotification(this)">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+    <?php endif; ?>
+
     <div class="content-area">
         <div class="content-header">
             <h3>Daftar Artikel</h3>
@@ -13,22 +33,6 @@
                 </button>
             </a>
         </div>
-
-        <!-- Notifikasi Success -->
-        <?php if (isset($_SESSION['success_message'])): ?>
-            <div class="notification notification-success" id="successNotification">
-                <i class="fas fa-check-circle"></i> <?= htmlspecialchars($_SESSION['success_message']) ?>
-            </div>
-            <?php unset($_SESSION['success_message']); ?>
-        <?php endif; ?>
-
-        <!-- Notifikasi Error -->
-        <?php if (isset($_SESSION['error_message'])): ?>
-            <div class="notification notification-error" id="errorNotification">
-                <i class="fas fa-exclamation-circle"></i> <?= htmlspecialchars($_SESSION['error_message']) ?>
-            </div>
-            <?php unset($_SESSION['error_message']); ?>
-        <?php endif; ?>
 
         <div class="content-body">
             <!-- Search Form -->
@@ -67,7 +71,20 @@
                     <tbody id="articleTable">
                         <?php if (empty($articles)): ?>
                             <tr>
-                                <td colspan="5" style="text-align: center;">Tidak ada artikel ditemukan</td>
+                                <td colspan="5" class="text-center py-5">
+                                    <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">
+                                        <?= !empty($search) ? 'Tidak ada artikel yang sesuai dengan pencarian' : 'Belum ada artikel yang tersedia' ?>
+                                    </h5>
+                                    <?php if (!empty($search)): ?>
+                                        <p class="text-muted">Coba gunakan kata kunci yang berbeda</p>
+                                    <?php else: ?>
+                                        <p class="text-muted">Mulai dengan menambahkan artikel baru</p>
+                                        <a href="<?= BASEURL . '/admin/article/add' ?>" class="btn btn-primary">
+                                            <i class="fas fa-plus"></i> Tambah Artikel
+                                        </a>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
                         <?php else: ?>
                             <?php foreach ($articles as $article): ?>

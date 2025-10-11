@@ -13,7 +13,7 @@
         </div>
 
         <div class="content-body">
-            <form method="POST" enctype="multipart/form-data" id="addArticleForm">
+            <form method="POST" action="<?= BASEURL . '/admin/article/add_article' ?>" enctype="multipart/form-data" id="addArticleForm">
                 <!-- Featured Image Upload Section -->
                 <div class="image-section">
                     <div class="form-group">
@@ -48,8 +48,7 @@
                         <i class="fas fa-align-left"></i> Ringkasan Artikel
                     </label>
                     <textarea class="form-control" id="excerpt" name="excerpt" rows="3"
-                        placeholder="Ringkasan singkat artikel (akan tampil di halaman daftar artikel)"><?php echo isset($_POST['excerpt']) ? htmlspecialchars($_POST['excerpt']) : ''; ?></textarea>
-                    <small class="form-text">Kosongkan jika ingin dibuat otomatis dari konten artikel</small>
+                        placeholder="Ringkasan singkat artikel (opsional)"><?php echo isset($_POST['excerpt']) ? htmlspecialchars($_POST['excerpt']) : ''; ?></textarea>
                 </div>
 
                 <!-- Content Section -->
@@ -105,10 +104,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Simpan Artikel
                     </button>
-                    <button type="button" class="btn btn-secondary" onclick="saveDraft()">
-                        <i class="fas fa-file"></i> Simpan sebagai Draft
-                    </button>
-                    <button type="button" class="btn btn-warning" onclick="resetForm()">
+                    <button type="button" class="btn btn-warning" onclick="resetForm('addArticleForm', '<i class=\'fas fa-image\'></i><p>Klik untuk upload gambar</p><small>Gambar utama artikel</small>')">
                         <i class="fas fa-undo"></i> Reset Form
                     </button>
                     <a href="/pinarak-jogja-main/admin/articles/" class="btn btn-danger">
@@ -119,3 +115,13 @@
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('addArticleForm').addEventListener('submit', function() {
+    // Ambil konten dari div contenteditable
+    const editorContent = document.getElementById('content').innerHTML;
+    
+    // Simpan ke textarea hidden
+    document.getElementById('contentHidden').value = editorContent;
+});
+</script>

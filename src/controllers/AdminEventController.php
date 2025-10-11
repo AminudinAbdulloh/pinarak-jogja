@@ -33,10 +33,10 @@ class AdminEventController extends BaseController{
         
         $search = ''; // Tidak ada search di method index
         
-        // Ambil data events dengan pagination
+        // Ambil data dengan pagination
         $events = $this->eventModel->getAll($limit, $offset, $search);
         
-        // Hitung total events untuk pagination
+        // Hitung total untuk pagination
         $totalEvents = $this->eventModel->countAll($search);
         $totalPages = ceil($totalEvents / $limit);
         
@@ -93,10 +93,10 @@ class AdminEventController extends BaseController{
         $limit = 6; // Jumlah data per halaman
         $offset = ($page - 1) * $limit;
         
-        // Ambil data events dengan pagination dan search
+        // Ambil data dengan pagination dan search
         $events = $this->eventModel->getAll($limit, $offset, $search);
         
-        // Hitung total events untuk pagination
+        // Hitung total untuk pagination
         $totalEvents = $this->eventModel->countAll($search);
         $totalPages = ceil($totalEvents / $limit);
         
@@ -246,7 +246,7 @@ class AdminEventController extends BaseController{
                 exit;
             }
 
-            // Ambil data event dari database
+            // Ambil data dari database
             $event = $this->eventModel->getById($id);
 
             if (!$event) {
@@ -281,7 +281,7 @@ class AdminEventController extends BaseController{
                 exit;
             }
 
-            // Ambil data event lama untuk cek gambar
+            // Ambil data lama untuk cek gambar
             $oldEvent = $this->eventModel->getById($id);
 
             if (!$oldEvent) {
