@@ -86,7 +86,7 @@
                         <i class="fas fa-map"></i>
                         Google Maps Embed URL
                     </label>
-                    <input type="url" class="form-control" id="maps_embed" name="maps_embed_url" placeholder="https://www.google.com/maps/embed?pb=..."
+                    <input type="url" class="form-control" id="maps_embed" name="gmaps_embed_url" placeholder="https://www.google.com/maps/embed?pb=..."
                         value="<?php echo htmlspecialchars($contact['gmaps_embed_url']); ?>">
                     <small class="form-text">Salin URL embed dari Google Maps</small>
                 </div>

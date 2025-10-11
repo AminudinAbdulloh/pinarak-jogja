@@ -17,10 +17,12 @@ class ContactModel extends Database {
             gmaps_embed_url,
             working_days,
             working_time,
+            youtube
             linkedin,
             instagram,
             facebook,
-            tiktok
+            tiktok,
+            twitter
         FROM contacts";
         return $this->qry($query)->fetchAll();
     }
