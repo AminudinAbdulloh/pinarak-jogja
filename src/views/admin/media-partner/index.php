@@ -302,10 +302,10 @@
             const safeSearch = searchValue.replace(/\s+/g, '+');
             
             // Redirect ke route dengan search parameter
-            window.location.href = '<?= BASEURL ?>/admin/media-partner/search/' + encodeURIComponent(safeSearch);
+            window.location.href = '<?= BASEURL ?>/admin/event/search/' + encodeURIComponent(safeSearch);
         } else {
             // Jika kosong, redirect ke index
-            window.location.href = '<?= BASEURL ?>/admin/media-partner';
+            window.location.href = '<?= BASEURL ?>/admin/event';
         }
     });
 </script>
