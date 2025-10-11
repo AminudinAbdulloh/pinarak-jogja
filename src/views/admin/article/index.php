@@ -36,26 +36,44 @@
 
         <div class="content-body">
             <!-- Search Form -->
-            <form method="GET" class="mb-3">
+            <form method="GET" action="<?= BASEURL . '/admin/article/search/redirect' ?>" class="mb-3" id="searchForm">
                 <div class="search-box">
                     <button type="submit" class="btn btn-outline-primary btn-sm">
                         <i class="fas fa-search"></i> Cari
                     </button>
                     <input type="text"
-                        name="search"
+                        name="q"
+                        id="searchInput"
                         class="form-control"
-                        placeholder="Cari profile berdasarkan nama atau jabatan..."
+                        placeholder="Cari artikel berdasarkan judul, deskripsi, atau lokasi..."
                         value="<?= htmlspecialchars($search ?? '') ?>">
-                    <input type="hidden" name="page" value="1">
                 </div>
                 <div class="mt-2">
                     <?php if (!empty($search)): ?>
-                        <a href="/pinarak-jogja-main/admin/profiles/" class="btn btn-outline-secondary btn-sm">
+                        <a href="<?= BASEURL . '/admin/article' ?>" class="btn btn-outline-secondary btn-sm">
                             <i class="fas fa-times"></i> Reset
                         </a>
                     <?php endif; ?>
                 </div>
             </form>
+
+            <!-- Info hasil pencarian dan total data -->
+            <div class="mb-3">
+                <?php if (!empty($search)): ?>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        Menampilkan hasil pencarian untuk "<strong><?= htmlspecialchars($search) ?></strong>":
+                        <?= $total_articles ?> article ditemukan
+                    </div>
+                <?php else: ?>
+                    <p class="text-muted">
+                        <i class="fas fa-database"></i> Total Artikel: <strong><?= $total_articles ?></strong>
+                        <?php if ($total_pages > 0): ?>
+                            | Halaman <strong><?= $current_page ?></strong> dari <strong><?= $total_pages ?></strong>
+                        <?php endif; ?>
+                    </p>
+                <?php endif; ?>
+            </div>
 
             <div class="table-responsive">
                 <table class="table">
@@ -254,3 +272,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Handle search form submission dengan encoding yang aman
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const searchInput = document.getElementById('searchInput');
+        const searchValue = searchInput.value.trim();
+        
+        if (searchValue) {
+            // Ganti spasi dengan tanda plus atau dash
+            const safeSearch = searchValue.replace(/\s+/g, '+');
+            
+            // Redirect ke route dengan search parameter
+            window.location.href = '<?= BASEURL ?>/admin/article/search/' + encodeURIComponent(safeSearch);
+        } else {
+            // Jika kosong, redirect ke index
+            window.location.href = '<?= BASEURL ?>/admin/article';
+        }
+    });
+</script>
