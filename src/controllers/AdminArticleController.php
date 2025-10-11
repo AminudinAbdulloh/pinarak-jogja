@@ -7,10 +7,52 @@ class AdminArticleController extends BaseController{
         $this->articleModel = $this->model('ArticleModel');
     }
 
-    public function index() {
+    public function index($page = null) {
+        // Ambil notifikasi dari session jika ada
+        $success_message = '';
+        $error_message = '';
+        
+        if (isset($_SESSION['success_message'])) {
+            $success_message = $_SESSION['success_message'];
+            unset($_SESSION['success_message']);
+        }
+        
+        if (isset($_SESSION['error_message'])) {
+            $error_message = $_SESSION['error_message'];
+            unset($_SESSION['error_message']);
+        }
+        
+        // Ambil parameter pagination
+        $page = $page ? (int)$page : 1;
+        $page = $page < 1 ? 1 : $page;
+        
+        $limit = 6; // Jumlah data per halaman
+        $offset = ($page - 1) * $limit;
+        
+        $search = ''; // Tidak ada search di method index
+        
+        // Ambil data dengan pagination
+        $articles = $this->articleModel->getAllWithPagination($limit, $offset, $search);
+        
+        // Hitung total untuk pagination
+        $totalArticles = $this->articleModel->countAll($search);
+        $totalPages = ceil($totalArticles / $limit);
+        
+        // Pastikan tidak ada halaman kosong
+        if ($totalPages > 0 && $page > $totalPages) {
+            header('Location: ' . BASEURL . '/admin/article/page/' . $totalPages);
+            exit;
+        }
+        
         $data = [
             'title' => 'Dashboard - Article',
-            'articles' => $this->articleModel->getAll()
+            'articles' => $articles,
+            'success_message' => $success_message,
+            'error_message' => $error_message,
+            'current_page' => $page,
+            'total_pages' => $totalPages,
+            'total_articles' => $totalArticles,
+            'search' => $search
         ];
 
         $this->view('templates/admin/header', $data);

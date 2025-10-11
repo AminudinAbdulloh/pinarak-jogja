@@ -13,6 +13,46 @@ class ArticleModel extends Database {
         return $this->qry($query)->fetchAll();
     }
 
+    public function getAllWithPagination($limit = 6, $offset = 0, $search = '') {
+        // Pastikan limit dan offset adalah integer untuk keamanan
+        $limit = (int)$limit;
+        $offset = (int)$offset;
+
+        $query = "SELECT a.*, ad.username AS author_name 
+                FROM articles a 
+                LEFT JOIN admins ad ON a.author_id = ad.id";
+
+        $params = [];
+
+        // Tambahkan kondisi search jika ada
+        if (!empty($search)) {
+            $query .= " WHERE (a.title LIKE ?)";
+            $searchParam = "%$search%";
+            $params[] = $searchParam;
+        }
+
+        // Tambahkan ORDER BY, LIMIT, dan OFFSET di akhir
+        $query .= " ORDER BY a.created_at DESC LIMIT $limit OFFSET $offset";
+
+        return $this->qry($query, $params)->fetchAll();
+    }
+
+    public function countAll($search = '') {
+        $query = "SELECT COUNT(*) as total FROM articles a";
+        
+        // Tambahkan kondisi search jika ada
+        if (!empty($search)) {
+            $query .= " WHERE (a.title LIKE ?)";
+            
+            $searchParam = "%$search%";
+            $result = $this->qry($query, [$searchParam])->fetch();
+        } else {
+            $result = $this->qry($query)->fetch();
+        }
+        
+        return $result['total'];
+    }
+
     public function add_article($data) {
         $query = "INSERT INTO articles (title, content, excerpt, image, status, author_id) 
                   VALUES (:title, :content, :excerpt, :image, :status, :author_id)";

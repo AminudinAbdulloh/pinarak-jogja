@@ -92,6 +92,9 @@ class Routes {
         // 8. Admin Article
         $router->get('/admin/article', ['AdminArticleController', 'index']);
         $router->get('/admin/article/index', ['AdminArticleController', 'index']);
+        // Article Pagination
+        $router->get('/admin/article/page/:page', ['AdminArticleController', 'index']);
+        // Add Article
         $router->get('/admin/article/add', ['AdminArticleController', 'add']);
         $router->post('/admin/article/add_article', ['AdminArticleController', 'add_article']);
 
