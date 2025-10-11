@@ -76,4 +76,31 @@ class MediaPartnerModel extends Database {
         
         return $this->qry($query, $params);
     }
+
+    public function delete_media_partner($id) {
+        // Ambil data media partner dulu untuk cek apakah ada file image yang harus dihapus
+        $querySelect = "SELECT logo FROM media_partners WHERE id = :id";
+        $media_partner = $this->qry($querySelect, [':id' => $id])->fetch();
+
+        if (!$media_partner) {
+            // Jika media partner tidak ditemukan
+            return false;
+        }
+
+        // Jika ada gambar, hapus file-nya dari folder uploads
+        if (!empty($media_partner['image'])) {
+            // Dari src/models/ ke public/
+            $filePath = __DIR__ . '/../../public/' . $media_partner['image'];
+            
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+
+        // Hapus data media partner dari database
+        $queryDelete = "DELETE FROM media_partners WHERE id = :id";
+        $params = [':id' => $id];
+
+        return $this->qry($queryDelete, $params);
+    }
 }

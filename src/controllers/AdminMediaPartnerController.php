@@ -206,4 +206,30 @@ class AdminMediaPartnerController extends BaseController{
     public function edit($id) {
         echo "Edit from article = " . $id;
     }
+
+    public function delete_media_partner() {
+        try {
+            $id = $_POST['id'] ?? null;
+
+            if (!$id) {
+                $_SESSION['error_message'] = 'ID media partner tidak ditemukan.';
+                header('Location: ' . BASEURL . '/admin/media-partner');
+                exit;
+            }
+
+            $result = $this->mediaPartnerModel->delete_media_partner($id);
+
+            if ($result) {
+                $_SESSION['success_message'] = 'Media Partner berhasil dihapus.';
+            } else {
+                $_SESSION['error_message'] = 'Media Partner tidak ditemukan atau gagal dihapus.';
+            }
+
+        } catch (Exception $e) {
+            $_SESSION['error_message'] = 'Terjadi kesalahan: ' . $e->getMessage();
+        }
+        
+        header('Location: ' . BASEURL . '/admin/media-partner');
+        exit;
+    }
 }

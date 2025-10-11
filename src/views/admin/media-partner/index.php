@@ -154,13 +154,17 @@
                                                 title="Edit Media Partner">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <button type="button"
-                                                class="btn btn-danger btn-sm btn-delete-partner"
-                                                data-partner-id="<?php echo htmlspecialchars($partner['id']); ?>"
-                                                data-partner-name="<?php echo htmlspecialchars($partner['name']); ?>"
-                                                title="Hapus Media Partner">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+                                            <form method="POST" 
+                                                action="<?= BASEURL . '/admin/media-partner/delete_media_partner' ?>" 
+                                                style="display: inline;"
+                                                onsubmit="return confirm('Apakah kamu yakin ingin menghapus media partner \'<?= htmlspecialchars($partner['name']) ?>\'?')">
+                                                <input type="hidden" name="id" value="<?= $partner['id'] ?>">
+                                                <button type="submit" 
+                                                        class="btn btn-danger btn-sm" 
+                                                        title="Hapus Media Partner">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
