@@ -5,6 +5,11 @@ class ProfileModel extends Database {
         parent::__construct();
     }
 
+    public function getAll2() {
+        $query = "SELECT * FROM profiles ORDER BY created_at DESC";
+        return $this->qry($query)->fetchAll();
+    }
+
     public function getAll($limit = 6, $offset = 0, $search = '') {
         $limit = (int)$limit;
         $offset = (int)$offset;
