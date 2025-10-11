@@ -19,7 +19,7 @@
     <div class="content-area">
         <div class="content-header">
             <h3>Daftar Media Partner</h3>
-            <a href="/pinarak-jogja-main/admin/media-partners/add">
+            <a href="<?= BASEURL . '/admin/media-partner/add' ?>">
                 <button class="btn btn-primary">
                     <i class="fas fa-plus"></i> Tambah Media Partner
                 </button>
@@ -104,7 +104,7 @@
                                         </a>
                                     <?php else: ?>
                                         <p class="text-muted">Mulai dengan menambahkan media partner baru</p>
-                                        <a href="/pinarak-jogja-main/admin/media-partners/add" class="btn btn-primary">
+                                        <a href="<?= BASEURL . '/admin/media-partner/add' ?>" class="btn btn-primary">
                                             <i class="fas fa-plus"></i> Tambah Media Partner
                                         </a>
                                     <?php endif; ?>
