@@ -41,3 +41,7 @@ function clean($data) {
 function formatRupiah($angka) {
     return 'Rp ' . number_format($angka, 0, ',', '.');
 }
+
+function formatDate($date) {
+    return date('d M Y H:i', strtotime($date));
+}

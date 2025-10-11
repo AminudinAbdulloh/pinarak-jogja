@@ -4,7 +4,7 @@
         <?php if (!empty($articles)): ?>
             <?php foreach ($articles as $article): ?>
                 <article class="berita-card">
-                    <img src="/pinarak-jogja-main/<?= $article['image'] ?>"
+                    <img src="<?= BASEURL . '/' . $article['image'] ?>"
                         alt="<?= htmlspecialchars($article['title']) ?>">
                     <div class="berita-content">
                         <span class="tanggal"><?php echo formatDate($article['created_at']); ?></span>
@@ -16,7 +16,7 @@
                             <p><?php echo truncateText(strip_tags($article['content']), 150); ?></p>
                         <?php endif; ?>
 
-                        <a href="<?php echo SITE_URL; ?>/berita/detail.php?id=<?php echo $article['id']; ?>">
+                        <a href="">
                             Baca Selengkapnya →
                         </a>
                     </div>
