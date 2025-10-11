@@ -112,12 +112,12 @@ class EventModel extends Database {
     }
 
     public function delete_event($id) {
-        // Ambil data event dulu untuk cek apakah ada file image yang harus dihapus
+        // Ambil data dulu untuk cek apakah ada file image yang harus dihapus
         $querySelect = "SELECT image FROM events WHERE id = :id";
         $event = $this->qry($querySelect, [':id' => $id])->fetch();
 
         if (!$event) {
-            // Jika event tidak ditemukan
+            // Jika data tidak ditemukan
             return false;
         }
 
@@ -131,7 +131,7 @@ class EventModel extends Database {
             }
         }
 
-        // Hapus data event dari database
+        // Hapus data dari database
         $queryDelete = "DELETE FROM events WHERE id = :id";
         $params = [':id' => $id];
 

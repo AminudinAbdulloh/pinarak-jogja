@@ -68,4 +68,31 @@ class ArticleModel extends Database {
         
         return $this->qry($query, $params);
     }
+
+    public function delete_article($id) {
+        // Ambil data dulu untuk cek apakah ada file image yang harus dihapus
+        $querySelect = "SELECT image FROM articles WHERE id = :id";
+        $article = $this->qry($querySelect, [':id' => $id])->fetch();
+
+        if (!$article) {
+            // Jika data tidak ditemukan
+            return false;
+        }
+
+        // Jika ada gambar, hapus file-nya dari folder uploads
+        if (!empty($article['image'])) {
+            // Dari src/models/ ke public/
+            $filePath = __DIR__ . '/../../public/' . $article['image'];
+            
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+
+        // Hapus data dari database
+        $queryDelete = "DELETE FROM articles WHERE id = :id";
+        $params = [':id' => $id];
+
+        return $this->qry($queryDelete, $params);
+    }
 }

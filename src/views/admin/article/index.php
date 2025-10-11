@@ -116,13 +116,17 @@
                                                 title="Edit Artikel">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <button type="button"
-                                                class="btn btn-danger btn-sm btn-delete-article"
-                                                data-article-id="<?php echo htmlspecialchars($article['id']); ?>"
-                                                data-article-title="<?php echo htmlspecialchars($article['title']); ?>"
-                                                title="Hapus Artikel">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
+                                            <form method="POST" 
+                                                action="<?= BASEURL . '/admin/article/delete_article' ?>" 
+                                                style="display: inline;"
+                                                onsubmit="return confirm('Apakah kamu yakin ingin menghapus artikel \'<?= htmlspecialchars($article['title']) ?>\'?')">
+                                                <input type="hidden" name="id" value="<?= $article['id'] ?>">
+                                                <button type="submit" 
+                                                        class="btn btn-danger btn-sm" 
+                                                        title="Hapus Artikel">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

@@ -139,4 +139,30 @@ class AdminArticleController extends BaseController{
         header('Location: ' . BASEURL . '/admin/article');
         exit;
     }
+
+    public function delete_article() {
+        try {
+            $id = $_POST['id'] ?? null;
+
+            if (!$id) {
+                $_SESSION['error_message'] = 'ID Artikel tidak ditemukan.';
+                header('Location: ' . BASEURL . '/admin/article');
+                exit;
+            }
+
+            $result = $this->articleModel->delete_article($id);
+
+            if ($result) {
+                $_SESSION['success_message'] = 'Artikel berhasil dihapus.';
+            } else {
+                $_SESSION['error_message'] = 'Artikel tidak ditemukan atau gagal dihapus.';
+            }
+
+        } catch (Exception $e) {
+            $_SESSION['error_message'] = 'Terjadi kesalahan: ' . $e->getMessage();
+        }
+        
+        header('Location: ' . BASEURL . '/admin/article');
+        exit;
+    }
 }

@@ -97,6 +97,8 @@ class Routes {
         // Add Article
         $router->get('/admin/article/add', ['AdminArticleController', 'add']);
         $router->post('/admin/article/add_article', ['AdminArticleController', 'add_article']);
+        // Delete Article
+        $router->post('/admin/article/delete_article', ['AdminArticleController', 'delete_article']);
 
         $router->run();
     }
