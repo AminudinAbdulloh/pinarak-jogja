@@ -214,7 +214,7 @@ class AdminProfileController extends BaseController{
 
             if (!$oldYoutubeLink) {
                 $_SESSION['error_message'] = 'Link Youtube tidak ditemukan.';
-                header('Location: ' . BASEURL . '/admin/event');
+                header('Location: ' . BASEURL . '/admin/profile');
                 exit;
             }
             
