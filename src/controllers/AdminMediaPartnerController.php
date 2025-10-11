@@ -18,6 +18,16 @@ class AdminMediaPartnerController extends BaseController{
         $this->view('templates/admin/footer');
     }
 
+    public function add() {
+        $data = [
+            'title' => 'Dashboard - Add Media Partner',
+        ];
+
+        $this->view('templates/admin/header', $data);
+        $this->view('admin/media-partner/add');
+        $this->view('templates/admin/footer');
+    }
+
     public function edit($id) {
         echo "Edit from article = " . $id;
     }

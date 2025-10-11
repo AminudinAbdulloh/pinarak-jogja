@@ -66,8 +66,9 @@ class Routes {
         // Delete Youtube Link
         $router->post('/admin/profile/youtube_link/delete', ['AdminProfileController', 'delete_youtube_link']);
 
-        // 5. Admin Information
+        // 5. Admin Media Partner
         $router->get('/admin/media-partner', ['AdminMediaPartnerController', 'index']);
+        $router->get('/admin/media-partner/add', ['AdminMediaPartnerController', 'add']);
 
         // 6. Admin Contact
         $router->get('/admin/contact', ['AdminContactController', 'index']);
