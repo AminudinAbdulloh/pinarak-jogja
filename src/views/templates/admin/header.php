@@ -40,7 +40,7 @@
                 <li><a href="<?= BASEURL . '/admin/setting' ?>">
                         <i class="fas fa-cog"></i> Pengaturan
                     </a></li>
-                <li><a href="<?= BASEURL . '/admin/logout' ?>">
+                <li><a href="<?= BASEURL . '/admin/auth/logout' ?>">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a></li>
             </ul>
