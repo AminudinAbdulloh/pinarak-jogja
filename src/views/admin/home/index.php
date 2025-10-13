@@ -63,17 +63,6 @@
         <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-number">25,467</div>
-                    <div class="card-title">Total Views</div>
-                </div>
-                <div class="card-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <div>
                     <div class="card-number">22</div>
                     <div class="card-title">Draft Artikel</div>
                 </div>
