@@ -4,7 +4,7 @@
     <!-- Map Section -->
     <div class="map-section">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.0571051762386!2d110.37196727455385!3d-7.78377047723449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a583276eb8ccd%3A0x732af38c7fe6b63c!2sDinas%20Pariwisata%20Kota%20Yogyakarta!5e0!3m2!1sid!2sid!4v1747403238370!5m2!1sid!2sid"
+            src="<?= $contact['gmaps_embed_url'] ?>"
             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
     </div>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="info-content">
                     <h3>Address</h3>
-                    <p>Jl. Suroto No.11, Kotabaru, Gondokusuman<br>Yogyakarta 55224</p>
+                    <p><?php echo htmlspecialchars($contact['address']) ?><br><?php echo htmlspecialchars($contact['postal_code']) ?></p>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
                 </div>
                 <div class="info-content">
                     <h3>Call Us</h3>
-                    <p>0274588025</p>
+                    <p><?php echo htmlspecialchars($contact['phone_number']) ?></p>
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
                 </div>
                 <div class="info-content">
                     <h3>Email Us</h3>
-                    <p>pariwisata@jogjakota.go.id</p>
+                    <p><?php echo htmlspecialchars($contact['email']) ?></p>
                 </div>
             </div>
         </div>

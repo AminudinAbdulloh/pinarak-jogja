@@ -92,8 +92,13 @@ class Routes {
         $router->get('/admin/contact/edit/:id', ['AdminContactController', 'edit']);
         $router->post('/admin/contact/edit_contact', ['AdminContactController', 'edit_contact']);
 
-        // 7. Admin Setting
+        // 7. Admin Setting - Tambahkan di Routes.php setelah Admin Contact
         $router->get('/admin/setting', ['AdminSettingController', 'index']);
+        $router->get('/admin/setting/index', ['AdminSettingController', 'index']);
+        // Edit Setting
+        $router->get('/admin/setting/edit', ['AdminSettingController', 'edit']);
+        $router->get('/admin/setting/edit/:id', ['AdminSettingController', 'edit']);
+        $router->post('/admin/setting/edit_setting', ['AdminSettingController', 'edit_setting']);
 
         // 8. Admin Article
         $router->get('/admin/article', ['AdminArticleController', 'index']);

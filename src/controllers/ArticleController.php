@@ -2,9 +2,15 @@
 
 class ArticleController extends BaseController{
     private $articleModel;
+    private $settingModel;
+    private $mediaPartnerModel;
+    private $contactModel;
 
     public function __construct() {
         $this->articleModel = $this->model('ArticleModel');
+        $this->settingModel = $this->model('SettingModel');
+        $this->mediaPartnerModel = $this->model('MediaPartnerModel');
+        $this->contactModel = $this->model('ContactModel');
     }
 
     public function index() {
@@ -13,11 +19,14 @@ class ArticleController extends BaseController{
         $data = [
             'title' => 'Articles',
             'articles' => $articles,
+            'setting' => $this->settingModel->getSettings(),
+            'media_partners' => $this->mediaPartnerModel->getAll(),
+            'contact' => $this->contactModel->getContacts()
         ];
 
         $this->view('templates/public/header', $data);
         $this->view('public/article/index', $data);
-        $this->view('templates/public/footer');
+        $this->view('templates/public/footer', $data);
     }
 
     public function detail($id = null) {

@@ -27,7 +27,7 @@
         </div>
         <div class="layar-dalam">
             <div class="logo">
-                <a href="<?= BASEURL ?>"><img src="<?= BASEURL . '/img/pinarak-logo.png'?>" /></a>
+                <a href="<?= BASEURL ?>"><img src="<?= BASEURL . '/' . $setting['logo_pinarak']?>" /></a>
             </div>
             <div class="menu">
                 <a href="#" Class="tombol-menu">

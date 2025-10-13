@@ -51,6 +51,37 @@ class ContactModel extends Database {
         return $this->qry($query, [':id' => $id])->fetch();
     }
 
+    public function getContacts() {
+        $query = "SELECT 
+            id,
+            company_name,
+            phone_number,
+            email,
+            address,
+            city,
+            postal_code,
+            gmaps_embed_url,
+            working_days,
+            working_time,
+            youtube
+            linkedin,
+            instagram,
+            facebook,
+            tiktok,
+            twitter
+        FROM contacts
+        LIMIT 1";
+        
+        $result = $this->qry($query)->fetch();
+        
+        // Decode JSON banner jika ada
+        if ($result && !empty($result['banner'])) {
+            $result['banner'] = json_decode($result['banner'], true);
+        }
+        
+        return $result;
+    }
+
     public function update_contact($data) {
         $query = "UPDATE contacts 
           SET company_name = :company_name,

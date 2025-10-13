@@ -2,8 +2,9 @@
     <header id="home">
         <div class="slider">
             <div class="slides">
-                <img src="assets/images/banners/wjnc.png" alt="Banner 1">
-                <img src="assets/images/banners/yogyakarta.jpg" alt="Banner 2">
+                <?php foreach ($setting['banner'] as $banner): ?>
+                    <img src="<?= BASEURL . '/' . $banner ?>" alt="Banner">
+                <?php endforeach; ?>
             </div>
             <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
             <button class="next" onclick="moveSlide(1)">&#10095;</button>
