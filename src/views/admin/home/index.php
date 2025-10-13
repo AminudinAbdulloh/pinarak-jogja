@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-number">25</div>
+                    <div class="card-number"><?= $data['stats']['total_events'] ?? 0 ?></div>
                     <div class="card-title">Total Event</div>
                 </div>
                 <div class="card-icon">
@@ -19,7 +19,7 @@
         <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-number">8</div>
+                    <div class="card-number"><?= $data['stats']['upcoming_events'] ?? 0 ?></div>
                     <div class="card-title">Event Akan Datang</div>
                 </div>
                 <div class="card-icon">
@@ -30,7 +30,7 @@
         <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-number">17</div>
+                    <div class="card-number"><?= $data['stats']['completed_events'] ?? 0 ?></div>
                     <div class="card-title">Event Selesai</div>
                 </div>
                 <div class="card-icon">
@@ -41,7 +41,7 @@
         <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-number">156</div>
+                    <div class="card-number"><?= $data['stats']['total_articles'] ?? 0 ?></div>
                     <div class="card-title">Total Artikel</div>
                 </div>
                 <div class="card-icon">
@@ -52,7 +52,7 @@
         <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-number">134</div>
+                    <div class="card-number"><?= $data['stats']['published_articles'] ?? 0 ?></div>
                     <div class="card-title">Artikel Terbit</div>
                 </div>
                 <div class="card-icon">
@@ -63,7 +63,7 @@
         <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-number">22</div>
+                    <div class="card-number"><?= $data['stats']['draft_articles'] ?? 0 ?></div>
                     <div class="card-title">Draft Artikel</div>
                 </div>
                 <div class="card-icon">
@@ -74,7 +74,7 @@
         <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-number">1,234</div>
+                    <div class="card-number"><?= $data['stats']['total_users'] ?? 0 ?></div>
                     <div class="card-title">Total User</div>
                 </div>
                 <div class="card-icon">
