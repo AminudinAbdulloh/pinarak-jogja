@@ -110,3 +110,49 @@ CREATE TABLE youtube_link (
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `admins` (`id`, `username`, `email`, `password`, `full_name`, `status`, `created_at`, `updated_at`) 
+VALUES 
+(2, 'admin2', 'admin2@gmail.com', '$2y$10$Y64QR1jWQ6aUtqE.KpAQ9uQI7FinZDFc/IuqMwUvluuunbn/FUWka', 'Administrator 2', 'active', NOW(), NOW());
+
+INSERT INTO contacts (
+    company_name,
+    phone_number,
+    email,
+    address,
+    city,
+    postal_code,
+    gmaps_embed_url,
+    working_days,
+    working_time,
+    youtube,
+    linkedin,
+    instagram,
+    facebook,
+    tiktok,
+    twitter
+) VALUES (
+    'PT Pinarak Jogja',
+    '+62 812 3456 7890',
+    'info@pinarakjogja.com',
+    'Jl. Malioboro No.123, Yogyakarta',
+    'Yogyakarta',
+    55213,
+    'https://www.google.com/maps/embed?pb=!1m18!...',
+    'Senin - Jumat',
+    '08.00 - 17.00',
+    'https://youtube.com/@pinarakjogja',
+    'https://linkedin.com/company/pinarakjogja',
+    'https://instagram.com/pinarakjogja',
+    'https://facebook.com/pinarakjogja',
+    'https://tiktok.com/@pinarakjogja',
+    'https://twitter.com/pinarakjogja'
+);
+
+INSERT INTO `settings` (`logo_pinarak`, `logo_dinpar`, `banner`, `copyright`) 
+VALUES (
+  NULL, 
+  NULL, 
+  '["uploads/banners/banner1.jpg", "uploads/banners/banner2.jpg"]',
+  '© 2025 Pinarak Jogja'
+);
