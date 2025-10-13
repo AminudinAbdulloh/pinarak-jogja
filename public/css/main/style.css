@@ -21,22 +21,17 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  height: 80px; /* Set fixed height for navbar */
-}
-
-.layar-penuh {
-  width: 100%;
+  height: 90px; /* Set fixed height for navbar */
+  padding: 10px 0;
 }
 
 nav {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
   color: #fff;
-  background: linear-gradient(135deg, #2d5016, #4a7c22),
-    url("../../img/headers/batik.jpg");
+  background: linear-gradient(135deg, #2d5016, #4a7c22);
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -44,89 +39,17 @@ nav {
   border-bottom: 2px solid #ababab;
 }
 
-.header {
-  background-color: transparent; /* Make header transparent */
-  color: #fff; /* Change text color to white for visibility */
-  text-align: end;
-  padding: 10px 25px;
-  width: 50%;
-  margin-right: 0;
-  margin-left: auto;
-  box-sizing: border-box;
-}
-
-/* Language Selector Styles */
-.language-selector {
-  position: relative;
-  display: inline-block;
-}
-
-.language-select {
-  appearance: none;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); /* Semi-transparent white background */
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
-  padding: 5px 25px 5px 35px;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23666" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 10px;
-}
-
-.language-select:focus {
-  outline: none;
-  border-color: #fff;
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.flag-icon {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 12px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Flag styles using images */
-.flag-indonesia {
-  background-image: url("/img/headers/id.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.flag-english {
-  background-image: url("/img/headers/en-us.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
 /* Logo styles - full height */
 nav .logo {
-  padding-bottom: 45px;
   height: 100%; /* Take full height of parent container */
   display: flex;
   align-items: center;
 }
 
 nav .logo img {
-  height: 500px; /* Full height of navbar */
+  height: 100%; /* Full height of navbar */
   width: auto; /* Maintain aspect ratio */
-  max-height: 120px; /* Match navbar height */
+  max-height: 100px; /* Match navbar height */
   object-fit: contain; /* Ensure logo fits properly */
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 }
@@ -201,10 +124,6 @@ nav ul li a:hover {
   }
   .tombol-menu {
     display: flex;
-  }
-
-  .header {
-    padding: 10px 15px;
   }
 }
 

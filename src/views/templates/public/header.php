@@ -16,15 +16,6 @@
 
 <body>
     <nav>
-        <div class="header">
-            <div class="language-selector">
-                <div class="flag-icon flag-indonesia" id="flag-display"></div>
-                <select class="language-select" id="languageSelect" onchange="changeLanguage()">
-                    <option value="id" data-flag="indonesia">ID - Indonesia</option>
-                    <option value="en" data-flag="english">EN - English</option>
-                </select>
-            </div>
-        </div>
         <div class="layar-dalam">
             <div class="logo">
                 <a href="<?= BASEURL ?>"><img src="<?= BASEURL . '/' . $setting['logo_pinarak']?>" /></a>
