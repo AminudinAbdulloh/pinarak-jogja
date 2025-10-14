@@ -13,7 +13,7 @@ class ContactController extends BaseController{
     
     public function index() {
         $data = [
-            'title' => 'Articles',
+            'title' => 'Contacts',
             'contact' => $this->contactModel->getContacts(),
             'setting' => $this->settingModel->getSettings(),
             'media_partners' => $this->mediaPartnerModel->getAll()
