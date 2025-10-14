@@ -50,55 +50,29 @@
         <div class="contact-form">
             <h2>Kirim Pesan</h2>
 
-            <?php if (isset($success_message)): ?>
-                <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
-                    <i class="fas fa-check-circle"></i> <?php echo $success_message; ?>
-                </div>
-            <?php endif; ?>
-
-            <?php if (isset($error_message)): ?>
-                <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
-                    <i class="fas fa-exclamation-triangle"></i> <?php echo $error_message; ?>
-                </div>
-            <?php endif; ?>
-
-            <?php if (!empty($errors)): ?>
-                <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <ul style="margin: 5px 0 0 20px; padding: 0;">
-                        <?php foreach ($errors as $error): ?>
-                            <li><?php echo $error; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
-
-            <form method="POST" action="">
+            <form id="contactForm" method="POST" action="">
                 <div class="form-group">
                     <label for="name">Your Name <span class="required">*</span></label>
                     <input type="text" id="name" name="name" required
-                        value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>"
                         placeholder="Masukkan nama Anda">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Your Email <span class="required">*</span></label>
                     <input type="email" id="email" name="email" required
-                        value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
                         placeholder="Masukkan email Anda">
                 </div>
 
                 <div class="form-group">
                     <label for="subject">Subject <span class="required">*</span></label>
                     <input type="text" id="subject" name="subject" required
-                        value="<?php echo isset($_POST['subject']) ? htmlspecialchars($_POST['subject']) : ''; ?>"
                         placeholder="Masukkan subject pesan">
                 </div>
 
                 <div class="form-group">
                     <label for="message">Message <span class="required">*</span></label>
                     <textarea id="message" name="message" required
-                        placeholder="Tulis pesan Anda di sini..."><?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : ''; ?></textarea>
+                        placeholder="Tulis pesan Anda di sini..."></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">
@@ -108,3 +82,40 @@
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    
+    // Compose email body
+    const emailBody = `Nama: ${name}%0D%0A` +
+                     `Email: ${email}%0D%0A%0D%0A` +
+                     `Pesan:%0D%0A${message}`;
+    
+    // Create mailto link
+    const mailtoLink = `mailto:<?= htmlspecialchars($contact['email']) ?>?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    alert('Email client Anda akan terbuka. Silakan kirim email dari aplikasi email Anda.');
+    
+    // Optional: Reset form after a delay
+    setTimeout(() => {
+        this.reset();
+    }, 1000);
+});
+</script>
+
+<style>
+.required {
+    color: #dc3545;
+}
+</style>
