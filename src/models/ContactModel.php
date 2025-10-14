@@ -17,7 +17,7 @@ class ContactModel extends Database {
             gmaps_embed_url,
             working_days,
             working_time,
-            youtube
+            youtube,
             linkedin,
             instagram,
             facebook,
@@ -63,7 +63,7 @@ class ContactModel extends Database {
             gmaps_embed_url,
             working_days,
             working_time,
-            youtube
+            youtube,
             linkedin,
             instagram,
             facebook,
