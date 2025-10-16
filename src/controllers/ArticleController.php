@@ -49,11 +49,14 @@ class ArticleController extends BaseController{
         $data = [
             'title' => 'Pinarak Jogja - ' . $article['title'],
             'article' => $article,
-            'relatedArticles' => $relatedArticles
+            'relatedArticles' => $relatedArticles,
+            'setting' => $this->settingModel->getSettings(),
+            'media_partners' => $this->mediaPartnerModel->getAll(),
+            'contact' => $this->contactModel->getContacts()
         ];
 
         $this->view('templates/public/header', $data);
         $this->view('public/article/detail', $data);
-        $this->view('templates/public/footer');
+        $this->view('templates/public/footer', $data);
     }
 }
