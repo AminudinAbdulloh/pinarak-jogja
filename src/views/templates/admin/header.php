@@ -34,6 +34,9 @@
                 <li><a href="<?= BASEURL . '/admin/article' ?>">
                         <i class="fas fa-newspaper"></i> Artikel
                     </a></li>
+                <li><a href="<?= BASEURL . '/admin/users' ?>">
+                        <i class="fas fa-user-shield"></i> Admin Users
+                    </a></li>
                 <li><a href="<?= BASEURL . '/admin/contact' ?>">
                         <i class="fas fa-envelope"></i> Contact
                     </a></li>

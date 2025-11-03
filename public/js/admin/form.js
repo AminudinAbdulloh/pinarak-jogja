@@ -9,10 +9,11 @@ function previewImage(input) {
     }
 }
 
-function resetForm(formId, imagePreviewText) {
+function resetForm(formId, imagePreviewText = '') {
     document.getElementById(formId).reset();
-    document.getElementById('imagePreview').innerHTML =
-        imagePreviewText;
+    if (imagePreviewText) {
+        document.getElementById('imagePreview').innerHTML = imagePreviewText;
+    }
 }
 
 function socialMediaUrlValidation() {

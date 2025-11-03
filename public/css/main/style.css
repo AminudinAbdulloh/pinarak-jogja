@@ -180,7 +180,6 @@ nav ul li a:hover {
 .info-section {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 60px;
   margin-bottom: 50px;
   text-align: center;
@@ -215,6 +214,9 @@ nav ul li a:hover {
   line-height: 1.6;
   color: #f0f0f0;
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 /* Main Logos Section */

@@ -118,6 +118,26 @@ class Routes {
         // Delete Article
         $router->post('/admin/article/delete_article', ['AdminArticleController', 'delete_article']);
 
+        // 9. Admin Users
+        $router->get('/admin/users', ['AdminUserController', 'index']);
+        $router->get('/admin/users/index', ['AdminUserController', 'index']);
+        // User Pagination
+        $router->get('/admin/users/page/:page', ['AdminUserController', 'index']);
+        // User Search
+        $router->get('/admin/users/search/:search', ['AdminUserController', 'search']);
+        $router->get('/admin/users/search/:search/page/:page', ['AdminUserController', 'search']);
+        // Add User
+        $router->get('/admin/users/add', ['AdminUserController', 'add']);
+        $router->post('/admin/users/add_user', ['AdminUserController', 'add_user']);
+        // Edit User
+        $router->get('/admin/users/edit', ['AdminUserController', 'edit']);
+        $router->get('/admin/users/edit/:id', ['AdminUserController', 'edit']);
+        $router->post('/admin/users/edit_user', ['AdminUserController', 'edit_user']);
+        // Reset Password
+        $router->post('/admin/users/reset_password', ['AdminUserController', 'reset_password']);
+        // Delete User
+        $router->post('/admin/users/delete_user', ['AdminUserController', 'delete_user']);
+
         $router->run();
     }
 }
