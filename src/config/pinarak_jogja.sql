@@ -149,6 +149,16 @@ INSERT INTO contacts (
     'https://twitter.com/pinarakjogja'
 );
 
+CREATE TABLE `settings` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `logo_pinarak` VARCHAR(255) DEFAULT NULL,
+  `logo_dinpar` VARCHAR(255) DEFAULT NULL,
+  `banner` JSON DEFAULT NULL,
+  `copyright` VARCHAR(255) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
 INSERT INTO `settings` (`logo_pinarak`, `logo_dinpar`, `banner`, `copyright`) 
 VALUES (
   NULL, 
