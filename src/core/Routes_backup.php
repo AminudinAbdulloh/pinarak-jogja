@@ -3,12 +3,28 @@ class Routes {
     private $controllerFile = 'DefaultApp';
     private $controllerMethod = 'index';
     private $parameter = [];
+    private $basePath = '';
+
+    public function __construct() {
+        $this->basePath = $this->loadBasePath();
+    }
+
+    private function loadBasePath() {
+        $configFile = __DIR__ . '/../../config/config.properties';
+        
+        if (!file_exists($configFile)) {
+            return '';
+        }
+        
+        $config = parse_ini_file($configFile, true);
+        return isset($config['global']['base_path']) ? $config['global']['base_path'] : '';
+    }
     
     public function run() {
         $url = $this->getUrl();
         
         // Skip folder project jika ada
-        if($url[0] && strpos($url[0], 'pinarak-jogja-main-v2') !== false) {
+        if($url[0] && $this->basePath && strpos($url[0], $this->basePath) !== false) {
             array_shift($url); // Remove first element
             $url = array_values($url); // Reindex array
         }
