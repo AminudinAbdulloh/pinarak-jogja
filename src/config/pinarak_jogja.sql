@@ -111,9 +111,22 @@ CREATE TABLE youtube_link (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Table: tourist_objects
+CREATE TABLE tourist_objects (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    article VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    category ENUM('Nature', 'Culture', 'Culinary', 'Religious', 'Adventure', 'Historical') NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    google_map_link VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+);
+
 INSERT INTO `admins` (`id`, `username`, `email`, `password`, `full_name`, `status`, `created_at`, `updated_at`) 
 VALUES 
-(2, 'admin2', 'admin2@gmail.com', '$2y$10$Y64QR1jWQ6aUtqE.KpAQ9uQI7FinZDFc/IuqMwUvluuunbn/FUWka', 'Administrator 2', 'active', NOW(), NOW());
+(2, 'admin1', 'admin1@gmail.com', '$2y$10$Y64QR1jWQ6aUtqE.KpAQ9uQI7FinZDFc/IuqMwUvluuunbn/FUWka', 'Administrator 1', 'active', NOW(), NOW());
 
 INSERT INTO contacts (
     company_name,

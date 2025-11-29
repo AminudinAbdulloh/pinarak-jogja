@@ -23,25 +23,28 @@
                         <i class="fas fa-home"></i> Dashboard
                     </a></li>
                 <li><a href="<?= BASEURL . '/admin/event' ?>">
-                        <i class="fas fa-calendar-alt"></i> Event
+                        <i class="fas fa-calendar-alt"></i> Events
                     </a></li>
                 <li><a href="<?= BASEURL . '/admin/profile' ?>">
-                        <i class="fas fa-users"></i> Profile
+                        <i class="fas fa-users"></i> Profiles
                     </a></li>
-                <li><a href="<?= BASEURL . '/admin/media-partner' ?>">
-                        <i class="fas fa-handshake"></i> Media Partner
+                <li><a href="<?= BASEURL . '/admin/tourist-object' ?>">
+                        <i class="fas fa-handshake"></i> Tourist Objects
                     </a></li>
                 <li><a href="<?= BASEURL . '/admin/article' ?>">
-                        <i class="fas fa-newspaper"></i> Artikel
+                        <i class="fas fa-newspaper"></i> Article
                     </a></li>
                 <li><a href="<?= BASEURL . '/admin/users' ?>">
                         <i class="fas fa-user-shield"></i> Admin Users
                     </a></li>
                 <li><a href="<?= BASEURL . '/admin/contact' ?>">
-                        <i class="fas fa-envelope"></i> Contact
+                        <i class="fas fa-envelope"></i> Contacts
+                    </a></li>
+                <li><a href="<?= BASEURL . '/admin/media-partner' ?>">
+                        <i class="fas fa-handshake"></i> Media Partners
                     </a></li>
                 <li><a href="<?= BASEURL . '/admin/setting' ?>">
-                        <i class="fas fa-cog"></i> Pengaturan
+                        <i class="fas fa-cog"></i> Settings
                     </a></li>
                 <li><a href="<?= BASEURL . '/admin/auth/logout' ?>">
                         <i class="fas fa-sign-out-alt"></i> Logout

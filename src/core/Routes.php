@@ -137,6 +137,24 @@ class Routes {
         $router->post('/admin/users/reset_password', ['AdminUserController', 'reset_password']);
         // Delete User
         $router->post('/admin/users/delete_user', ['AdminUserController', 'delete_user']);
+        
+        // 10. Admin Tourist Object
+        $router->get('/admin/tourist-object', ['AdminTouristObjectController', 'index']);
+        $router->get('/admin/tourist-object/index', ['AdminTouristObjectController', 'index']);
+        // Tourist Object Pagination
+        $router->get('/admin/tourist-object/page/:page', ['AdminTouristObjectController', 'index']);
+        // Tourist Object Search
+        $router->get('/admin/tourist-object/search/:search', ['AdminTouristObjectController', 'search']);
+        $router->get('/admin/tourist-object/search/:search/page/:page', ['AdminTouristObjectController', 'search']);
+        // Add Tourist Object
+        $router->get('/admin/tourist-object/add', ['AdminTouristObjectController', 'add']);
+        $router->post('/admin/tourist-object/add_tourist_object', ['AdminTouristObjectController', 'add_tourist_object']);
+        // Edit Tourist Object
+        $router->get('/admin/tourist-object/edit', ['AdminTouristObjectController', 'edit']);
+        $router->get('/admin/tourist-object/edit/:id', ['AdminTouristObjectController', 'edit']);
+        $router->post('/admin/tourist-object/edit_tourist_object', ['AdminTouristObjectController', 'edit_tourist_object']);
+        // Delete Tourist Object
+        $router->post('/admin/tourist-object/delete_tourist_object', ['AdminTouristObjectController', 'delete_tourist_object']);
 
         $router->run();
     }
