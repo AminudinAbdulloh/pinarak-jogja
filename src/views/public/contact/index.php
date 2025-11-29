@@ -20,7 +20,7 @@
                     <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="info-content">
-                    <h3>Address</h3>
+                    <h3>Alamat</h3>
                     <p><?php echo htmlspecialchars($contact['address']) ?><br><?php echo htmlspecialchars($contact['postal_code']) ?></p>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <i class="fas fa-phone"></i>
                 </div>
                 <div class="info-content">
-                    <h3>Call Us</h3>
+                    <h3>Hubungi Kami</h3>
                     <p><?php echo htmlspecialchars($contact['phone_number']) ?></p>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     <i class="fas fa-envelope"></i>
                 </div>
                 <div class="info-content">
-                    <h3>Email Us</h3>
+                    <h3>Email Kami</h3>
                     <p><?php echo htmlspecialchars($contact['email']) ?></p>
                 </div>
             </div>
@@ -52,25 +52,25 @@
 
             <form id="contactForm" method="POST" action="">
                 <div class="form-group">
-                    <label for="name">Your Name <span class="required">*</span></label>
+                    <label for="name">Nama <span class="required">*</span></label>
                     <input type="text" id="name" name="name" required
                         placeholder="Masukkan nama Anda">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Your Email <span class="required">*</span></label>
+                    <label for="email">Email <span class="required">*</span></label>
                     <input type="email" id="email" name="email" required
                         placeholder="Masukkan email Anda">
                 </div>
 
                 <div class="form-group">
-                    <label for="subject">Subject <span class="required">*</span></label>
+                    <label for="subject">Subjek <span class="required">*</span></label>
                     <input type="text" id="subject" name="subject" required
                         placeholder="Masukkan subject pesan">
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Message <span class="required">*</span></label>
+                    <label for="message">Pesan <span class="required">*</span></label>
                     <textarea id="message" name="message" required
                         placeholder="Tulis pesan Anda di sini..."></textarea>
                 </div>

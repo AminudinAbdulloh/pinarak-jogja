@@ -38,16 +38,17 @@
 
 /* Contact Content Section */
 .contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  padding: 0 80px 0 80px;
   gap: 60px;
   margin-top: 60px;
 }
 
 /* Contact Information */
 .contact-info {
+  width: 100%;
   background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-  padding: 40px;
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(45, 80, 22, 0.1);
@@ -55,7 +56,7 @@
 
 .contact-info h2 {
   color: #2d5016;
-  font-size: 1.8em;
+  font-size: 1.5em;
   margin-bottom: 30px;
   font-weight: 600;
   text-align: center;
@@ -65,7 +66,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 25px;
-  padding: 20px;
+  padding: 10px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   transition: all 0.3s ease;
@@ -99,7 +100,7 @@
 
 .info-content h3 {
   color: #2d5016;
-  font-size: 1.1em;
+  font-size: 1em;
   margin: 0 0 5px 0;
   font-weight: 600;
 }
@@ -108,13 +109,14 @@
   color: #666;
   margin: 0;
   line-height: 1.5;
-  font-size: 0.95em;
+  font-size: 0.85em;
 }
 
 /* Contact Form */
 .contact-form {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 40px;
+  width: 100%;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(45, 80, 22, 0.1);
@@ -122,7 +124,7 @@
 
 .contact-form h2 {
   color: #2d5016;
-  font-size: 1.8em;
+  font-size: 1.5em;
   margin-bottom: 30px;
   font-weight: 600;
   text-align: center;
@@ -136,17 +138,17 @@
   display: block;
   color: #2d5016;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   font-size: 0.95em;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 15px;
+  padding: 10px;
   border: 2px solid #e9ecef;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 13px;
   font-family: inherit;
   background: rgba(255, 255, 255, 0.9);
   transition: all 0.3s ease;
@@ -163,17 +165,17 @@
 
 .form-group textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 80px;
   font-family: inherit;
 }
 
 .submit-btn {
   background: linear-gradient(135deg, #2d5016, #4a7c22);
   color: white;
-  padding: 15px 40px;
+  padding: 15px 30px;
   border: none;
   border-radius: 50px;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
