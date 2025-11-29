@@ -12,6 +12,8 @@ class Routes {
         $router->get('/articles/detail/:id', ['ArticleController', 'detail']);
         $router->get('/profiles', ['ProfileController', 'index']);
         $router->get('/informations', ['InformationController', 'index']);
+        $router->get('/informations/:page', ['InformationController', 'index']);
+        $router->get('/informations/detail/:id', ['InformationController', 'detail']);
         $router->get('/contacts', ['ContactController', 'index']);
 
         // Admin
