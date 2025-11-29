@@ -1,25 +1,23 @@
 <?php
-    $youtube_title;
-    $youtube_url;
-    foreach ($youtube_data as $youtube_):
-        if (!empty($youtube_['title']) && !empty($youtube_['url'])):
-            $youtube_title = $youtube_['title'];
-            $youtube_url = $youtube_['url'];
-        endif;
-    endforeach;
+    $coe_image = null;
+    if (!empty($coe_list) && isset($coe_list[0]['image'])) {
+        $coe_image = $coe_list[0]['image'];
+    }
 ?>
 
-<section class="video-section">
+<section class="coe-section">
     <h1>CALENDAR OF EVENTS 2025</h1>
-    <div class="video-container">
-        <iframe width="560"
-            height="315"
-            src="<?php echo htmlspecialchars($youtube_url); ?>"
-            title="<?php echo isset($youtube_title) ? htmlspecialchars($youtube_title) : 'Video Profil Tim'; ?>"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-        </iframe>
+    <div class="coe-container">
+        <?php if ($coe_image): ?>
+            <img src="<?= BASEURL . '/' . htmlspecialchars($coe_image); ?>" 
+                 alt="Calendar of Events 2025" 
+                 class="coe-image">
+        <?php else: ?>
+            <div class="coe-placeholder">
+                <i class="fas fa-calendar fa-3x"></i>
+                <p>Calendar of Event belum tersedia</p>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
 

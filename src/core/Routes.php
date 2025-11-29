@@ -60,15 +60,10 @@ class Routes {
         $router->post('/admin/profile/edit_profile', ['AdminProfileController', 'edit_profile']);
         // Delete Profile
         $router->post('/admin/profile/delete_profile', ['AdminProfileController', 'delete_profile']);
-        // Add Youtube Link
-        $router->get('/admin/profile/youtube_link/add', ['AdminProfileController', 'add_youtube_link']);
-        $router->post('/admin/profile/youtube_link/added_youtube_link', ['AdminProfileController', 'added_youtube_link']);
-        // Edit Youtube Link
-        $router->get('/admin/profile/youtube_link/edit', ['AdminProfileController', 'edit_youtube_link']);
-        $router->get('/admin/profile/youtube_link/edit/:id', ['AdminProfileController', 'edit_youtube_link']);  
-        $router->post('/admin/profile/youtube_link/edited_youtube_link', ['AdminProfileController', 'edited_youtube_link']);
-        // Delete Youtube Link
-        $router->post('/admin/profile/youtube_link/delete', ['AdminProfileController', 'delete_youtube_link']);
+        // Edit Calendar of Event
+        $router->get('/admin/profile/coe/edit', ['AdminProfileController', 'edit_coe']);
+        $router->get('/admin/profile/coe/edit/:id', ['AdminProfileController', 'edit_coe']);  
+        $router->post('/admin/profile/coe/edited_coe', ['AdminProfileController', 'edited_coe']);
 
         // 5. Admin Media Partner
         $router->get('/admin/media-partner', ['AdminMediaPartnerController', 'index']);
@@ -95,7 +90,7 @@ class Routes {
         $router->get('/admin/contact/edit/:id', ['AdminContactController', 'edit']);
         $router->post('/admin/contact/edit_contact', ['AdminContactController', 'edit_contact']);
 
-        // 7. Admin Setting - Tambahkan di Routes.php setelah Admin Contact
+        // 7. Admin Setting
         $router->get('/admin/setting', ['AdminSettingController', 'index']);
         $router->get('/admin/setting/index', ['AdminSettingController', 'index']);
         // Edit Setting

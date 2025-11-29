@@ -306,7 +306,7 @@ class AdminMediaPartnerController extends BaseController{
                     $imagePath = 'uploads/media-partners/' . $fileName;
                 } else {
                     $_SESSION['error_message'] = 'Gagal mengupload gambar.';
-                    header('Location: ' . BASEURL . '/admin/media-partner/edit?id=' . $id);
+                    header('Location: ' . BASEURL . '/admin/media-partner');
                     exit;
                 }
             }

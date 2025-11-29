@@ -315,20 +315,13 @@ body {
 #events .table tbody tr td:nth-child(7) { width: 10%; }
 #events .table tbody tr td:nth-child(8) { width: 9%; }
 
-/* YouTube Links Table - 4 kolom */
-.content-area table thead tr th:first-child:has(~ th:nth-child(2):contains("Link")) { width: 30%; } /* Judul Video */
-.content-area table tbody tr td:nth-child(1):has(~ td:nth-child(4)) { width: 30%; } /* Fallback untuk Judul */
+/* Calendar of Event Table - 2 kolom */
+#coeTable td:nth-child(1) { width: 50%; }  /* Preview/Gambar - lebih lebar untuk gambar */
+#coeTable td:nth-child(2) { width: 50%; }  /* Aksi */
 
-/* Lebih spesifik untuk YouTube table */
-#profiles .content-area:first-of-type table thead tr th:nth-child(1) { width: 30%; }
-#profiles .content-area:first-of-type table thead tr th:nth-child(2) { width: 40%; }
-#profiles .content-area:first-of-type table thead tr th:nth-child(3) { width: 15%; }
-#profiles .content-area:first-of-type table thead tr th:nth-child(4) { width: 15%; }
-
-#profiles .content-area:first-of-type table tbody tr td:nth-child(1) { width: 30%; }
-#profiles .content-area:first-of-type table tbody tr td:nth-child(2) { width: 40%; }
-#profiles .content-area:first-of-type table tbody tr td:nth-child(3) { width: 15%; }
-#profiles .content-area:first-of-type table tbody tr td:nth-child(4) { width: 15%; }
+/* Untuk thead juga */
+#coeTable th:nth-child(1) { width: 50%; }
+#coeTable th:nth-child(2) { width: 50%; }
 
 /* Media Partner Table - 5 kolom */
 #media-partners table tbody tr td:nth-child(1) { width: 10%; } /* Logo */

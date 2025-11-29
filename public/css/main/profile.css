@@ -1,44 +1,87 @@
-/* YouTube Video Section */
-.video-section {
-    padding: 30px 15px;
+/* Calendar of Event Section */
+.coe-section {
+    padding: 30px 20px;
     text-align: center;
 }
 
-.video-section h1 {
+.coe-section h1 {
     text-align: center;
     font-size: 2em;
     color: #0e4b75;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-.video-section h1::after {
+.coe-section h1::after {
     content: "";
     display: block;
-    width: 15%;
+    width: 20%;
     height: 5px;
     background-color: #c86b85;
     margin: 0 auto;
     margin-top: 10px;
 }
 
-.video-container {
-    max-width: 1200px;
+.coe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1020px;
     margin: 0 auto;
-    position: relative;
-    padding-bottom: 45%;
-    height: auto;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
+.coe-image {
     width: 100%;
-    height: 100%;
-    border: none;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.coe-placeholder {
+    padding: 80px 20px;
+    color: #999;
+    text-align: center;
+}
+
+.coe-placeholder i {
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.coe-placeholder p {
+    font-size: 1.2rem;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .coe-section h1 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    
+    .coe-container {
+        padding: 15px;
+    }
+    
+    .coe-placeholder {
+        padding: 60px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .coe-section {
+        padding: 40px 15px;
+    }
+    
+    .coe-section h1 {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
 }
 
 .profile-section {

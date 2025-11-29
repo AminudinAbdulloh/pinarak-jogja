@@ -279,7 +279,7 @@ class AdminArticleController extends BaseController{
                 
                 if (!in_array($fileType, $allowedTypes)) {
                     $_SESSION['error_message'] = 'Format file tidak valid. Hanya JPG, PNG, dan WebP yang diperbolehkan.';
-                    header('Location: ' . BASEURL . '/admin/article/edit?id=' . $id);
+                    header('Location: ' . BASEURL . '/admin/article');
                     exit;
                 }
                 
@@ -287,7 +287,7 @@ class AdminArticleController extends BaseController{
                 $maxSize = 5 * 1024 * 1024;
                 if ($_FILES['featured_image']['size'] > $maxSize) {
                     $_SESSION['error_message'] = 'Ukuran file terlalu besar. Maksimal 5MB.';
-                    header('Location: ' . BASEURL . '/admin/article/edit?id=' . $id);
+                    header('Location: ' . BASEURL . '/admin/article');
                     exit;
                 }
                 

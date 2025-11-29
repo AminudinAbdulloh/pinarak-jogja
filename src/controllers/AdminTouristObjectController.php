@@ -253,14 +253,14 @@ class AdminTouristObjectController extends BaseController {
                 
                 if (!in_array($fileType, $allowedTypes)) {
                     $_SESSION['error_message'] = 'Format file tidak valid. Hanya JPG, PNG, dan WebP yang diperbolehkan.';
-                    header('Location: ' . BASEURL . '/admin/tourist-object/edit?id=' . $id);
+                    header('Location: ' . BASEURL . '/admin/tourist-object');
                     exit;
                 }
                 
                 $maxSize = 5 * 1024 * 1024;
                 if ($_FILES['object_image']['size'] > $maxSize) {
                     $_SESSION['error_message'] = 'Ukuran file terlalu besar. Maksimal 5MB.';
-                    header('Location: ' . BASEURL . '/admin/tourist-object/edit?id=' . $id);
+                    header('Location: ' . BASEURL . '/admin/tourist-object');
                     exit;
                 }
                 

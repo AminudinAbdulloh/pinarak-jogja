@@ -100,12 +100,10 @@ CREATE TABLE profiles (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Table: youtube_link
-CREATE TABLE youtube_link (
+-- Calender of Event
+CREATE TABLE coe (
     id INT(11) NOT NULL AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,
-    url TEXT NOT NULL,
-    author_id INT(11) NOT NULL,
+    image VARCHAR(255),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
@@ -122,6 +120,17 @@ CREATE TABLE tourist_objects (
     google_map_link VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+);
+
+-- Settings
+CREATE TABLE `settings` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `logo_pinarak` VARCHAR(255) DEFAULT NULL,
+  `logo_dinpar` VARCHAR(255) DEFAULT NULL,
+  `banner` JSON DEFAULT NULL,
+  `copyright` VARCHAR(255) DEFAULT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 INSERT INTO `admins` (`id`, `username`, `email`, `password`, `full_name`, `status`, `created_at`, `updated_at`) 
@@ -160,16 +169,6 @@ INSERT INTO contacts (
     'https://tiktok.com/@pinarakjogja'
 );
 
-CREATE TABLE `settings` (
-  `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `logo_pinarak` VARCHAR(255) DEFAULT NULL,
-  `logo_dinpar` VARCHAR(255) DEFAULT NULL,
-  `banner` JSON DEFAULT NULL,
-  `copyright` VARCHAR(255) DEFAULT NULL,
-  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
 INSERT INTO `settings` (`logo_pinarak`, `logo_dinpar`, `banner`, `copyright`) 
 VALUES (
   NULL, 
@@ -177,3 +176,5 @@ VALUES (
   '["uploads/banners/banner1.jpg", "uploads/banners/banner2.jpg"]',
   '© 2025 Pinarak Jogja'
 );
+
+INSERT INTO coe (image) VALUES (NULL);

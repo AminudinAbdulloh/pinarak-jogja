@@ -1,7 +1,7 @@
 <div class="content-section" id="profiles">
     <div class="page-header">
         <h1><i class="fas fa-users"></i> Manajemen Profile</h1>
-        <p>Kelola profile tim dan link YouTube</p>
+        <p>Kelola profile tim dan Calendar of Event</p>
     </div>
 
     <?php if (!empty($success_message)): ?>
@@ -16,70 +16,47 @@
         </div>
     <?php endif; ?>
 
-    <!-- YouTube Link Section -->
+    <!-- Calendar of Event Section -->
     <div class="content-area" style="margin-bottom: 30px;">
         <div class="content-header">
-            <h3>Link YouTube Aktif</h3>
-            <a href="<?= BASEURL . '/admin/profile/youtube_link/add' ?>">
-                <button class="btn btn-primary">
-                    <i class="fas fa-plus"></i> Tambah Link YouTube
-                </button>
-            </a>
+            <h3>Calendar of Event</h3>
         </div>
         <div class="content-body">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="coeTableWrapper">
                     <thead>
                         <tr>
-                            <th>Judul Video</th>
-                            <th>Link YouTube</th>
-                            <th>Publisher</th>
-                            <th>Aksi</th>
+                            <th style="width: 50% !important;">Preview</th>
+                            <th style="width: 50% !important;">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php if (empty($youtube_links)): ?>
+                    <tbody id="coeTable">
+                        <?php if (empty($coe_list)): ?>
                             <tr>
-                                <td colspan="4" class="text-center">
-                                    <i class="fas fa-video fa-2x text-muted mb-2"></i>
-                                    <p class="text-muted">Belum ada video yang tersedia</p>
+                                <td colspan="2" class="text-center">
+                                    <i class="fas fa-calendar fa-2x text-muted mb-2"></i>
+                                    <p class="text-muted">Belum ada Calendar of Event yang tersedia</p>
                                 </td>
                             </tr>
                         <?php else: ?>
-                            <?php foreach ($youtube_links as $yt_link): ?>
+                            <?php foreach ($coe_list as $coe): ?>
                                 <tr>
-                                    <td>
-                                        <strong><?php echo htmlspecialchars($yt_link['title']); ?></strong>
+                                    <td style="width: 50% !important;">
+                                        <?php if (!empty($coe['image'])): ?>
+                                            <img src="<?= BASEURL . '/' . htmlspecialchars($coe['image']) ?>" 
+                                                alt="Calendar of Event"
+                                                style="max-width: 100%; height: auto; object-fit: contain;">
+                                        <?php else: ?>
+                                            <i class="fas fa-image fa-2x text-muted"></i>
+                                        <?php endif; ?>
                                     </td>
-                                    <td>
-                                        <?php
-                                        $url = htmlspecialchars($yt_link['url']);
-                                        $truncated_url = strlen($url) > 50 ? substr($url, 0, 50) . '...' : $url;
-                                        echo $truncated_url;
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <i class="fas fa-user text-muted"></i>
-                                        <?php echo htmlspecialchars($yt_link['publisher_name'] ?: 'Tidak diketahui'); ?>
-                                    </td>
-                                    <td>
+                                    <td style="width: 50% !important;">
                                         <div class="btn-group">
-                                            <a href="<?= BASEURL . '/admin/profile/youtube_link/edit/' . urlencode($yt_link['id']); ?>"
+                                            <a href="<?= BASEURL . '/admin/profile/coe/edit/' . urlencode($coe['id']); ?>"
                                                 class="btn btn-warning btn-sm"
-                                                title="Edit Link Youtube">
+                                                title="Edit Calendar of Event">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form method="POST" 
-                                                action="<?= BASEURL . '/admin/profile/youtube_link/delete' ?>" 
-                                                style="display: inline;"
-                                                onsubmit="return confirm('Apakah kamu yakin ingin menghapus video youtube ]\'<?= htmlspecialchars($yt_link['title']) ?>\'?')">
-                                                <input type="hidden" name="id" value="<?= $yt_link['id'] ?>">
-                                                <button type="submit" 
-                                                        class="btn btn-danger btn-sm" 
-                                                        title="Hapus Video YouTube">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
                                         </div>
                                     </td>
                                 </tr>
