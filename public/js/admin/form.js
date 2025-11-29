@@ -22,17 +22,10 @@ function socialMediaUrlValidation() {
         const position = document.getElementById('position').value.trim();
 
         // Validate URL formats for social media
-        const linkedin = document.getElementById('linkedin').value.trim();
         const instagram = document.getElementById('instagram').value.trim();
         const facebook = document.getElementById('facebook').value.trim();
 
         const urlRegex = /^https?:\/\/.+/;
-
-        if (linkedin && !urlRegex.test(linkedin)) {
-            e.preventDefault();
-            alert('URL LinkedIn tidak valid! Harus dimulai dengan http:// atau https://');
-            return false;
-        }
 
         if (instagram && !urlRegex.test(instagram)) {
             e.preventDefault();

@@ -64,10 +64,10 @@
                         'icon' => BASEURL . '/img/contacts/facebook-rounded-svgrepo-com.png',
                         'label' => 'Facebook'
                     ],
-                    'linkedin' => [
-                        'icon' => BASEURL . '/img/contacts/linkedin-rounded-svgrepo-com.png',
-                        'label' => 'LinkedIn'
-                    ],
+                    // 'linkedin' => [
+                    //     'icon' => BASEURL . '/img/contacts/linkedin-rounded-svgrepo-com.png',
+                    //     'label' => 'LinkedIn'
+                    // ],
                     // 'twitter' => [
                     //     'icon' => BASEURL . '/img/contacts/twitter.png',
                     //     'label' => 'Twitter'
