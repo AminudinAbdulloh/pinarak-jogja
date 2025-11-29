@@ -52,7 +52,7 @@
                                 <a href="<?php echo htmlspecialchars($profile['instagram']); ?>"
                                     target="_blank" rel="noopener noreferrer">
                                     <img class="contact-profile"
-                                        src="/assets/images/contacts/instagram-rounded-svgrepo-com.png"
+                                        src="<?= BASEURL . '/img/contacts/instagram-rounded-svgrepo-com.png' ?>"
                                         alt="Instagram">
                                 </a>
                             <?php endif; ?>
@@ -61,7 +61,7 @@
                                 <a href="<?php echo htmlspecialchars($profile['facebook']); ?>"
                                     target="_blank" rel="noopener noreferrer">
                                     <img class="contact-profile"
-                                        src="/assets/images/contacts/facebook-rounded-svgrepo-com.png"
+                                        src="<?= BASEURL . '/img/contacts/facebook-rounded-svgrepo-com.png' ?>"
                                         alt="Facebook">
                                 </a>
                             <?php endif; ?>
@@ -70,7 +70,7 @@
                                 <a class="tiktok" href="<?php echo htmlspecialchars($profile['tiktok']); ?>"
                                     target="_blank" rel="noopener noreferrer">
                                     <img class="contact-profile"
-                                        src="/assets/images/contacts/brand-tiktok-sq-svgrepo-com.png"
+                                        src="<?= BASEURL . '/img/contacts/brand-tiktok-sq-svgrepo-com.png' ?>"
                                         alt="TikTok">
                                 </a>
                             <?php endif; ?>
@@ -105,117 +105,174 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const slider = document.getElementById('profile-slider');
-        const cards = slider.querySelectorAll('.card');
-        const leftArrow = document.getElementById('arrow-left');
-        const rightArrow = document.getElementById('arrow-right');
-        const dotsContainer = document.getElementById('slider-dots');
-
-        // Tetapkan jumlah profil per highlight menjadi 3
-        const cardsPerView = 4;
-        let cardWidth = cards[0].offsetWidth + 20; // Card width + gap
-        let currentPosition = 0;
-        let maxPosition = Math.max(0, Math.ceil(cards.length / cardsPerView) * cardsPerView - cardsPerView);
-
-        // Create dots
-        function createDots() {
-            dotsContainer.innerHTML = '';
-            const totalDots = Math.ceil(cards.length / cardsPerView);
-
-            for (let i = 0; i < totalDots; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('dot');
-                if (i === 0) dot.classList.add('active');
-
-                dot.addEventListener('click', () => {
-                    goToPosition(i * cardsPerView);
-                    updateDots(i);
-                });
-
-                dotsContainer.appendChild(dot);
-            }
+    document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('profile-slider');
+    const arrowLeft = document.getElementById('arrow-left');
+    const arrowRight = document.getElementById('arrow-right');
+    const dotsContainer = document.getElementById('slider-dots');
+    
+    if (!slider) return;
+    
+    const cards = slider.querySelectorAll('.card');
+    const totalCards = cards.length;
+    
+    if (totalCards === 0) return;
+    
+    let currentIndex = 0;
+    let cardsPerView = getCardsPerView();
+    const totalPages = Math.ceil(totalCards / cardsPerView);
+    
+    // Fungsi untuk menentukan jumlah card yang ditampilkan berdasarkan lebar layar
+    function getCardsPerView() {
+        const width = window.innerWidth;
+        if (width >= 1024) return 5;
+        if (width >= 768) return 4;
+        if (width >= 480) return 3;
+        return 2;
+    }
+    
+    // Generate dots
+    function generateDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
         }
-
-        // Update dots active state
-        function updateDots(activeIndex) {
-            const dots = dotsContainer.querySelectorAll('.dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === activeIndex);
-            });
+    }
+    
+    // Update dots
+    function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    // Update slider position
+    function updateSlider() {
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 15; // Sesuaikan dengan gap di CSS
+        const offset = -(currentIndex * cardsPerView * (cardWidth + gap));
+        slider.style.transform = `translateX(${offset}px)`;
+        updateDots();
+        updateArrows();
+    }
+    
+    // Update arrow visibility
+    function updateArrows() {
+        arrowLeft.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        arrowLeft.style.cursor = currentIndex === 0 ? 'not-allowed' : 'pointer';
+        
+        arrowRight.style.opacity = currentIndex === totalPages - 1 ? '0.5' : '1';
+        arrowRight.style.cursor = currentIndex === totalPages - 1 ? 'not-allowed' : 'pointer';
+    }
+    
+    // Go to specific slide
+    function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, totalPages - 1));
+        updateSlider();
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
         }
-
-        // Go to specific position
-        function goToPosition(position) {
-            position = Math.max(0, Math.min(position, maxPosition));
-            currentPosition = position;
-            slider.style.transform = `translateX(-${position * cardWidth}px)`;
+    }
+    
+    // Next slide
+    function nextSlide() {
+        if (currentIndex < totalPages - 1) {
+            currentIndex++;
+            updateSlider();
         }
-
-        // Create initial dots
-        createDots();
-
-        // Previous slide
-        leftArrow.addEventListener('click', function () {
-            if (currentPosition > 0) {
-                const newPosition = currentPosition - cardsPerView;
-                goToPosition(newPosition);
-                updateDots(Math.floor(newPosition / cardsPerView));
-            } else {
-                // Loop to end if at beginning
-                const newPosition = maxPosition;
-                goToPosition(newPosition);
-                updateDots(Math.floor(newPosition / cardsPerView));
-            }
-        });
-
-        // Next slide
-        rightArrow.addEventListener('click', function () {
-            if (currentPosition < maxPosition) {
-                const newPosition = currentPosition + cardsPerView;
-                goToPosition(newPosition);
-                updateDots(Math.floor(newPosition / cardsPerView));
-            } else {
-                // Loop to beginning if at end
-                goToPosition(0);
-                updateDots(0);
-            }
-        });
-
-        // Handle resize
-        window.addEventListener('resize', function () {
-            cardWidth = cards[0].offsetWidth + 20;
-            // cardsPerView tetap 3, tidak berubah saat resize
-            maxPosition = Math.max(0, cards.length - cardsPerView);
-
-            // Reset position if needed
-            if (currentPosition > maxPosition) {
-                currentPosition = maxPosition;
-                slider.style.transform = `translateX(-${currentPosition * cardWidth}px)`;
-            }
-        });
-
-        // Touch events for mobile swipe
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        slider.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        slider.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-                // Swipe left - go next
-                rightArrow.click();
-            } else if (touchEndX > touchStartX + 50) {
-                // Swipe right - go previous
-                leftArrow.click();
-            }
-        }
+    }
+    
+    // Event listeners
+    arrowLeft.addEventListener('click', prevSlide);
+    arrowRight.addEventListener('click', nextSlide);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
     });
+    
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    slider.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    slider.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    }
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            const newCardsPerView = getCardsPerView();
+            if (newCardsPerView !== cardsPerView) {
+                cardsPerView = newCardsPerView;
+                currentIndex = 0;
+                generateDots();
+                updateSlider();
+            }
+        }, 250);
+    });
+    
+    // Auto-play (optional - uncomment jika ingin auto-play)
+    /*
+    let autoPlayInterval;
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(function() {
+            if (currentIndex < totalPages - 1) {
+                nextSlide();
+            } else {
+                currentIndex = 0;
+                updateSlider();
+            }
+        }, 4000); // Ganti setiap 4 detik
+    }
+    
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+    
+    // Start auto-play
+    startAutoPlay();
+    
+    // Stop auto-play on user interaction
+    slider.addEventListener('mouseenter', stopAutoPlay);
+    slider.addEventListener('mouseleave', startAutoPlay);
+    arrowLeft.addEventListener('click', stopAutoPlay);
+    arrowRight.addEventListener('click', stopAutoPlay);
+    */
+    
+    // Initialize
+    generateDots();
+    updateSlider();
+});
 </script>
