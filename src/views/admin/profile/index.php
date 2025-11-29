@@ -127,7 +127,7 @@
                             <th>Nama</th>
                             <th>Jabatan</th>
                             <th>Status</th>
-                            <th>Publisher</th>
+                            <th>Dibuat Oleh</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>

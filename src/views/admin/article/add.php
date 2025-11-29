@@ -107,7 +107,7 @@
                     <button type="button" class="btn btn-warning" onclick="resetForm('addArticleForm', '<i class=\'fas fa-image\'></i><p>Klik untuk upload gambar</p><small>Gambar utama artikel</small>')">
                         <i class="fas fa-undo"></i> Reset Form
                     </button>
-                    <a href="<?= BASEURL . '/admin/articles' ?>" class="btn btn-danger">
+                    <a href="<?= BASEURL . '/admin/article' ?>" class="btn btn-danger">
                         <i class="fas fa-times"></i> Batal
                     </a>
                 </div>

@@ -83,7 +83,7 @@
                             <th>Deskripsi</th>
                             <th>Tanggal & Waktu</th>
                             <th>Lokasi</th>
-                            <th>Publisher</th>
+                            <th>Dibuat Oleh</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
