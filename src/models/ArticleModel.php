@@ -13,13 +13,26 @@ class ArticleModel extends Database {
         return $this->qry($query)->fetchAll();
     }
 
-    public function getAllPublished() {
+    public function getAllPublishedWithPagination($limit = 18, $offset = 0) {
+        // Pastikan limit dan offset adalah integer untuk keamanan
+        $limit = (int)$limit;
+        $offset = (int)$offset;
+
         $query = "SELECT a.*, ad.username as author_name 
-        FROM articles a 
-        LEFT JOIN admins ad ON a.author_id = ad.id 
-        WHERE a.status = 'published'
-        ORDER BY a.created_at DESC";
+                FROM articles a 
+                LEFT JOIN admins ad ON a.author_id = ad.id
+                WHERE a.status = 'published'
+                ORDER BY a.created_at DESC 
+                LIMIT $limit OFFSET $offset";
+
         return $this->qry($query)->fetchAll();
+    }
+
+    public function countAllPublished() {
+        $query = "SELECT COUNT(*) as total FROM articles WHERE status = 'published'";
+        $result = $this->qry($query)->fetch();
+        
+        return $result['total'];
     }
 
     public function getRelatedArticles($excludeId, $limit = 3) {

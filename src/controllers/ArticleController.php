@@ -5,6 +5,8 @@ class ArticleController extends BaseController{
     private $settingModel;
     private $mediaPartnerModel;
     private $contactModel;
+    private $itemsPerPage = 12;
+
 
     public function __construct() {
         $this->articleModel = $this->model('ArticleModel');
@@ -13,12 +15,39 @@ class ArticleController extends BaseController{
         $this->contactModel = $this->model('ContactModel');
     }
 
-    public function index() {
-        $articles = $this->articleModel->getAllPublished();
+    public function index($page = 1) {
+        // Validasi halaman
+        $page = (int)$page;
+        if ($page < 1) {
+            header('Location: ' . BASEURL . '/articles/1');
+            exit;
+        }
+
+        // Hitung offset
+        $offset = ($page - 1) * $this->itemsPerPage;
+
+        // Ambil artikel dengan paginasi
+        $articles = $this->articleModel->getAllPublishedWithPagination(
+            $this->itemsPerPage,
+            $offset
+        );
+
+        // Hitung total artikel
+        $totalArticles = $this->articleModel->countAllPublished();
+        $totalPages = ceil($totalArticles / $this->itemsPerPage);
+
+        // Validasi halaman tidak melebihi total
+        if ($page > $totalPages && $totalPages > 0) {
+            header('Location: ' . BASEURL . '/articles/' . $totalPages);
+            exit;
+        }
 
         $data = [
             'title' => 'Articles',
             'articles' => $articles,
+            'currentPage' => $page,
+            'totalPages' => $totalPages,
+            'totalArticles' => $totalArticles,
             'setting' => $this->settingModel->getSettings(),
             'media_partners' => $this->mediaPartnerModel->getAll(),
             'contact' => $this->contactModel->getContacts()
