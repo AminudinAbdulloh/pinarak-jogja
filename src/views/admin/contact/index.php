@@ -153,13 +153,6 @@ $contact = isset($contacts[0]) ? $contacts[0] : null;
                         </a>
                         <?php endif; ?>
                         
-                        <?php if (!empty($contact['linkedin'])): ?>
-                        <a href="<?= htmlspecialchars($contact['linkedin']) ?>" target="_blank" class="social-link linkedin">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <?php endif; ?>
-                        
                         <?php if (!empty($contact['tiktok'])): ?>
                         <a href="<?= htmlspecialchars($contact['tiktok']) ?>" target="_blank" class="social-link tiktok">
                             <i class="fab fa-tiktok"></i>
@@ -171,13 +164,6 @@ $contact = isset($contacts[0]) ? $contacts[0] : null;
                         <a href="<?= htmlspecialchars($contact['facebook']) ?>" target="_blank" class="social-link facebook">
                             <i class="fab fa-facebook"></i>
                             <span>Facebook</span>
-                        </a>
-                        <?php endif; ?>
-                        
-                        <?php if (!empty($contact['twitter'])): ?>
-                        <a href="<?= htmlspecialchars($contact['twitter']) ?>" target="_blank" class="social-link twitter">
-                            <i class="fab fa-twitter"></i>
-                            <span>Twitter</span>
                         </a>
                         <?php endif; ?>
                     </div>

@@ -18,11 +18,9 @@ class ContactModel extends Database {
             working_days,
             working_time,
             youtube,
-            linkedin,
             instagram,
             facebook,
-            tiktok,
-            twitter
+            tiktok
         FROM contacts";
         return $this->qry($query)->fetchAll();
     }
@@ -40,11 +38,9 @@ class ContactModel extends Database {
             working_days,
             working_time,
             youtube,
-            linkedin,
             instagram,
             facebook,
-            tiktok,
-            twitter
+            tiktok
         FROM contacts
         WHERE id = :id";
         
@@ -64,11 +60,9 @@ class ContactModel extends Database {
             working_days,
             working_time,
             youtube,
-            linkedin,
             instagram,
             facebook,
-            tiktok,
-            twitter
+            tiktok
         FROM contacts
         LIMIT 1";
         
@@ -94,11 +88,9 @@ class ContactModel extends Database {
               working_days = :working_days,
               working_time = :working_time,
               youtube = :youtube,
-              linkedin = :linkedin,
               instagram = :instagram,
               facebook = :facebook,
               tiktok = :tiktok,
-              twitter = :twitter,
               updated_at = CURRENT_TIMESTAMP
           WHERE id = :id";
         
@@ -115,10 +107,8 @@ class ContactModel extends Database {
             ':working_time' => $data['working_time'],
             ':youtube' => $data['youtube'],
             ':instagram' => $data['instagram'],
-            ':linkedin' => $data['linkedin'],
             ':facebook' => $data['facebook'],
-            ':tiktok' => $data['tiktok'],
-            ':twitter' => $data['twitter'],
+            ':tiktok' => $data['tiktok']
         ];
         
         return $this->qry($query, $params);

@@ -108,7 +108,6 @@ class AdminContactController extends BaseController{
                 'working_time' => $_POST['working_time'],
                 'youtube' => $_POST['youtube'],
                 'instagram' => $_POST['instagram'],
-                'linkedin' => $_POST['linkedin'],
                 'facebook' => $_POST['facebook'],
                 'tiktok' => $_POST['tiktok'],
                 'twitter' => $_POST['twitter'],

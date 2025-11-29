@@ -152,14 +152,6 @@
 
                 <div class="form-row-dual">
                     <div class="form-group">
-                        <label for="linkedin">
-                            <i class="fab fa-linkedin"></i>
-                            LinkedIn
-                        </label>
-                        <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="https://linkedin.com/company/name"
-                            value="<?php echo htmlspecialchars($contact['linkedin']); ?>">
-                    </div>
-                    <div class="form-group">
                         <label for="tiktok">
                             <i class="fab fa-tiktok"></i>
                             TikTok
@@ -167,9 +159,6 @@
                         <input type="url" class="form-control" id="tiktok" name="tiktok" placeholder="https://tiktok.com/@username"
                             value="<?php echo htmlspecialchars($contact['tiktok']); ?>">
                     </div>
-                </div>
-
-                <div class="form-row-dual">
                     <div class="form-group">
                         <label for="facebook">
                             <i class="fab fa-facebook"></i>
@@ -177,14 +166,6 @@
                         </label>
                         <input type="url" class="form-control" id="facebook" name="facebook" placeholder="https://facebook.com/page"
                             value="<?php echo htmlspecialchars($contact['facebook']); ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="twitter">
-                            <i class="fab fa-twitter"></i>
-                            Twitter/X
-                        </label>
-                        <input type="url" class="form-control" id="twitter" name="twitter" placeholder="https://x.com/username"
-                            value="<?php echo htmlspecialchars($contact['twitter']); ?>">
                     </div>
                 </div>
             </div>
@@ -256,10 +237,8 @@
                     <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                         ${data.youtube ? `<a href="${data.youtube}" target="_blank" style="color: #FF0000;"><i class="fab fa-youtube"></i> YouTube</a>` : ''}
                         ${data.instagram ? `<a href="${data.instagram}" target="_blank" style="color: #E4405F;"><i class="fab fa-instagram"></i> Instagram</a>` : ''}
-                        ${data.linkedin ? `<a href="${data.linkedin}" target="_blank" style="color: #0077B5;"><i class="fab fa-linkedin"></i> LinkedIn</a>` : ''}
                         ${data.tiktok ? `<a href="${data.tiktok}" target="_blank" style="color: #000000;"><i class="fab fa-tiktok"></i> TikTok</a>` : ''}
                         ${data.facebook ? `<a href="${data.facebook}" target="_blank" style="color: #1877F2;"><i class="fab fa-facebook"></i> Facebook</a>` : ''}
-                        ${data.twitter ? `<a href="${data.twitter}" target="_blank" style="color: #1DA1F2;"><i class="fab fa-twitter"></i> Twitter</a>` : ''}
                     </div>
                 </div>
                 

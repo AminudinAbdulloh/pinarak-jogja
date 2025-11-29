@@ -43,11 +43,11 @@ CREATE TABLE contacts (
     working_days VARCHAR(50) NULL DEFAULT NULL,
     working_time VARCHAR(50) NULL DEFAULT NULL,
     youtube VARCHAR(255) NULL DEFAULT NULL,
-    linkedin VARCHAR(255) NULL DEFAULT NULL,
+    -- linkedin VARCHAR(255) NULL DEFAULT NULL,
     instagram VARCHAR(255) NULL DEFAULT NULL,
     facebook VARCHAR(255) NULL DEFAULT NULL,
     tiktok VARCHAR(255) NULL DEFAULT NULL,
-    twitter VARCHAR(255) NULL DEFAULT NULL,
+    -- twitter VARCHAR(255) NULL DEFAULT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
@@ -139,11 +139,11 @@ INSERT INTO contacts (
     working_days,
     working_time,
     youtube,
-    linkedin,
+    -- linkedin,
     instagram,
     facebook,
     tiktok,
-    twitter
+    -- twitter
 ) VALUES (
     'PT Pinarak Jogja',
     '+62 812 3456 7890',
@@ -155,11 +155,9 @@ INSERT INTO contacts (
     'Senin - Jumat',
     '08.00 - 17.00',
     'https://youtube.com/@pinarakjogja',
-    'https://linkedin.com/company/pinarakjogja',
     'https://instagram.com/pinarakjogja',
     'https://facebook.com/pinarakjogja',
-    'https://tiktok.com/@pinarakjogja',
-    'https://twitter.com/pinarakjogja'
+    'https://tiktok.com/@pinarakjogja'
 );
 
 CREATE TABLE `settings` (
