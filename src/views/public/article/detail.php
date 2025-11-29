@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="back-button">
-                    <a href="/pinarak-jogja-main-v2/articles" class="btn-back">
+                    <a href="<?= BASEURL . '/articles' ?>" class="btn-back">
                         <i class="fas fa-arrow-left"></i> Kembali ke Berita
                     </a>
                 </div>
