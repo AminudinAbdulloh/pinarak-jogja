@@ -205,16 +205,13 @@
 /* Featured Image */
 .article-featured-image {
   width: 70%;
-  max-height: 500px;
-  overflow: hidden;
   margin: 0 auto;
   display: flex;
   justify-content: center;
 }
 
 .article-featured-image img {
-  width: auto;
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
 }
@@ -485,7 +482,6 @@
   }
 
   .article-featured-image {
-    max-height: 300px;
     width: 100%;
   }
 }
