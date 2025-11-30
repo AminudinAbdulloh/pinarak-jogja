@@ -323,19 +323,6 @@ body {
 #coeTable th:nth-child(1) { width: 50%; }
 #coeTable th:nth-child(2) { width: 50%; }
 
-/* Media Partner Table - 5 kolom */
-#media-partners table tbody tr td:nth-child(1) { width: 10%; } /* Logo */
-#media-partners table tbody tr td:nth-child(2) { width: 30%; } /* Nama */
-#media-partners table tbody tr td:nth-child(3) { width: 25%; } /* Website */
-#media-partners table tbody tr td:nth-child(4) { width: 20%; } /* Dibuat Oleh */
-#media-partners table tbody tr td:nth-child(5) { width: 15%; } /* Aksi */
-
-#media-partners table thead tr th:nth-child(1) { width: 10%; }
-#media-partners table thead tr th:nth-child(2) { width: 30%; }
-#media-partners table thead tr th:nth-child(3) { width: 25%; }
-#media-partners table thead tr th:nth-child(4) { width: 20%; }
-#media-partners table thead tr th:nth-child(5) { width: 15%; }
-
 /* Contact Table - Jika ada tabel di halaman contact */
 #contacts table tbody tr td:nth-child(1) { width: 25%; }
 #contacts table tbody tr td:nth-child(2) { width: 35%; }

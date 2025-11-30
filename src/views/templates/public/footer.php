@@ -1,20 +1,5 @@
 <footer class="main-footer">
     <div class="footer-container">
-        <!-- Media Partner Logos -->
-        <div class="media-partner-section">
-            <div class="media-partner-logos">
-                <?php if(!empty($media_partners)): ?>
-                    <?php foreach($media_partners as $partner): ?>
-                        <div class="logo-card">
-                            <img src="<?= BASEURL . '/' . htmlspecialchars($partner['logo']); ?>" alt="<?php echo htmlspecialchars($partner['name']); ?>">
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div></div>
-                <?php endif; ?>
-            </div>
-        </div>
-
         <!-- Information Section -->
         <div class="info-section">
             <div class="info-item">

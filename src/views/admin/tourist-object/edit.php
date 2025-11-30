@@ -119,7 +119,7 @@
                             </button>
                         </div>
                         <div class="editor-content" id="content" contenteditable="true"
-                            placeholder="Tulis konten artikel di sini..."><?php echo htmlspecialchars($touristObject['article']); ?></div>
+                            placeholder="Tulis konten artikel di sini..."><?php echo $informations['article']; ?></div>
                         <textarea name="article" id="contentHidden" style="display: none;"><?php echo htmlspecialchars($touristObject['article']); ?></textarea>
                     </div>
                 </div>

@@ -2,13 +2,11 @@
 
 class InformationController extends BaseController{
     private $touristObjectModel;
-    private $mediaPartnerModel;
     private $settingModel;
     private $contactModel;
 
     public function __construct() {
         $this->touristObjectModel = $this->model('TouristObjectModel');
-        $this->mediaPartnerModel = $this->model('MediaPartnerModel');
         $this->settingModel = $this->model('SettingModel');
         $this->contactModel = $this->model('ContactModel');
     }
@@ -31,8 +29,6 @@ class InformationController extends BaseController{
         if ($page > $totalPages && $totalPages > 0) {
             $page = $totalPages;
         }
-        
-        $media_partners = $this->mediaPartnerModel->getAll();
 
         $data = [
             'title' => 'Informations',
@@ -40,7 +36,6 @@ class InformationController extends BaseController{
             'currentPage' => $page,
             'totalPages' => $totalPages,
             'totalArticles' => $totalArticles,
-            'media_partners' => $media_partners,
             'setting' => $this->settingModel->getSettings(),
             'contact' => $this->contactModel->getContacts()
         ];
@@ -65,7 +60,6 @@ class InformationController extends BaseController{
             'title' => 'Pinarak Jogja - ' . $informations['title'],
             'informations' => $informations,
             'setting' => $this->settingModel->getSettings(),
-            'media_partners' => $this->mediaPartnerModel->getAll(),
             'contact' => $this->contactModel->getContacts()
         ];
 

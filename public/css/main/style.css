@@ -141,41 +141,6 @@ nav ul li a:hover {
   margin: 0 auto;
 }
 
-/* Media Partner Section */
-.media-partner-section {
-  margin-bottom: 50px;
-}
-
-.media-partner-logos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  align-items: center;
-}
-
-.logo-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.logo-card:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.logo-card img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  filter: brightness(1.1);
-}
-
 /* Information Section */
 .info-section {
   display: flex;
@@ -306,10 +271,6 @@ nav ul li a:hover {
 @media (max-width: 768px) {
   .main-footer {
     padding: 30px 15px 20px;
-  }
-
-  .media-partner-logos {
-    gap: 15px;
   }
 
   .logo-card {

@@ -40,9 +40,6 @@
                 <li><a href="<?= BASEURL . '/admin/contact' ?>">
                         <i class="fas fa-envelope"></i> Contacts
                     </a></li>
-                <li><a href="<?= BASEURL . '/admin/media-partner' ?>">
-                        <i class="fas fa-handshake"></i> Media Partners
-                    </a></li>
                 <li><a href="<?= BASEURL . '/admin/setting' ?>">
                         <i class="fas fa-cog"></i> Settings
                     </a></li>

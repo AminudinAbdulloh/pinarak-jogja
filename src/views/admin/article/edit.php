@@ -88,7 +88,7 @@
                             </button>
                         </div>
                         <div class="editor-content" id="content" contenteditable="true"
-                            placeholder="Tulis konten artikel di sini..."><?php echo htmlspecialchars($article['content']); ?></div>
+                            placeholder="Tulis konten artikel di sini..."><?php echo $article['content']; ?></div>
                         <textarea name="content" id="contentHidden" style="display: none;"><?php echo htmlspecialchars($article['content']); ?></textarea>
                     </div>
                 </div>

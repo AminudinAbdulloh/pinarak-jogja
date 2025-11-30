@@ -65,23 +65,6 @@ class Routes {
         $router->get('/admin/profile/coe/edit/:id', ['AdminProfileController', 'edit_coe']);  
         $router->post('/admin/profile/coe/edited_coe', ['AdminProfileController', 'edited_coe']);
 
-        // 5. Admin Media Partner
-        $router->get('/admin/media-partner', ['AdminMediaPartnerController', 'index']);
-        // Media Partner Pagination
-        $router->get('/admin/media-partner/page/:page', ['AdminMediaPartnerController', 'index']);
-        // Media Partner Search
-        $router->get('/admin/media-partner/search/:search', ['AdminMediaPartnerController', 'search']);
-        $router->get('/admin/media-partner/search/:search/page/:page', ['AdminMediaPartnerController', 'search']);
-        // Add Media Partner
-        $router->get('/admin/media-partner/add', ['AdminMediaPartnerController', 'add']);
-        $router->post('/admin/media-partner/add_media_partner', ['AdminMediaPartnerController', 'add_media_partner']);
-        // Edit Media Partner
-        $router->get('/admin/media-partner/edit', ['AdminMediaPartnerController', 'edit']);
-        $router->get('/admin/media-partner/edit/:id', ['AdminMediaPartnerController', 'edit']);
-        $router->post('/admin/media-partner/edit_media_partner', ['AdminMediaPartnerController', 'edit_media_partner']);
-        // Delete Media Partner
-        $router->post('/admin/media-partner/delete_media_partner', ['AdminMediaPartnerController', 'delete_media_partner']);
-
         // 6. Admin Contact
         $router->get('/admin/contact', ['AdminContactController', 'index']);
         $router->get('/admin/contact/index', ['AdminContactController', 'index']);

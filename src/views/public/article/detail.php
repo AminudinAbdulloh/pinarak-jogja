@@ -40,7 +40,7 @@
 
             <!-- Article Content -->
             <div class="article-content">
-                <?php echo htmlspecialchars($article['content']); ?>
+                <?php echo $article['content']; ?>
             </div>
 
             <!-- Article Footer -->

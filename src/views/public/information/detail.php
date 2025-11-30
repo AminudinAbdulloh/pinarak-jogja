@@ -40,7 +40,7 @@
 
             <!-- Information Content -->
             <div class="article-content">
-                <?php echo nl2br(htmlspecialchars($informations['article'])); ?>
+                <?php echo $informations['article']; ?>
             </div>
 
             <!-- Information Footer -->

@@ -4,14 +4,12 @@ class ProfileController extends BaseController{
     private $profileModel;
     private $coeModel;
     private $settingModel;
-    private $mediaPartnerModel;
     private $contactModel;
     
     public function __construct() {
         $this->profileModel = $this->model('ProfileModel');
         $this->coeModel = $this->model('COEModel');
         $this->settingModel = $this->model('SettingModel');
-        $this->mediaPartnerModel = $this->model('MediaPartnerModel');
         $this->contactModel = $this->model('ContactModel');
     }   
 
@@ -24,7 +22,6 @@ class ProfileController extends BaseController{
             'coe_list' => $coe_list,
             'profiles' => $profiles,
             'setting' => $this->settingModel->getSettings(),
-            'media_partners' => $this->mediaPartnerModel->getAll(),
             'contact' => $this->contactModel->getContacts()
         ];
 
