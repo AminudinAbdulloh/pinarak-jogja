@@ -151,6 +151,10 @@
   color: #0e4b75;
   margin: 0 0 20px 0;
   line-height: 1.3;
+  padding-right: 40px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .article-meta {
