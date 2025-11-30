@@ -127,11 +127,11 @@ nav ul li a:hover {
   }
 }
 
-/* Footer Styles */
+/* Footer Styles - Compact Version */
 .main-footer {
   background: linear-gradient(135deg, #2d5016, #4a7c22);
   color: white;
-  padding: 50px 20px 30px;
+  padding: 30px 20px 20px;
   text-align: center;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -145,19 +145,24 @@ nav ul li a:hover {
 .info-section {
   display: flex;
   justify-content: center;
-  gap: 60px;
-  margin-bottom: 50px;
+  gap: 40px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .info-item {
-  min-width: 250px;
-  padding: 20px;
+  flex: 1;
+  max-width: 280px;
+  min-height: 140px;
+  padding: 5px;
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 15px;
+  border-radius: 12px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .info-item:hover {
@@ -166,17 +171,17 @@ nav ul li a:hover {
 }
 
 .info-item h3 {
-  font-size: 1.4em;
+  font-size: 1.1em;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #f5cf41;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .info-item p {
-  font-size: 1em;
-  line-height: 1.6;
+  font-size: 0.85em;
+  line-height: 1.5;
   color: #f0f0f0;
   margin: 0;
   word-wrap: break-word;
@@ -189,11 +194,11 @@ nav ul li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  margin: 50px 0;
-  padding: 30px;
+  gap: 30px;
+  margin: 30px 0;
+  padding: 20px;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
+  border-radius: 15px;
   backdrop-filter: blur(10px);
 }
 
@@ -204,8 +209,8 @@ nav ul li a:hover {
 }
 
 .main-logo {
-  height: 120px;
-  max-width: 180px;
+  height: 80px;
+  max-width: 140px;
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
   transition: all 0.3s ease;
@@ -216,7 +221,7 @@ nav ul li a:hover {
 }
 
 .divider-line {
-  height: 130px;
+  height: 90px;
   width: 2px;
   background: linear-gradient(to bottom, transparent, #f5cf41, transparent);
   border-radius: 2px;
@@ -224,18 +229,18 @@ nav ul li a:hover {
 
 /* Social Media Section */
 .social-media-section {
-  margin: 40px 0;
+  margin: 25px 0;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .social-link {
   display: inline-block;
-  padding: 12px;
+  padding: 10px;
   background: #f5cf41;
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -249,20 +254,20 @@ nav ul li a:hover {
 }
 
 .social-link img {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
 }
 
 /* Copyright Section */
 .copyright-section {
-  margin-top: 40px;
-  padding-top: 25px;
+  margin-top: 25px;
+  padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .copyright-section p {
-  font-size: 0.9em;
+  font-size: 0.85em;
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
 }
@@ -270,79 +275,114 @@ nav ul li a:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
   .main-footer {
-    padding: 30px 15px 20px;
-  }
-
-  .logo-card {
-    padding: 10px;
-  }
-
-  .logo-card img {
-    width: 45px;
-    height: 45px;
+    padding: 25px 15px 15px;
   }
 
   .info-section {
-    gap: 30px;
+    gap: 25px;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 25px;
   }
 
   .info-item {
     min-width: auto;
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
+    padding: 5px;
+  }
+
+  .info-item h3 {
+    font-size: 1em;
+    margin-bottom: 8px;
+  }
+
+  .info-item p {
+    font-size: 0.8em;
   }
 
   .main-logos-section {
     flex-direction: column;
-    gap: 20px;
-    padding: 20px;
+    gap: 15px;
+    padding: 15px;
+    margin: 20px 0;
   }
 
   .divider-line {
     height: 2px;
-    width: 100px;
+    width: 80px;
     background: linear-gradient(to right, transparent, #f5cf41, transparent);
   }
 
   .main-logo {
-    height: 80px;
+    height: 60px;
+  }
+
+  .social-media-section {
+    margin: 20px 0;
   }
 
   .social-links {
-    gap: 15px;
+    gap: 12px;
   }
 
   .social-link {
-    padding: 10px;
+    padding: 8px;
   }
 
   .social-link img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .copyright-section {
+    margin-top: 20px;
+    padding-top: 15px;
   }
 }
 
 @media (max-width: 480px) {
+  .main-footer {
+    padding: 20px 10px 12px;
+  }
+
   .info-section {
-    gap: 20px;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .info-item {
+    padding: 5px;
   }
 
   .info-item h3 {
-    font-size: 1.2em;
+    font-size: 0.95em;
   }
 
   .info-item p {
-    font-size: 0.9em;
+    font-size: 0.75em;
   }
 
   .main-logos-section {
-    gap: 15px;
-    padding: 15px;
+    gap: 12px;
+    padding: 12px;
+    margin: 15px 0;
   }
 
   .main-logo {
-    height: 60px;
+    height: 50px;
+  }
+
+  .social-media-section {
+    margin: 15px 0;
+  }
+
+  .copyright-section {
+    margin-top: 15px;
+    padding-top: 12px;
+  }
+
+  .copyright-section p {
+    font-size: 0.75em;
   }
 }
