@@ -1,328 +1,647 @@
+/* ============================================
+   PROFILE PAGE - IMPROVED RESPONSIVE
+   ============================================ */
+
 /* Calendar of Event Section */
 .coe-section {
-    padding: 30px 20px;
-    text-align: center;
+  padding: 40px 20px;
+  text-align: center;
 }
 
 .coe-section h1 {
-    text-align: center;
-    font-size: 2em;
-    color: #0e4b75;
-    margin-bottom: 20px;
+  text-align: center;
+  font-size: 2em;
+  color: #0e4b75;
+  margin-bottom: 25px;
 }
 
 .coe-section h1::after {
-    content: "";
-    display: block;
-    width: 20%;
-    height: 5px;
-    background-color: #c86b85;
-    margin: 0 auto;
-    margin-top: 10px;
+  content: "";
+  display: block;
+  width: 120px;
+  height: 5px;
+  background-color: #c86b85;
+  margin: 10px auto 0;
 }
 
 .coe-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1020px;
-    margin: 0 auto;
-    padding: 20px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .coe-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .coe-placeholder {
-    padding: 80px 20px;
-    color: #999;
-    text-align: center;
+  padding: 80px 20px;
+  color: #999;
+  text-align: center;
 }
 
 .coe-placeholder i {
-    color: #ddd;
-    margin-bottom: 20px;
+  color: #ddd;
+  margin-bottom: 20px;
 }
 
 .coe-placeholder p {
-    font-size: 1.2rem;
-    color: #999;
+  font-size: 1.2rem;
+  color: #999;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .coe-section h1 {
-        font-size: 1.8rem;
-        margin-bottom: 30px;
-    }
-    
-    .coe-container {
-        padding: 15px;
-    }
-    
-    .coe-placeholder {
-        padding: 60px 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .coe-section {
-        padding: 40px 15px;
-    }
-    
-    .coe-section h1 {
-        font-size: 1.5rem;
-        letter-spacing: 1px;
-    }
-}
-
+/* Profile Section */
 .profile-section {
-    padding: 30px 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .profile-section h1 {
-    text-align: center;
-    font-size: 2em;
-    color: #0e4b75;
-    margin-bottom: 20px;
+  text-align: center;
+  font-size: 2em;
+  color: #0e4b75;
+  margin-bottom: 25px;
 }
 
 .profile-section h1::after {
-    content: "";
-    display: block;
-    width: 55%;
-    height: 5px;
-    background-color: #c86b85;
-    margin: 0 auto;
-    margin-top: 10px;
+  content: "";
+  display: block;
+  width: 200px;
+  height: 5px;
+  background-color: #c86b85;
+  margin: 10px auto 0;
 }
 
+/* Slider Container */
 .slider-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    margin-top: 20px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 30px;
+  padding: 0 60px;
 }
 
 .profile-slider {
-    display: flex;
-    transition: transform 0.5s ease;
-    gap: 15px;
-    padding: 10px;
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 15px;
+  padding: 10px 0;
 }
 
+/* Profile Card */
 .card {
-    position: relative;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    min-width: 200px;
-    flex: 0 0 200px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  min-width: 200px;
+  flex: 0 0 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .pas-photo {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 
+/* Social Media Overlay */
 .detail {
-    position: absolute;
-    background: linear-gradient(45deg, #57c530, #21a77b);
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding: 10px;
+  position: absolute;
+  background: linear-gradient(45deg, #57c530, #21a77b);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px;
 }
 
 .contact-profile {
-    width: 32px;
-    height: 32px;
-    transition: transform 0.3s ease;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .tiktok img {
-    width: 38px;
-    height: 38px;
+  width: 38px;
+  height: 38px;
 }
 
 .contact-profile:hover {
-    transform: scale(1.15);
+  transform: scale(1.15);
 }
 
 .card:hover .detail {
-    transform: translateX(0);
-    opacity: 1;
+  transform: translateX(0);
+  opacity: 1;
 }
 
+/* Card Info */
 .info {
-    background-color: #fff;
-    width: 100%;
-    z-index: 99;
-    padding: 12px 10px;
-    text-align: center;
+  background-color: #fff;
+  width: 100%;
+  z-index: 99;
+  padding: 15px 12px;
+  text-align: center;
 }
 
 .info h2 {
-    margin: 0;
-    color: #333;
-    font-size: 1rem;
-    margin-bottom: 4px;
-    font-weight: 600;
+  margin: 0;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .info p {
-    margin: 0;
-    color: #666;
-    font-size: 0.8rem;
-    line-height: 1.3;
+  margin: 0;
+  color: #666;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
+/* Navigation Arrows */
 .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
 
 .arrow:hover {
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .arrow-left {
-    left: 10px;
+  left: 10px;
 }
 
 .arrow-right {
-    right: 10px;
+  right: 10px;
 }
 
 .arrow svg {
-    width: 22px;
-    height: 22px;
-    fill: #0e4b75;
+  width: 22px;
+  height: 22px;
+  fill: #0e4b75;
 }
 
+/* Slider Dots */
 .slider-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 8px;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .dot.active {
-    background-color: #0e4b75;
-    transform: scale(1.2);
+  background-color: #0e4b75;
+  transform: scale(1.2);
 }
 
 .dot:hover {
-    background-color: #0e4b75;
-    opacity: 0.7;
+  background-color: #0e4b75;
+  opacity: 0.7;
 }
 
-@media (max-width: 768px) {
-    .card {
-        min-width: 180px;
-        flex: 0 0 180px;
-    }
-    
-    .pas-photo {
-        height: 220px;
-    }
-    
-    .arrow {
-        width: 38px;
-        height: 38px;
-    }
-    
-    .arrow svg {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .contact-profile {
-        width: 28px;
-        height: 28px;
-    }
-    
-    .tiktok img {
-        width: 34px;
-        height: 34px;
-    }
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Desktop Large (1200px+) */
+@media screen and (min-width: 1200px) {
+  .slider-container {
+    padding: 0 70px;
+  }
 }
 
-@media (max-width: 480px) {
-    .card {
-        min-width: 160px;
-        flex: 0 0 160px;
-    }
-    
-    .pas-photo {
-        height: 200px;
-    }
-    
-    .info h2 {
-        font-size: 0.9rem;
-    }
-    
-    .info p {
-        font-size: 0.75rem;
-    }
+/* Desktop to Tablet (992px - 1199px) */
+@media screen and (max-width: 1199px) {
+  .slider-container {
+    padding: 0 55px;
+  }
+  
+  .card {
+    min-width: 190px;
+    flex: 0 0 190px;
+  }
+}
+
+/* Tablet Portrait (768px - 991px) */
+@media screen and (max-width: 991px) {
+  .coe-section,
+  .profile-section {
+    padding: 35px 15px;
+  }
+  
+  .coe-section h1,
+  .profile-section h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  .coe-section h1::after {
+    width: 100px;
+  }
+  
+  .profile-section h1::after {
+    width: 180px;
+  }
+  
+  .coe-container {
+    padding: 18px;
+  }
+  
+  .slider-container {
+    padding: 0 50px;
+    margin-top: 25px;
+  }
+  
+  .card {
+    min-width: 180px;
+    flex: 0 0 180px;
+  }
+  
+  .pas-photo {
+    height: 230px;
+  }
+  
+  .info {
+    padding: 12px 10px;
+  }
+  
+  .info h2 {
+    font-size: 0.95rem;
+  }
+  
+  .info p {
+    font-size: 0.8rem;
+  }
+  
+  .arrow {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .contact-profile {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .tiktok img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Mobile Landscape (576px - 767px) */
+@media screen and (max-width: 767px) {
+  .coe-section,
+  .profile-section {
+    padding: 30px 12px;
+  }
+  
+  .coe-section h1,
+  .profile-section h1 {
+    font-size: 1.6em;
+  }
+  
+  .coe-section h1::after {
+    width: 90px;
+  }
+  
+  .profile-section h1::after {
+    width: 160px;
+  }
+  
+  .coe-container {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .coe-placeholder {
+    padding: 60px 15px;
+  }
+  
+  .coe-placeholder p {
+    font-size: 1.1rem;
+  }
+  
+  .slider-container {
+    padding: 0 45px;
+  }
+  
+  .card {
+    min-width: 170px;
+    flex: 0 0 170px;
+    border-radius: 8px;
+  }
+  
+  .pas-photo {
+    height: 210px;
+  }
+  
+  .info {
+    padding: 12px 8px;
+  }
+  
+  .info h2 {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+  
+  .info p {
+    font-size: 0.75rem;
+  }
+  
+  .arrow {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .contact-profile {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .tiktok img {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .detail {
+    gap: 10px;
+  }
+  
+  .slider-dots {
+    margin-top: 20px;
+    gap: 7px;
+  }
+  
+  .dot {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+/* Mobile Portrait (up to 575px) */
+@media screen and (max-width: 575px) {
+  .coe-section,
+  .profile-section {
+    padding: 25px 10px;
+  }
+  
+  .coe-section h1,
+  .profile-section h1 {
+    font-size: 1.4em;
+    margin-bottom: 18px;
+  }
+  
+  .coe-section h1::after {
+    width: 80px;
+    height: 4px;
+  }
+  
+  .profile-section h1::after {
+    width: 140px;
+    height: 4px;
+  }
+  
+  .coe-container {
+    padding: 12px;
+    border-radius: 10px;
+  }
+  
+  .coe-placeholder {
+    padding: 50px 12px;
+  }
+  
+  .coe-placeholder i {
+    font-size: 2.5em;
+  }
+  
+  .coe-placeholder p {
+    font-size: 1rem;
+  }
+  
+  .slider-container {
+    padding: 0 40px;
+    margin-top: 20px;
+  }
+  
+  .card {
+    min-width: 160px;
+    flex: 0 0 160px;
+  }
+  
+  .pas-photo {
+    height: 200px;
+  }
+  
+  .info {
+    padding: 10px 8px;
+  }
+  
+  .info h2 {
+    font-size: 0.85rem;
+  }
+  
+  .info p {
+    font-size: 0.7rem;
+  }
+  
+  .arrow {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .arrow-left {
+    left: 5px;
+  }
+  
+  .arrow-right {
+    right: 5px;
+  }
+  
+  .arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .contact-profile {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .tiktok img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .detail {
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .slider-dots {
+    margin-top: 18px;
+    gap: 6px;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Extra Small Mobile (up to 375px) */
+@media screen and (max-width: 375px) {
+  .coe-section,
+  .profile-section {
+    padding: 20px 8px;
+  }
+  
+  .coe-section h1,
+  .profile-section h1 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+  }
+  
+  .coe-section h1::after {
+    width: 70px;
+  }
+  
+  .profile-section h1::after {
+    width: 120px;
+  }
+  
+  .coe-container {
+    padding: 10px;
+  }
+  
+  .coe-placeholder {
+    padding: 40px 10px;
+  }
+  
+  .coe-placeholder i {
+    font-size: 2em;
+  }
+  
+  .coe-placeholder p {
+    font-size: 0.9rem;
+  }
+  
+  .slider-container {
+    padding: 0 35px;
+  }
+  
+  .card {
+    min-width: 150px;
+    flex: 0 0 150px;
+  }
+  
+  .pas-photo {
+    height: 190px;
+  }
+  
+  .info {
+    padding: 10px 6px;
+  }
+  
+  .info h2 {
+    font-size: 0.8rem;
+  }
+  
+  .info p {
+    font-size: 0.65rem;
+  }
+  
+  .arrow {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .contact-profile {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .tiktok img {
+    width: 30px;
+    height: 30px;
+  }
 }

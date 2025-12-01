@@ -1,35 +1,33 @@
+/* ============================================
+   RESPONSIVE IMPROVEMENTS - MAIN STYLE.CSS
+   ============================================ */
+
 * {
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
 html {
   margin: 0;
   padding: 0;
-  background-color: #dedede;
-  scroll-behavior: smooth;
   background-color: #ffff;
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   background-color: #ffff;
 }
 
-.layar-dalam {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  height: 90px; /* Set fixed height for navbar */
-  padding: 10px 0;
-}
+/* ============================================
+   NAVIGATION - IMPROVED RESPONSIVE
+   ============================================ */
 
 nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
   color: #fff;
   background: linear-gradient(135deg, #2d5016, #4a7c22);
   background-size: cover;
@@ -37,23 +35,36 @@ nav {
   text-align: center;
   width: 100%;
   border-bottom: 2px solid #ababab;
+  position: relative;
+  z-index: 1000;
 }
 
-/* Logo styles - full height */
+.layar-dalam {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  height: 90px;
+  padding: 10px 0;
+}
+
+/* Logo styles */
 nav .logo {
-  height: 100%; /* Take full height of parent container */
+  height: 100%;
   display: flex;
   align-items: center;
 }
 
 nav .logo img {
-  height: 100%; /* Full height of navbar */
-  width: auto; /* Maintain aspect ratio */
-  max-height: 100px; /* Match navbar height */
-  object-fit: contain; /* Ensure logo fits properly */
+  height: 100%;
+  width: auto;
+  max-height: 75px;
+  object-fit: contain;
   filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
 }
 
+/* Menu styles */
 nav .menu ul {
   list-style-type: none;
   margin: 0;
@@ -70,7 +81,7 @@ nav .menu ul li {
 nav ul li a {
   color: #fff;
   text-align: center;
-  padding: 0px 16px 0px 16px;
+  padding: 0 16px;
   text-decoration: none;
 }
 
@@ -79,6 +90,7 @@ nav ul li a:hover {
   text-underline-offset: 5px;
 }
 
+/* Hamburger menu button */
 .tombol-menu {
   position: absolute;
   top: 1.7rem;
@@ -88,50 +100,39 @@ nav ul li a:hover {
   width: 30px;
   height: 20px;
   display: none;
+  z-index: 1001;
+  cursor: pointer;
 }
 
 .tombol-menu .garis {
   height: 3px;
   background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 991.98px) {
-  .layar-dalam {
-    width: 90%;
-    height: 60px; /* Smaller height for mobile */
-  }
-
-  nav .logo img {
-    max-height: 60px; /* Adjust for mobile */
-  }
-
-  nav .menu ul {
-    display: none;
-    margin-top: 60px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-  nav .menu ul li {
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    background-color: #fff;
-    line-height: 40px;
-  }
-  nav .menu ul li a {
-    color: #333;
-  }
-  .tombol-menu {
-    display: flex;
-  }
+/* Animasi transformasi menjadi X ketika aktif */
+.tombol-menu.aktif .garis:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
 }
 
-/* Footer Styles - Compact Version */
+.tombol-menu.aktif .garis:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.tombol-menu.aktif .garis:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* ============================================
+   FOOTER - IMPROVED RESPONSIVE
+   ============================================ */
+
 .main-footer {
   background: linear-gradient(135deg, #2d5016, #4a7c22);
   color: white;
-  padding: 30px 20px 20px;
+  padding: 40px 20px 20px;
   text-align: center;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -143,26 +144,20 @@ nav ul li a:hover {
 
 /* Information Section */
 .info-section {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
   margin-bottom: 30px;
   text-align: center;
 }
 
 .info-item {
-  flex: 1;
-  max-width: 280px;
-  min-height: 140px;
-  padding: 5px;
+  padding: 20px 15px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
 .info-item:hover {
@@ -180,13 +175,12 @@ nav ul li a:hover {
 }
 
 .info-item p {
-  font-size: 0.85em;
-  line-height: 1.5;
+  font-size: 0.9em;
+  line-height: 1.6;
   color: #f0f0f0;
   margin: 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  white-space: normal;
 }
 
 /* Main Logos Section */
@@ -200,6 +194,7 @@ nav ul li a:hover {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
   backdrop-filter: blur(10px);
+  flex-wrap: wrap;
 }
 
 .logo-container {
@@ -236,6 +231,7 @@ nav ul li a:hover {
   display: flex;
   justify-content: center;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .social-link {
@@ -257,6 +253,7 @@ nav ul li a:hover {
   width: 24px;
   height: 24px;
   object-fit: contain;
+  display: block;
 }
 
 /* Copyright Section */
@@ -272,54 +269,178 @@ nav ul li a:hover {
   margin: 0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .main-footer {
-    padding: 25px 15px 15px;
-  }
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
 
+/* Tablet Landscape & Small Desktop (992px - 1199px) */
+@media screen and (max-width: 1199px) {
+  .layar-dalam {
+    width: 95%;
+  }
+  
+  nav ul li a {
+    padding: 0 12px;
+    font-size: 0.95em;
+  }
+  
   .info-section {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 25px;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 25px;
+  }
+}
+
+/* Tablet Portrait (768px - 991px) */
+@media screen and (max-width: 991.98px) {
+  .layar-dalam {
+    width: 90%;
+    height: 70px;
   }
 
-  .info-item {
-    min-width: auto;
+  nav .logo img {
+    max-height: 55px;
+  }
+
+  nav .menu ul {
+    display: none;
+    margin-top: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 280px;
-    padding: 5px;
+    background: linear-gradient(135deg, #2d5016, #4a7c22);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  nav .menu ul.active {
+    display: block;
+  }
+  
+  nav .menu ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    line-height: 50px;
+    text-align: center;
+  }
+  
+  nav .menu ul li:last-child {
+    border-bottom: none;
+  }
+  
+  nav .menu ul li a {
+    color: #fff;
+    display: block;
+    padding: 0;
+  }
+  
+  .tombol-menu {
+    display: flex;
+  }
+  
+  .info-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .info-item {
+    max-width: 100%;
+  }
+}
+
+/* Mobile Landscape & Tablet (576px - 767px) */
+@media screen and (max-width: 767px) {
+  .main-footer {
+    padding: 30px 15px 15px;
   }
 
   .info-item h3 {
     font-size: 1em;
-    margin-bottom: 8px;
   }
 
   .info-item p {
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
 
   .main-logos-section {
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     padding: 15px;
-    margin: 20px 0;
   }
 
   .divider-line {
     height: 2px;
-    width: 80px;
+    width: 60px;
     background: linear-gradient(to right, transparent, #f5cf41, transparent);
   }
 
   .main-logo {
     height: 60px;
+    max-width: 120px;
   }
 
-  .social-media-section {
-    margin: 20px 0;
+  .social-link {
+    padding: 9px;
+  }
+
+  .social-link img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Mobile Portrait (up to 575px) */
+@media screen and (max-width: 575px) {
+  .layar-dalam {
+    width: 100%;
+    height: 60px;
+    padding: 10px 15px;
+  }
+
+  nav .logo img {
+    max-height: 45px;
+  }
+
+  .tombol-menu {
+    top: 1.3rem;
+    right: 15px;
+    width: 28px;
+    height: 18px;
+  }
+
+  .tombol-menu.aktif .garis:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+  
+  .tombol-menu.aktif .garis:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+
+  .main-footer {
+    padding: 25px 10px 12px;
+  }
+
+  .info-item {
+    padding: 15px 10px;
+  }
+
+  .info-item h3 {
+    font-size: 0.95em;
+    margin-bottom: 8px;
+  }
+
+  .info-item p {
+    font-size: 0.8em;
+    line-height: 1.5;
+  }
+
+  .main-logos-section {
+    gap: 15px;
+    padding: 12px;
+  }
+
+  .main-logo {
+    height: 50px;
+    max-width: 100px;
   }
 
   .social-links {
@@ -339,50 +460,51 @@ nav ul li a:hover {
     margin-top: 20px;
     padding-top: 15px;
   }
+
+  .copyright-section p {
+    font-size: 0.75em;
+    line-height: 1.4;
+  }
 }
 
-@media (max-width: 480px) {
-  .main-footer {
-    padding: 20px 10px 12px;
+/* Extra Small Mobile (up to 375px) */
+@media screen and (max-width: 375px) {
+  .layar-dalam {
+    height: 55px;
   }
 
-  .info-section {
-    gap: 15px;
-    margin-bottom: 20px;
+  nav .logo img {
+    max-height: 40px;
   }
 
-  .info-item {
-    padding: 5px;
+  nav .menu ul {
+    margin-top: 50px;
+  }
+
+  .tombol-menu {
+    top: 1.1rem;
+    width: 26px;
+    height: 16px;
+  }
+
+  .tombol-menu.aktif .garis:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  
+  .tombol-menu.aktif .garis:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
   }
 
   .info-item h3 {
-    font-size: 0.95em;
+    font-size: 0.9em;
   }
 
   .info-item p {
     font-size: 0.75em;
   }
 
-  .main-logos-section {
-    gap: 12px;
-    padding: 12px;
-    margin: 15px 0;
-  }
-
   .main-logo {
-    height: 50px;
-  }
-
-  .social-media-section {
-    margin: 15px 0;
-  }
-
-  .copyright-section {
-    margin-top: 15px;
-    padding-top: 12px;
-  }
-
-  .copyright-section p {
-    font-size: 0.75em;
+    height: 45px;
+    max-width: 90px;
   }
 }

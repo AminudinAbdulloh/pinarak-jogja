@@ -14,6 +14,18 @@
     <link rel="stylesheet" href="<?= BASEURL . '/css/main/contact.css' ?>">
 </head>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const tombolMenu = document.querySelector(".tombol-menu");
+    const menuList = document.querySelector("nav .menu ul");
+
+    tombolMenu.addEventListener("click", function () {
+        menuList.classList.toggle("active");
+        tombolMenu.classList.toggle("aktif");
+    });
+});
+</script>
+
 <body>
     <nav>
         <div class="layar-dalam">
@@ -21,11 +33,11 @@
                 <a href="<?= BASEURL ?>"><img src="<?= BASEURL . '/' . $setting['logo_pinarak']?>" /></a>
             </div>
             <div class="menu">
-                <a href="#" Class="tombol-menu">
+                <div href="#" Class="tombol-menu">
                     <span class="garis"></span>
                     <span class="garis"></span>
                     <span class="garis"></span>
-                </a>
+                </div>
                 <ul>
                     <li>
                         <a id="beranda-link"

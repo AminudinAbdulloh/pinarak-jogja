@@ -173,7 +173,6 @@
   color: #0e4b75;
   margin: 0 0 20px 0;
   line-height: 1.3;
-  padding-right: 40px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
@@ -514,6 +513,14 @@
     gap: 10px;
   }
 
+  .article-excerpt {
+    padding: 15px;
+  }
+
+  .article-excerpt p {
+    font-size: 1em;
+  }
+
   .share-buttons {
     flex-direction: column;
   }
@@ -535,6 +542,14 @@
 @media (max-width: 480px) {
   .article-title {
     font-size: 1.4em;
+  }
+
+  .article-excerpt {
+    padding: 10px;
+  }
+
+  .article-excerpt p {
+    font-size: 0.8em;
   }
 
   .article-content {
