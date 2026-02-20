@@ -43,11 +43,9 @@ CREATE TABLE contacts (
     working_days VARCHAR(50) NULL DEFAULT NULL,
     working_time VARCHAR(50) NULL DEFAULT NULL,
     youtube VARCHAR(255) NULL DEFAULT NULL,
-    -- linkedin VARCHAR(255) NULL DEFAULT NULL,
     instagram VARCHAR(255) NULL DEFAULT NULL,
     facebook VARCHAR(255) NULL DEFAULT NULL,
     tiktok VARCHAR(255) NULL DEFAULT NULL,
-    -- twitter VARCHAR(255) NULL DEFAULT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
@@ -106,7 +104,7 @@ CREATE TABLE tourist_objects (
     address VARCHAR(255) NOT NULL,
     google_map_link VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- Settings
@@ -135,11 +133,9 @@ INSERT INTO contacts (
     working_days,
     working_time,
     youtube,
-    -- linkedin,
     instagram,
     facebook,
-    tiktok,
-    -- twitter
+    tiktok
 ) VALUES (
     'PT Pinarak Jogja',
     '+62 812 3456 7890',

@@ -94,6 +94,37 @@ class EventModel extends Database {
         return $this->qry($query)->fetchAll();
     }
 
+    public function getAllPublished($limit = 6, $offset = 0) {
+        $limit = (int)$limit;
+        $offset = (int)$offset;
+        
+        $query = "SELECT 
+            e.id,
+            e.title,
+            e.description,
+            e.start_time,
+            e.location,
+            e.image,
+            e.status,
+            a.username as publisher_name
+        FROM events e
+        LEFT JOIN admins a ON e.author_id = a.id
+        WHERE e.status = 'published' AND e.start_time > NOW()
+        ORDER BY e.start_time ASC
+        LIMIT $limit OFFSET $offset";
+        
+        return $this->qry($query)->fetchAll();
+    }
+
+    public function countAllPublished() {
+        $query = "SELECT COUNT(*) as total 
+        FROM events e
+        WHERE e.status = 'published' AND e.start_time > NOW()";
+        
+        $result = $this->qry($query)->fetch();
+        return $result['total'];
+    }
+
     public function add_event($data) {
         $query = "INSERT INTO events (title, description, start_time, location, image, status, author_id) 
                   VALUES (:title, :description, :start_time, :location, :image, :status, :author_id)";

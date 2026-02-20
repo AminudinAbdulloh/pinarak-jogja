@@ -19,12 +19,16 @@
                         alt="<?= htmlspecialchars($highlight_event['title']) ?>" class="main-image" id="highlight-image">
                     <div class="highlight-text">
                         <h3 id="highlight-title"><?= htmlspecialchars($highlight_event['title']) ?></h3>
-                        <p class="event-date" id="highlight-date" data-datetime="<?= $highlight_event['start_time'] ?>">
-                            📅 <?= formatDateIndonesia($highlight_event['start_time']) ?>
-                        </p>
-                        <p class="event-location" id="highlight-location">
-                            📍 <?= htmlspecialchars($highlight_event['location']) ?>
-                        </p>
+                        <div class="event-meta">
+                            <p class="event-date meta-item" id="highlight-date" data-datetime="<?= $highlight_event['start_time'] ?>">
+                                <i class="far fa-calendar"></i>
+                                <?= formatDateIndonesia($highlight_event['start_time']) ?>
+                            </p>
+                            <p class="event-location meta-item" id="highlight-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <?= htmlspecialchars($highlight_event['location']) ?>
+                            </p>
+                        </div>
                         <p class="description" id="highlight-description">
                             <?= nl2br(htmlspecialchars(truncateText($highlight_event['description'], 200))) ?>
                         </p>
@@ -41,15 +45,22 @@
             </div>
 
             <div class="event-list">
-                <?php if (!empty($all_events)): ?>
+                <?php if (!empty($all_events) && count($all_events) > 1): ?>
                     <?php foreach ($all_events as $index => $event): ?>
-                        <div class="event-item clickable-event" data-event-index="<?= $index + 1 ?>">
+                        <?php if ($index === 0) continue; ?>
+                        <div class="event-item clickable-event" data-event-index="<?= $index ?>">
                             <img src="<?= $event['image'] ?: 'assets/images/events/default.png' ?>"
                                 alt="<?= htmlspecialchars($event['title']) ?>">
                             <div class="event-info">
                                 <h4><?= htmlspecialchars($event['title']) ?></h4>
-                                <small>📅 <?= formatDateIndonesia($event['start_time']) ?></small>
-                                <small>📍 <?= htmlspecialchars($event['location']) ?></small>
+                                <small class="meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <?= formatDateIndonesia($event['start_time']) ?>
+                                </small>
+                                <small class="meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <?= htmlspecialchars($event['location']) ?>
+                                </small>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -61,6 +72,11 @@
                         </div>
                     </div>
                 <?php endif; ?>
+                <div class="event-list-footer">
+                    <a href="<?= BASEURL . '/events' ?>">
+                        Lihat Event Lainnya →
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -113,93 +129,12 @@ function getImagePath(imagePath) {
 
 // Event Click Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    attachEventListeners();
     initializeCountdown();
 });
-
-function attachEventListeners() {
-    const clickableEvents = document.querySelectorAll('.clickable-event');
-    
-    clickableEvents.forEach(eventItem => {
-        const newEventItem = eventItem.cloneNode(true);
-        eventItem.parentNode.replaceChild(newEventItem, eventItem);
-    });
-    
-    const freshClickableEvents = document.querySelectorAll('.clickable-event');
-    
-    freshClickableEvents.forEach(eventItem => {
-        eventItem.addEventListener('click', function() {
-            const eventIndex = parseInt(this.getAttribute('data-event-index'));
-            switchHighlightEvent(eventIndex);
-        });
-        
-        eventItem.style.cursor = 'pointer';
-        eventItem.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.02)';
-            this.style.transition = 'transform 0.2s ease';
-        });
-        
-        eventItem.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-        });
-    });
-}
 
 function truncateText(text, maxLength) {
     if (text.length <= maxLength) return text;
     return text.substr(0, maxLength) + '...';
-}
-
-function switchHighlightEvent(newIndex) {
-    if (!allEventsData || newIndex >= allEventsData.length) return;
-    
-    const oldHighlightEvent = allEventsData[currentHighlightIndex];
-    const selectedEvent = allEventsData[newIndex];
-    
-    allEventsData[currentHighlightIndex] = selectedEvent;
-    allEventsData[newIndex] = oldHighlightEvent;
-    
-    updateHighlightDisplay(selectedEvent);
-    updateEventListDisplay();
-    updateEventCountdown(selectedEvent.start_time);
-    
-    const highlightSection = document.getElementById('highlight-event');
-    if (highlightSection) {
-        highlightSection.style.opacity = '0.7';
-        setTimeout(() => {
-            highlightSection.style.opacity = '1';
-        }, 200);
-    }
-}
-
-function updateHighlightDisplay(event) {
-    const highlightImage = document.getElementById('highlight-image');
-    const highlightTitle = document.getElementById('highlight-title');
-    const highlightDate = document.getElementById('highlight-date');
-    const highlightLocation = document.getElementById('highlight-location');
-    const highlightDescription = document.getElementById('highlight-description');
-    
-    if (highlightImage) {
-        highlightImage.src = getImagePath(event.image);
-        highlightImage.alt = event.title;
-    }
-    
-    if (highlightTitle) {
-        highlightTitle.textContent = event.title;
-    }
-    
-    if (highlightDate) {
-        highlightDate.textContent = `📅 ${formatDateIndonesia(event.start_time)}`;
-        highlightDate.setAttribute('data-datetime', event.start_time);
-    }
-    
-    if (highlightLocation) {
-        highlightLocation.textContent = `📍 ${event.location}`;
-    }
-    
-    if (highlightDescription) {
-        highlightDescription.textContent = truncateText(event.description, 200);
-    }
 }
 
 function formatDateIndonesia(datetime) {
@@ -217,22 +152,6 @@ function formatDateIndonesia(datetime) {
     const minutes = String(date.getMinutes()).padStart(2, '0');
     
     return `${day} ${month} ${year} ${hours}:${minutes}`;
-}
-
-function updateEventListDisplay() {
-    const eventList = document.querySelector('.event-list');
-    if (!eventList) return;
-    
-    const oldClickableEvents = eventList.querySelectorAll('.clickable-event');
-    oldClickableEvents.forEach(item => item.remove());
-    
-    for (let i = 1; i < allEventsData.length; i++) {
-        const event = allEventsData[i];
-        const eventItem = createEventListItem(event, i);
-        eventList.appendChild(eventItem);
-    }
-    
-    attachEventListeners();
 }
 
 function createEventListItem(event, index) {
@@ -293,17 +212,6 @@ function initializeCountdown() {
                 }
             }
         }
-    }
-    
-    startCountdown();
-}
-
-function updateEventCountdown(newDateTime) {
-    const date = new Date(newDateTime);
-    currentEventDate = date.getTime();
-    
-    if (countdownInterval) {
-        clearInterval(countdownInterval);
     }
     
     startCountdown();

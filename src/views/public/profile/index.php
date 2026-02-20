@@ -6,11 +6,11 @@
 ?>
 
 <section class="coe-section">
-    <h1>CALENDAR OF EVENTS 2025</h1>
+    <h1>CALENDAR OF EVENTS <?= date('Y'); ?></h1>
     <div class="coe-container">
         <?php if ($coe_image): ?>
             <img src="<?= BASEURL . '/' . htmlspecialchars($coe_image); ?>" 
-                 alt="Calendar of Events 2025" 
+                 alt="Calendar of Events <?= date('Y'); ?>" 
                  class="coe-image">
         <?php else: ?>
             <div class="coe-placeholder">

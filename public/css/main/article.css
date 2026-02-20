@@ -3,7 +3,8 @@
    ============================================ */
 
 .berita-section,
-.information-section {
+.information-section,
+.event-section {
   font-family: 'Segoe UI', sans-serif;
   background-color: #ffff;
   margin: 0;
@@ -14,7 +15,8 @@
 }
 
 .berita-section h1,
-.information-section h1 {
+.information-section h1,
+.event-section h1 {
   text-align: center;
   font-size: 2em;
   margin-bottom: 30px;
@@ -22,7 +24,8 @@
 }
 
 .berita-section h1::after,
-.information-section h1::after {
+.information-section h1::after,
+.event-section h1::after {
   content: "";
   display: block;
   width: 80px;
@@ -33,7 +36,8 @@
 
 /* Grid Container */
 .berita-container,
-.information-container {
+.information-container,
+.event-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 24px;
@@ -41,7 +45,8 @@
 
 /* Card Styles */
 .berita-card,
-.information-card {
+.information-card,
+.event-card {
   background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
@@ -52,13 +57,15 @@
 }
 
 .berita-card:hover,
-.information-card:hover {
+.information-card:hover,
+.event-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .berita-card img,
-.information-card img {
+.information-card img,
+.event-card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
@@ -67,7 +74,8 @@
 
 /* Content Area */
 .berita-content,
-.information-content {
+.information-content,
+.event-content {
   padding: 20px;
   flex: 1;
   display: flex;
@@ -75,14 +83,16 @@
 }
 
 .berita-content .tanggal,
-.information-content .tanggal {
+.information-content .tanggal,
+.event-content .tanggal {
   font-size: 0.9em;
   color: #777;
   margin-bottom: 8px;
 }
 
 .berita-content h3,
-.information-content h3 {
+.information-content h3,
+.event-content h3 {
   font-size: 1.2em;
   margin: 0 0 12px 0;
   color: #0e4b75;
@@ -91,11 +101,18 @@
 }
 
 .berita-content p,
-.information-content p {
+.information-content p,
+.event-content p {
   font-size: 0.95em;
   margin-bottom: 15px;
   line-height: 1.6;
   color: #555;
+}
+
+.event-content .event-location {
+  font-size: 0.9em;
+  color: #777;
+  margin-bottom: 10px;
 }
 
 .berita-content a,
@@ -110,6 +127,43 @@
 .berita-content a:hover,
 .information-content a:hover {
   color: #0056b3;
+}
+
+.no-events {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+
+/* Back Button */
+.back-button {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #0e4b75, #1a5a8a);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  background: linear-gradient(135deg, #1a5a8a, #0e4b75);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(14, 75, 117, 0.3);
+}
+
+.btn-back i {
+  font-size: 1em;
 }
 
 /* Pagination */
@@ -200,7 +254,8 @@
 /* Desktop (1200px - 1399px) */
 @media screen and (max-width: 1399px) {
   .berita-container,
-  .information-container {
+  .information-container,
+  .event-container {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
@@ -208,12 +263,14 @@
 /* Tablet Landscape (992px - 1199px) */
 @media screen and (max-width: 1199px) {
   .berita-section,
-  .information-section {
+  .information-section,
+  .event-section {
     padding: 35px 20px;
   }
   
   .berita-container,
-  .information-container {
+  .information-container,
+  .event-container {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
   }
@@ -222,28 +279,33 @@
 /* Tablet Portrait (768px - 991px) */
 @media screen and (max-width: 991px) {
   .berita-section,
-  .information-section {
+  .information-section,
+  .event-section {
     padding: 30px 15px;
   }
   
   .berita-section h1,
-  .information-section h1 {
+  .information-section h1,
+  .event-section h1 {
     font-size: 1.8em;
   }
   
   .berita-container,
-  .information-container {
+  .information-container,
+  .event-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
   }
   
   .berita-card img,
-  .information-card img {
+  .information-card img,
+  .event-card img {
     height: 200px;
   }
   
   .berita-content,
-  .information-content {
+  .information-content,
+  .event-content {
     padding: 18px;
   }
   
@@ -255,50 +317,59 @@
 /* Mobile Landscape (576px - 767px) */
 @media screen and (max-width: 767px) {
   .berita-section,
-  .information-section {
+  .information-section,
+  .event-section {
     padding: 25px 12px;
   }
   
   .berita-section h1,
-  .information-section h1 {
+  .information-section h1,
+  .event-section h1 {
     font-size: 1.6em;
     margin-bottom: 25px;
   }
   
   .berita-section h1::after,
-  .information-section h1::after {
+  .information-section h1::after,
+  .event-section h1::after {
     width: 70px;
   }
   
   .berita-container,
-  .information-container {
+  .information-container,
+  .event-container {
     grid-template-columns: 1fr;
     gap: 20px;
   }
   
   .berita-card img,
-  .information-card img {
+  .information-card img,
+  .event-card img {
     height: 200px;
   }
   
   .berita-content,
-  .information-content {
+  .information-content,
+  .event-content {
     padding: 16px;
   }
   
   .berita-content h3,
-  .information-content h3 {
+  .information-content h3,
+  .event-content h3 {
     font-size: 1.1em;
     margin-bottom: 10px;
   }
   
   .berita-content .tanggal,
-  .information-content .tanggal {
+  .information-content .tanggal,
+  .event-content .tanggal {
     font-size: 0.85em;
   }
   
   .berita-content p,
-  .information-content p {
+  .information-content p,
+  .event-content p {
     font-size: 0.9em;
   }
   
@@ -318,61 +389,81 @@
     min-width: 35px;
     font-size: 0.9em;
   }
+  
+  .back-button {
+    margin-top: 30px;
+    padding: 15px 0;
+  }
+  
+  .btn-back {
+    padding: 10px 24px;
+    font-size: 0.9em;
+  }
 }
 
 /* Mobile Portrait (up to 575px) */
 @media screen and (max-width: 575px) {
   .berita-section,
-  .information-section {
+  .information-section,
+  .event-section {
     padding: 20px 10px;
   }
   
   .berita-section h1,
-  .information-section h1 {
+  .information-section h1,
+  .event-section h1 {
     font-size: 1.4em;
     margin-bottom: 20px;
   }
   
   .berita-section h1::after,
-  .information-section h1::after {
+  .information-section h1::after,
+  .event-section h1::after {
     width: 60px;
     height: 4px;
   }
   
   .berita-container,
-  .information-container {
+  .information-container,
+  .event-container {
     gap: 16px;
   }
   
   .berita-card,
-  .information-card {
+  .information-card,
+  .event-card {
     border-radius: 8px;
   }
   
   .berita-card img,
-  .information-card img {
+  .information-card img,
+  .event-card img {
     height: 180px;
   }
   
   .berita-content,
-  .information-content {
+  .information-content,
+  .event-content {
     padding: 15px;
   }
   
   .berita-content h3,
-  .information-content h3 {
+  .information-content h3,
+  .event-content h3 {
     font-size: 1em;
     margin-bottom: 8px;
   }
   
   .berita-content .tanggal,
-  .information-content .tanggal {
+  .information-content .tanggal,
+  .event-content .tanggal {
     font-size: 0.8em;
     margin-bottom: 6px;
   }
   
   .berita-content p,
-  .information-content p {
+  .information-content p,
+  .event-content p {
     font-size: 0.85em;
     margin-bottom: 12px;
     line-height: 1.5;
@@ -404,57 +495,77 @@
     font-size: 12px;
   }
   
-  .no-articles {
+  .no-articles,
+  .no-events {
     padding: 30px 15px;
     font-size: 0.9em;
+  }
+  
+  .back-button {
+    margin-top: 25px;
+    padding: 15px 0;
+  }
+  
+  .btn-back {
+    padding: 10px 20px;
+    font-size: 0.85em;
   }
 }
 
 /* Extra Small Mobile (up to 375px) */
 @media screen and (max-width: 375px) {
   .berita-section,
-  .information-section {
+  .information-section,
+  .event-section {
     padding: 15px 8px;
   }
   
   .berita-section h1,
-  .information-section h1 {
+  .information-section h1,
+  .event-section h1 {
     font-size: 1.3em;
     margin-bottom: 18px;
   }
   
   .berita-section h1::after,
-  .information-section h1::after {
+  .information-section h1::after,
+  .event-section h1::after {
     width: 50px;
   }
   
   .berita-container,
-  .information-container {
+  .information-container,
+  .event-container {
     gap: 14px;
   }
   
   .berita-card img,
-  .information-card img {
+  .information-card img,
+  .event-card img {
     height: 160px;
   }
   
   .berita-content,
-  .information-content {
+  .information-content,
+  .event-content {
     padding: 12px;
   }
   
   .berita-content h3,
-  .information-content h3 {
+  .information-content h3,
+  .event-content h3 {
     font-size: 0.95em;
   }
   
   .berita-content .tanggal,
-  .information-content .tanggal {
+  .information-content .tanggal,
+  .event-content .tanggal {
     font-size: 0.75em;
   }
   
   .berita-content p,
-  .information-content p {
+  .information-content p,
+  .event-content p {
     font-size: 0.8em;
   }
   
@@ -467,6 +578,16 @@
   .pagination-link {
     padding: 4px 6px;
     min-width: 28px;
+    font-size: 0.8em;
+  }
+  
+  .back-button {
+    margin-top: 20px;
+    padding: 10px 0;
+  }
+  
+  .btn-back {
+    padding: 8px 16px;
     font-size: 0.8em;
   }
 }

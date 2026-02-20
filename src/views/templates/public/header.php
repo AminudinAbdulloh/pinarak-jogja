@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <ul>
                     <li>
-                        <a id="beranda-link"
+                        <a id="zberanda-link"
                             href="<?= BASEURL ?>"
                             <?php //$currentDir == 'pinarak-jogja-main' || $currentDir == '' ? 'style="font-weight: bold; text-decoration: underline; text-decoration-color: #ffff; text-underline-offset: 5px; color: #f5cf41;"' : '' ?>>
                             Beranda
