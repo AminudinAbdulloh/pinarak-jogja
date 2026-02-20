@@ -53,5 +53,36 @@ class EventController extends BaseController{
         $this->view('public/event/index', $data);
         $this->view('templates/public/footer', $data);
     }
+
+    public function detail($id = null) {
+        if (!$id) {
+            header('Location: ' . BASEURL . '/events');
+            exit;
+        }
+
+        // Ambil event berdasarkan ID
+        $event = $this->eventModel->getById($id);
+
+        // Jika event tidak ditemukan atau belum dipublikasikan, arahkan kembali ke daftar event
+        if (!$event || $event['status'] !== 'published') {
+            header('Location: ' . BASEURL . '/events');
+            exit;
+        }
+
+        // Ambil event terkait (3 event lain yang masih upcoming)
+        $relatedEvents = $this->eventModel->getRelatedPublished($id, 3);
+
+        $data = [
+            'title' => 'Pinarak Jogja - ' . $event['title'],
+            'event' => $event,
+            'relatedEvents' => $relatedEvents,
+            'setting' => $this->settingModel->getSettings(),
+            'contact' => $this->contactModel->getContacts()
+        ];
+
+        $this->view('templates/public/header', $data);
+        $this->view('public/event/detail', $data);
+        $this->view('templates/public/footer', $data);
+    }
 }
 

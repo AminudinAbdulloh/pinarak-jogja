@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?= BASEURL . '/css/main/information.css' ?>">
     <link rel="stylesheet" href="<?= BASEURL . '/css/main/article.css' ?>">
     <link rel="stylesheet" href="<?= BASEURL . '/css/main/contact.css' ?>">
+    <link rel="stylesheet" href="<?= BASEURL . '/css/main/event-detail.css' ?>">
 </head>
 
 <script>

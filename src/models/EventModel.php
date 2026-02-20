@@ -125,6 +125,33 @@ class EventModel extends Database {
         return $result['total'];
     }
 
+    public function getRelatedPublished($excludeId, $limit = 3) {
+        $limit = (int)$limit;
+
+        $query = "SELECT 
+            e.id,
+            e.title,
+            e.description,
+            e.start_time,
+            e.location,
+            e.image,
+            e.status,
+            a.username as publisher_name
+        FROM events e
+        LEFT JOIN admins a ON e.author_id = a.id
+        WHERE e.status = 'published' 
+            AND e.start_time > NOW()
+            AND e.id != :excludeId
+        ORDER BY e.start_time ASC
+        LIMIT $limit";
+
+        $stmt = $this->qry($query, [
+            ':excludeId' => $excludeId
+        ]);
+
+        return $stmt->fetchAll();
+    }
+
     public function add_event($data) {
         $query = "INSERT INTO events (title, description, start_time, location, image, status, author_id) 
                   VALUES (:title, :description, :start_time, :location, :image, :status, :author_id)";

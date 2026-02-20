@@ -1,0 +1,351 @@
+/* ============================================
+   EVENT DETAIL PAGE
+   ============================================ */
+
+.event-detail-section {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 50px;
+}
+
+.event-detail-header h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #0e4b75;
+  margin-bottom: 20px;
+}
+
+.event-detail-header h1::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 5px;
+  background-color: #c86b85;
+  margin-top: 10px;
+}
+
+.event-detail-layout {
+  display: grid;
+  grid-template-columns: 2fr 1.1fr;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Poster */
+.event-detail-poster {
+  margin: 0 0 24px;
+  background: #f1f1f1;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.event-detail-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Deskripsi */
+.event-detail-description {
+  background: #fffffe;
+  border-radius: 14px;
+  border: 2px solid #f5c756;
+  padding: 20px 22px 18px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.event-detail-description h2 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #0e4b75;
+}
+
+.description-content {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.event-detail-description p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+/* Share */
+.event-share {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.share-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
+  background: #f3f4f6;
+  color: #333;
+}
+
+.share-btn i {
+  font-size: 0.9rem;
+}
+
+.share-btn.fb { background: #1877f2; color: #fff; }
+.share-btn.x  { background: #111827; color: #fff; }
+.share-btn.wa { background: #25d366; color: #fff; }
+.share-btn.email { background: #f97316; color: #fff; }
+.share-btn.copy-link { background: #e5e7eb; color: #111827; }
+
+.share-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+/* Sidebar kanan */
+.event-detail-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.event-summary-card {
+  background: #f3f4f6;
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.event-summary-title {
+  font-size: 1.2rem;
+  margin: 0 0 14px;
+  color: #0e4b75;
+  font-weight: 600;
+}
+
+.event-summary-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.95rem;
+}
+
+.meta-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.meta-value {
+  color: #111827;
+  text-align: right;
+}
+
+.btn-add-calendar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0e4b75, #1a5a8a);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-add-calendar.small {
+  padding: 8px 14px;
+  font-size: 0.82rem;
+}
+
+.btn-add-calendar:hover {
+  background: linear-gradient(135deg, #1a5a8a, #0e4b75);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(14, 75, 117, 0.35);
+}
+
+/* Rekomendasi */
+.event-recommendation {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 0 0;
+}
+
+.event-recommendation .section-header h2 {
+  font-size: 1.25rem;
+  margin: 0 0 12px;
+  color: #0e4b75;
+}
+
+.event-recommendation .section-header h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background-color: #000;
+  margin-top: 6px;
+}
+
+.recommendation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.recommendation-card {
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 14px 16px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.recommendation-card a {
+  text-decoration: none;
+}
+
+.rec-title {
+  font-size: 1rem;
+  margin: 0 0 8px;
+  color: #0e4b75;
+}
+
+.rec-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin-bottom: 10px;
+}
+
+.rec-item i {
+  margin-right: 4px;
+  color: #c86b85;
+}
+
+.no-recommendation {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Event card link reset on list page (safety) */
+.event-card-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+.event-card-link:focus-visible {
+  outline: 2px solid #0e4b75;
+  outline-offset: 3px;
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+  .event-detail-layout {
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+  }
+
+  .event-detail-poster img {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .event-detail-section {
+    padding: 28px 14px 40px;
+  }
+
+  .event-detail-header h1 {
+    font-size: 1.7rem;
+  }
+
+  .event-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .event-detail-right {
+    order: -1;
+  }
+
+  .event-detail-poster img {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .event-detail-section {
+    padding: 24px 10px 36px;
+  }
+
+  .event-detail-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .event-detail-poster img {
+    height: auto;
+  }
+
+  .event-detail-description {
+    padding: 16px 16px 14px;
+  }
+
+  .meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .meta-value {
+    text-align: left;
+  }
+
+  .share-buttons {
+    gap: 8px;
+  }
+
+  .share-btn {
+    padding: 7px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+

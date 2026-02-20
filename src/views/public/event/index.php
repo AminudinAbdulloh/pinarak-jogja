@@ -4,24 +4,26 @@
         <?php if (!empty($events)): ?>
             <?php foreach ($events as $event): ?>
                 <article class="event-card">
-                    <img src="<?= BASEURL . '/' . ($event['image'] ?: 'assets/images/events/default.png') ?>"
-                        alt="<?= htmlspecialchars($event['title']) ?>">
-                    <div class="event-content">
-                        <div class="event-meta">
-                            <span class="tanggal meta-item">
-                                <i class="far fa-calendar"></i>
-                                <?php echo formatDateIndonesia($event['start_time']); ?>
-                            </span>
-                            <span class="event-location meta-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <?php echo htmlspecialchars($event['location']); ?>
-                            </span>
+                    <a href="<?= BASEURL . '/events/detail/' . $event['id'] ?>" class="event-card-link">
+                        <img src="<?= BASEURL . '/' . ($event['image'] ?: 'assets/images/events/default.png') ?>"
+                            alt="<?= htmlspecialchars($event['title']) ?>">
+                        <div class="event-content">
+                            <div class="event-meta">
+                                <span class="tanggal meta-item">
+                                    <i class="far fa-calendar"></i>
+                                    <?php echo formatDateIndonesia($event['start_time']); ?>
+                                </span>
+                                <span class="event-location meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <?php echo htmlspecialchars($event['location']); ?>
+                                </span>
+                            </div>
+                            <h3><?php echo htmlspecialchars($event['title']); ?></h3>
+                            <?php if (!empty($event['description'])): ?>
+                                <p><?php echo truncateText(strip_tags($event['description']), 150); ?></p>
+                            <?php endif; ?>
                         </div>
-                        <h3><?php echo htmlspecialchars($event['title']); ?></h3>
-                        <?php if (!empty($event['description'])): ?>
-                            <p><?php echo truncateText(strip_tags($event['description']), 150); ?></p>
-                        <?php endif; ?>
-                    </div>
+                    </a>
                 </article>
             <?php endforeach; ?>
         <?php else: ?>
