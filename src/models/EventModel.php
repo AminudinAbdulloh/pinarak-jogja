@@ -15,6 +15,7 @@ class EventModel extends Database {
             e.description,
             e.start_time,
             e.location,
+            e.category,
             e.image,
             e.status,
             a.username as publisher_name
@@ -27,8 +28,10 @@ class EventModel extends Database {
         if (!empty($search)) {
             $query .= " WHERE (e.title LIKE ? 
                         OR e.description LIKE ? 
-                        OR e.location LIKE ?)";
+                        OR e.location LIKE ?
+                        OR e.category LIKE ?)";
             $searchParam = "%$search%";
+            $params[] = $searchParam;
             $params[] = $searchParam;
             $params[] = $searchParam;
             $params[] = $searchParam;
@@ -47,10 +50,11 @@ class EventModel extends Database {
         if (!empty($search)) {
             $query .= " WHERE (e.title LIKE ? 
                         OR e.description LIKE ? 
-                        OR e.location LIKE ?)";
+                        OR e.location LIKE ?
+                        OR e.category LIKE ?)";
             
             $searchParam = "%$search%";
-            $result = $this->qry($query, [$searchParam, $searchParam, $searchParam])->fetch();
+            $result = $this->qry($query, [$searchParam, $searchParam, $searchParam, $searchParam])->fetch();
         } else {
             $result = $this->qry($query)->fetch();
         }
@@ -65,6 +69,7 @@ class EventModel extends Database {
             e.description,
             e.start_time,
             e.location,
+            e.category,
             e.image,
             e.status,
             e.author_id,
@@ -104,6 +109,7 @@ class EventModel extends Database {
             e.description,
             e.start_time,
             e.location,
+            e.category,
             e.image,
             e.status,
             a.username as publisher_name
@@ -134,6 +140,7 @@ class EventModel extends Database {
             e.description,
             e.start_time,
             e.location,
+            e.category,
             e.image,
             e.status,
             a.username as publisher_name
@@ -153,14 +160,15 @@ class EventModel extends Database {
     }
 
     public function add_event($data) {
-        $query = "INSERT INTO events (title, description, start_time, location, image, status, author_id) 
-                  VALUES (:title, :description, :start_time, :location, :image, :status, :author_id)";
+        $query = "INSERT INTO events (title, description, start_time, location, category, image, status, author_id) 
+                  VALUES (:title, :description, :start_time, :location, :category, :image, :status, :author_id)";
         
         $params = [
             ':title' => $data['title'],
             ':description' => $data['description'],
             ':start_time' => $data['start_time'],
             ':location' => $data['location'],
+            ':category' => $data['category'],
             ':image' => $data['image'],
             ':status' => $data['status'],
             ':author_id' => $data['author_id']
@@ -202,6 +210,7 @@ class EventModel extends Database {
                       description = :description, 
                       start_time = :start_time, 
                       location = :location, 
+                      category = :category,
                       image = :image, 
                       status = :status,
                       updated_at = CURRENT_TIMESTAMP
@@ -213,6 +222,7 @@ class EventModel extends Database {
             ':description' => $data['description'],
             ':start_time' => $data['start_time'],
             ':location' => $data['location'],
+            ':category' => $data['category'],
             ':image' => $data['image'],
             ':status' => $data['status']
         ];

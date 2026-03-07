@@ -30,7 +30,7 @@
                             </p>
                         </div>
                         <p class="description" id="highlight-description">
-                            <?= nl2br(htmlspecialchars(truncateText($highlight_event['description'], 200))) ?>
+                            <?= truncateText(strip_tags(html_entity_decode($highlight_event['description'])), 200); ?>
                         </p>
                         <p id="countdown" class="countdown"></p>
                     </div>

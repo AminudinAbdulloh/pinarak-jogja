@@ -50,12 +50,38 @@
                         value="<?php echo htmlspecialchars($event['title']); ?>">
                 </div>
 
-                <div class="form-group">
-                    <label for="description">
-                        <i class="fas fa-align-left"></i> Deskripsi Event *
-                    </label>
-                    <textarea class="form-control" id="description" name="description" rows="5" required
-                        placeholder="Masukkan deskripsi lengkap event"><?php echo htmlspecialchars($event['description']); ?></textarea>
+                <div class="content-section-form">
+                    <h4><i class="fas fa-edit"></i> Deskripsi Event</h4>
+                    <div class="form-group">
+                        <label for="description">
+                            <i class="fas fa-align-left"></i> Deskripsi Event *
+                        </label>
+                        <div class="editor-toolbar">
+                            <button type="button" class="editor-btn" data-command="bold">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button type="button" class="editor-btn" data-command="italic">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button type="button" class="editor-btn" data-command="underline">
+                                <i class="fas fa-underline"></i>
+                            </button>
+                            <div class="editor-separator"></div>
+                            <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                                <i class="fas fa-list-ul"></i>
+                            </button>
+                            <button type="button" class="editor-btn" data-command="insertOrderedList">
+                                <i class="fas fa-list-ol"></i>
+                            </button>
+                            <div class="editor-separator"></div>
+                            <button type="button" class="editor-btn" data-command="createLink">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                        <div class="editor-content" id="descriptionEditor" contenteditable="true"
+                            placeholder="Masukkan deskripsi lengkap event"><?php echo $event['description']; ?></div>
+                        <textarea name="description" id="descriptionHidden" style="display: none;"><?php echo htmlspecialchars($event['description']); ?></textarea>
+                    </div>
                 </div>
 
                 <!-- Event Details -->
@@ -76,6 +102,15 @@
                     <input type="text" class="form-control" id="location" name="location" required
                         placeholder="Masukkan lokasi event"
                         value="<?php echo htmlspecialchars($event['location']); ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">
+                        <i class="fas fa-tag"></i> Kategori Event *
+                    </label>
+                    <input type="text" class="form-control" id="category" name="category" required
+                        placeholder="Masukkan kategori event"
+                        value="<?php echo htmlspecialchars($event['category']); ?>">
                 </div>
 
                 <!-- Publishing Settings -->
@@ -104,3 +139,10 @@
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('editEventForm').addEventListener('submit', function() {
+    const editorContent = document.getElementById('descriptionEditor').innerHTML;
+    document.getElementById('descriptionHidden').value = editorContent;
+});
+</script>

@@ -184,6 +184,7 @@ class AdminEventController extends BaseController{
                 'description' => $_POST['description'],
                 'start_time' => $_POST['start_time'],
                 'location' => $_POST['location'],
+                'category' => $_POST['category'],
                 'image' => $imagePath,
                 'status' => $_POST['status'] ?? 'draft',
                 'author_id' => AuthMiddleware::getAdminId()
@@ -347,6 +348,7 @@ class AdminEventController extends BaseController{
                 'description' => $_POST['description'],
                 'start_time' => $_POST['start_time'],
                 'location' => $_POST['location'],
+                'category' => $_POST['category'],
                 'image' => $imagePath,
                 'status' => $_POST['status'] ?? 'draft'
             ];

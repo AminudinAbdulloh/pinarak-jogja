@@ -127,9 +127,9 @@
                                         <?php 
                                         $description = $event['description'];
                                         if (function_exists('truncateText')) {
-                                            echo htmlspecialchars(truncateText($description, 50));
+                                            echo truncateText($description, 50);
                                         } else {
-                                            echo htmlspecialchars(strlen($description) > 50 ? substr($description, 0, 50) . '...' : $description);
+                                            echo strlen($description) > 50 ? substr($description, 0, 50) . '...' : $description;
                                         }
                                         ?>
                                     </td>
