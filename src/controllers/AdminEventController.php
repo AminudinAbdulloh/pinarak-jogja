@@ -3,6 +3,7 @@
 class AdminEventController extends BaseController{
 
     private $eventModel;
+    private $recoApiBase = 'http://127.0.0.1:5000';
 
     public function __construct() {
         AuthMiddleware::checkAuth();
@@ -194,6 +195,8 @@ class AdminEventController extends BaseController{
             $result = $this->eventModel->add_event($eventData);
             
             if ($result) {
+                // Setelah create, refresh model rekomendasi
+                $this->refreshRecommendationModel();
                 $_SESSION['success_message'] = 'Event berhasil ditambahkan!';
             } else {
                 $_SESSION['error_message'] = 'Gagal menambahkan event. Silakan coba lagi.';
@@ -221,6 +224,8 @@ class AdminEventController extends BaseController{
             $result = $this->eventModel->delete_event($id);
 
             if ($result) {
+                // Setelah delete, refresh model rekomendasi
+                $this->refreshRecommendationModel();
                 $_SESSION['success_message'] = 'Event berhasil dihapus.';
             } else {
                 $_SESSION['error_message'] = 'Event tidak ditemukan atau gagal dihapus.';
@@ -357,6 +362,8 @@ class AdminEventController extends BaseController{
             $result = $this->eventModel->update_event($eventData);
             
             if ($result) {
+                // Setelah update, refresh model rekomendasi
+                $this->refreshRecommendationModel();
                 $_SESSION['success_message'] = 'Event berhasil diperbarui!';
             } else {
                 $_SESSION['error_message'] = 'Gagal memperbarui event. Silakan coba lagi.';
@@ -368,5 +375,30 @@ class AdminEventController extends BaseController{
         
         header('Location: ' . BASEURL . '/admin/event');
         exit;
+    }
+
+    /**
+     * Panggil /api/recommendations/refresh di Recommendation API menggunakan cURL (POST).
+     * Dipanggil setelah create/update/delete event.
+     */
+    private function refreshRecommendationModel(): void
+    {
+        $url = rtrim($this->recoApiBase, '/') . '/api/recommendations/refresh';
+
+        if (!function_exists('curl_init')) {
+            return;
+        }
+
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 20,
+            CURLOPT_POST => true,
+            CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
+            CURLOPT_POSTFIELDS => '{}',
+        ]);
+
+        curl_exec($ch);
+        curl_close($ch);
     }
 }
