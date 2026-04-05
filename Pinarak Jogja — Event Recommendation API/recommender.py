@@ -54,7 +54,7 @@ REQUIRED_COLUMNS = {"id", "title", "description", "location", "category"}
 OPTIONAL_COLUMNS = {"start_time", "image", "status"}
 
 # Metric yang didukung
-SUPPORTED_METRICS = ["euclidean", "cosine", "manhattan", "chebyshev"]
+KNN_METRIC = "euclidean"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -141,12 +141,9 @@ class EventRecommender:
         results = rec.recommend(event_id=3, n=5)
     """
 
-    def __init__(self, k: int = 11, metric: str = "euclidean"):
-        if metric not in SUPPORTED_METRICS:
-            raise ValueError(f"Metric '{metric}' tidak didukung. Pilih: {SUPPORTED_METRICS}")
-
+    def __init__(self, k: int = 11):
         self.k      = k
-        self.metric = metric
+        self.metric = KNN_METRIC
 
         self.events: List[Dict] = []
         self._tfidf_matrix      = None

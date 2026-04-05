@@ -147,7 +147,7 @@
                 <div class="step-number">4</div>
                 <h3>KNN — Pencarian Tetangga Terdekat</h3>
                 <small>
-                    Metric: <strong><?= htmlspecialchars($minfo['metric'] ?? '') ?></strong> |
+                    Metric: <strong>Euclidean</strong> |
                     K: <strong><?= $minfo['k'] ?? '' ?></strong> |
                     Jarak lebih kecil = lebih mirip
                 </small>
@@ -161,7 +161,7 @@
                                     <th>#</th>
                                     <th>Event</th>
                                     <th>Kategori</th>
-                                    <th>Jarak (<?= htmlspecialchars($minfo['metric'] ?? '') ?>)</th>
+                                    <th>Jarak (Euclidean)</th>
                                     <th>Skor Kemiripan</th>
                                     <th>Status</th>
                                 </tr>

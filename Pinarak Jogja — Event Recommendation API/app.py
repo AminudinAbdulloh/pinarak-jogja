@@ -10,7 +10,7 @@ from flask import Flask, jsonify, request
 import os
 import threading
 
-from recommender import EventRecommender, SUPPORTED_METRICS
+from recommender import EventRecommender
 
 app = Flask(__name__)
 
@@ -38,7 +38,6 @@ _recommender_lock = threading.Lock()
 # Config default (bisa di-override via API)
 _config = {
     "knn_k":          11,
-    "knn_metric":     "euclidean",
     "n_recommendations": 3,
     "data_source":    "database",   # "database" | "manual"
     "dataset_file":   "",           # nama file di UPLOAD_FOLDER
@@ -57,10 +56,7 @@ def get_recommender() -> EventRecommender:
 def _build_recommender():
     """Bangun recommender baru berdasarkan _config saat ini. Harus dipanggil di dalam lock."""
     global _recommender
-    r = EventRecommender(
-        k=_config["knn_k"],
-        metric=_config["knn_metric"],
-    )
+    r = EventRecommender(k=_config["knn_k"])
     file_path = None
     if _config["data_source"] == "manual" and _config["dataset_file"]:
         file_path = os.path.join(UPLOAD_FOLDER, _config["dataset_file"])
@@ -151,7 +147,6 @@ def get_config():
     return jsonify({
         "success": True,
         "config":  _config,
-        "supported_metrics": SUPPORTED_METRICS,
     })
 
 
@@ -180,13 +175,6 @@ def update_config():
             errors.append("knn_k harus integer antara 1-50.")
         else:
             _config["knn_k"] = val
-
-    if "knn_metric" in body:
-        val = body["knn_metric"]
-        if val not in SUPPORTED_METRICS:
-            errors.append(f"knn_metric tidak valid. Pilih: {SUPPORTED_METRICS}")
-        else:
-            _config["knn_metric"] = val
 
     if "n_recommendations" in body:
         val = body["n_recommendations"]
