@@ -157,29 +157,6 @@
                                 </small>
                             </div>
 
-                            <!-- Metric -->
-                            <div class="form-group">
-                                <label for="knn_metric">
-                                    <i class="fas fa-compass"></i> Metric Jarak
-                                    <span class="param-badge current"><?= $currentConfig['knn_metric'] ?? 'euclidean' ?></span>
-                                </label>
-                                <select class="form-control" id="knn_metric" name="knn_metric">
-                                    <?php
-                                    $metrics = ['euclidean', 'cosine', 'manhattan', 'chebyshev'];
-                                    $current = $currentConfig['knn_metric'] ?? 'euclidean';
-                                    foreach ($metrics as $m):
-                                    ?>
-                                        <option value="<?= $m ?>" <?= $m === $current ? 'selected' : '' ?>><?= ucfirst($m) ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <small class="form-text">
-                                    <strong>Euclidean</strong>: jarak garis lurus (default) |
-                                    <strong>Cosine</strong>: sudut antar vektor |
-                                    <strong>Manhattan</strong>: jarak blok kota |
-                                    <strong>Chebyshev</strong>: maks dimensi
-                                </small>
-                            </div>
-
                             <!-- N Recommendations -->
                             <div class="form-group">
                                 <label for="n_recommendations">
