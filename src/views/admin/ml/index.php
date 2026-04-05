@@ -122,9 +122,6 @@
                 <i class="fas fa-sync-alt"></i> Rebuild Model Sekarang
             </button>
         </form>
-        <a href="<?= BASEURL . '/admin/ml/preview' ?>" class="btn btn-info">
-            <i class="fas fa-eye"></i> Preview Rekomendasi
-        </a>
         <a href="<?= $this->recoApiBase ?? 'http://127.0.0.1:5000' ?>/api/ml/dataset/template" class="btn btn-success" target="_blank">
             <i class="fas fa-file-download"></i> Download Template Excel
         </a>
