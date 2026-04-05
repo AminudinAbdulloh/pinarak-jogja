@@ -1,0 +1,263 @@
+[2026-03-09 19:14:01] [INFO    ] [pinarak.ml] — Sastrawi stemmer berhasil dimuat (ECS morphological stemming aktif).
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — EventRecommender diinisialisasi (model belum di-fit).
+[2026-03-09 19:14:04] [INFO    ] [pinarak.ml] — ============================================================
+[2026-03-09 19:14:04] [INFO    ] [pinarak.ml] — MEMULAI PROSES FIT MODEL CONTENT-BASED FILTERING
+[2026-03-09 19:14:04] [INFO    ] [pinarak.ml] — ============================================================
+[2026-03-09 19:14:04] [INFO    ] [pinarak.ml] — [1/4] Memuat data event dari database …
+[2026-03-09 19:14:04] [INFO    ] [pinarak.ml] — Menghubungkan ke database — host=localhost:3306 db=pinarak_jogja
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Koneksi DB berhasil. Mengeksekusi query SELECT events published …
+[2026-03-09 19:14:04] [INFO    ] [pinarak.ml] — Query selesai — 39 event ditemukan (status='published') | elapsed=0.088s
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — 39 kolom start_time dikonversi ke format ISO 8601.
+[2026-03-09 19:14:04] [INFO    ] [pinarak.ml] — [2/4] Membangun indeks ID → array dan content profiles …
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Indeks ID selesai — 39 entri.
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=3 | title='Sanggul dan Riasan Diri' | category='Workshop'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=23 | tokens_awal=4 | stopwords_dihapus=1 | token_di-stem=1 | token_akhir=3
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=277 | tokens_awal=36 | stopwords_dihapus=9 | token_di-stem=11 | token_akhir=27
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=3 | panjang_profil=305 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=6 | title='Hajad Dalem Labuhan' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=19 | tokens_awal=3 | stopwords_dihapus=0 | token_di-stem=1 | token_akhir=3
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=742 | tokens_awal=97 | stopwords_dihapus=35 | token_di-stem=22 | token_akhir=62
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=6 | panjang_profil=547 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=7 | title='Pameran Parama Iswari' | category='Exhibition'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=21 | tokens_awal=3 | stopwords_dihapus=0 | token_di-stem=1 | token_akhir=3
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=824 | tokens_awal=95 | stopwords_dihapus=37 | token_di-stem=16 | token_akhir=58
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=7 | panjang_profil=597 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=8 | title='Launching Kalender Semarak Event' | category='Marketing'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=32 | tokens_awal=4 | stopwords_dihapus=1 | token_di-stem=0 | token_akhir=3
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=9 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=481 | tokens_awal=62 | stopwords_dihapus=32 | token_di-stem=9 | token_akhir=30
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=8 | panjang_profil=342 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=9 | title='JFFE 2025' | category='Fashion'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=9 | tokens_awal=1 | stopwords_dihapus=1 | token_di-stem=0 | token_akhir=0
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=7 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=861 | tokens_awal=109 | stopwords_dihapus=46 | token_di-stem=10 | token_akhir=63
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=9 | panjang_profil=533 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=10 | title='Tour de Kotabaru' | category='Sports'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=16 | tokens_awal=3 | stopwords_dihapus=1 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=6 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=735 | tokens_awal=89 | stopwords_dihapus=29 | token_di-stem=17 | token_akhir=60
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=10 | panjang_profil=494 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=12 | title='Kintun Kuthomoro' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=16 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1153 | tokens_awal=151 | stopwords_dihapus=53 | token_di-stem=19 | token_akhir=98
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=12 | panjang_profil=802 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=13 | title='Kotabaru Ceria' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=14 | tokens_awal=2 | stopwords_dihapus=1 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=489 | tokens_awal=63 | stopwords_dihapus=31 | token_di-stem=3 | token_akhir=32
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=13 | panjang_profil=326 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=19 | title='Kampung Ramadan Jogokariyan' | category='Culinary'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=27 | tokens_awal=3 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=3
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=11 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=396 | tokens_awal=48 | stopwords_dihapus=21 | token_di-stem=5 | token_akhir=27
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=19 | panjang_profil=344 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=23 | title='Public Lecture #1 Menuju Tahta Sri Sulta' | category='Educational'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=62 | tokens_awal=9 | stopwords_dihapus=1 | token_di-stem=1 | token_akhir=8
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=11 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=798 | tokens_awal=106 | stopwords_dihapus=33 | token_di-stem=20 | token_akhir=73
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=23 | panjang_profil=718 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=24 | title='Gladi Resik Prajurit' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=20 | tokens_awal=3 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=3
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=696 | tokens_awal=89 | stopwords_dihapus=30 | token_di-stem=15 | token_akhir=59
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=24 | panjang_profil=557 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=34 | title='Public Lecture #2 Aparatur Seni di Kerat' | category='Educational'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=53 | tokens_awal=7 | stopwords_dihapus=2 | token_di-stem=0 | token_akhir=5
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=11 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1032 | tokens_awal=91 | stopwords_dihapus=40 | token_di-stem=19 | token_akhir=51
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=34 | panjang_profil=581 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=1 | title='Festival Urup' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=13 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=388 | tokens_awal=36 | stopwords_dihapus=17 | token_di-stem=4 | token_akhir=19
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=1 | panjang_profil=247 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=4 | title='Public Lecture #4: Pendidikan Perempuan ' | category='Educational'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=44 | tokens_awal=5 | stopwords_dihapus=1 | token_di-stem=1 | token_akhir=4
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=11 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1461 | tokens_awal=143 | stopwords_dihapus=62 | token_di-stem=36 | token_akhir=81
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=4 | panjang_profil=731 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=11 | title='Public Lecture #2 Sri Sultan Hamengku Bu' | category='Educational'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=76 | tokens_awal=10 | stopwords_dihapus=2 | token_di-stem=1 | token_akhir=8
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=11 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=801 | tokens_awal=99 | stopwords_dihapus=32 | token_di-stem=18 | token_akhir=67
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=11 | panjang_profil=730 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=14 | title='Jogja Brebeg' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=12 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=922 | tokens_awal=122 | stopwords_dihapus=52 | token_di-stem=6 | token_akhir=70
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=14 | panjang_profil=594 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=15 | title='Jogjavaganza' | category='Entertainment'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=12 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=13 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=729 | tokens_awal=88 | stopwords_dihapus=23 | token_di-stem=19 | token_akhir=65
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=15 | panjang_profil=608 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=16 | title='Paradancer' | category='Entertainment'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=13 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=924 | tokens_awal=123 | stopwords_dihapus=65 | token_di-stem=24 | token_akhir=58
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=16 | panjang_profil=511 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=17 | title='Nyadran Makam Sewu' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=18 | tokens_awal=3 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=3
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1838 | tokens_awal=235 | stopwords_dihapus=104 | token_di-stem=37 | token_akhir=131
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=17 | panjang_profil=1036 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=18 | title='Pasar Sore Ramadhan Kauman' | category='Culinary'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=26 | tokens_awal=4 | stopwords_dihapus=1 | token_di-stem=1 | token_akhir=3
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=6 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=1 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1857 | tokens_awal=250 | stopwords_dihapus=91 | token_di-stem=58 | token_akhir=159
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=18 | panjang_profil=1160 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=20 | title='COAST TO COAST NIGHT TRAIL ULTRA#9' | category='Sports'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=34 | tokens_awal=6 | stopwords_dihapus=1 | token_di-stem=0 | token_akhir=5
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=6 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=704 | tokens_awal=100 | stopwords_dihapus=33 | token_di-stem=23 | token_akhir=67
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=20 | panjang_profil=557 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=21 | title='Tur Kuratorial Pameran Awal Tahun' | category='Arts'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=33 | tokens_awal=5 | stopwords_dihapus=2 | token_di-stem=1 | token_akhir=3
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=4 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=781 | tokens_awal=94 | stopwords_dihapus=41 | token_di-stem=16 | token_akhir=53
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=21 | panjang_profil=500 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=22 | title='JIFFINA' | category='Exhibition'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=7 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1120 | tokens_awal=140 | stopwords_dihapus=47 | token_di-stem=22 | token_akhir=93
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=22 | panjang_profil=748 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=25 | title='Numplak Wajik' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=13 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1609 | tokens_awal=217 | stopwords_dihapus=73 | token_di-stem=45 | token_akhir=144
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=25 | panjang_profil=1073 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=26 | title='Garebeg Sawal' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=13 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1590 | tokens_awal=205 | stopwords_dihapus=71 | token_di-stem=39 | token_akhir=134
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=26 | panjang_profil=1058 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=27 | title='Upacara Melasti' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=15 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1112 | tokens_awal=148 | stopwords_dihapus=44 | token_di-stem=28 | token_akhir=104
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=27 | panjang_profil=807 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=28 | title='Jogja Enjoy Music Asyik' | category='Entertainment'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=23 | tokens_awal=4 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=4
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=13 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=311 | tokens_awal=43 | stopwords_dihapus=17 | token_di-stem=3 | token_akhir=26
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=28 | panjang_profil=322 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=30 | title='Warsimah Pasaran' | category='Community'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=16 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=1 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=9 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=246 | tokens_awal=24 | stopwords_dihapus=5 | token_di-stem=4 | token_akhir=19
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=30 | panjang_profil=272 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=29 | title='Pekan Budaya Tionghoa Yogyakarta' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=32 | tokens_awal=4 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=4
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=742 | tokens_awal=88 | stopwords_dihapus=25 | token_di-stem=15 | token_akhir=63
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=29 | panjang_profil=590 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=2 | title='Uyon-Uyon Wiyosan Dalem HB Ka 10' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=32 | tokens_awal=6 | stopwords_dihapus=2 | token_di-stem=0 | token_akhir=4
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=33 | tokens_awal=4 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=4
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1139 | tokens_awal=153 | stopwords_dihapus=50 | token_di-stem=26 | token_akhir=103
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=2 | panjang_profil=912 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=31 | title='Merapi Run' | category='Sports'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=1 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=6 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=653 | tokens_awal=83 | stopwords_dihapus=28 | token_di-stem=11 | token_akhir=55
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=31 | panjang_profil=468 karakter
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=32 | title='Sarkem Fest' | category='Cultural'
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=11 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:04] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=24 | tokens_awal=3 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=3
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=839 | tokens_awal=82 | stopwords_dihapus=30 | token_di-stem=10 | token_akhir=52
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=32 | panjang_profil=471 karakter
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=33 | title='Workshop Sekar Caos Dhahar' | category='Workshop'
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=26 | tokens_awal=4 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=4
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1014 | tokens_awal=121 | stopwords_dihapus=55 | token_di-stem=23 | token_akhir=66
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=33 | panjang_profil=645 karakter
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=35 | title='Festival Destinasi' | category='Tourism'
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=18 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=7 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=362 | tokens_awal=50 | stopwords_dihapus=27 | token_di-stem=5 | token_akhir=23
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=35 | panjang_profil=298 karakter
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=36 | title='Jogja Noise Bombing' | category='Entertainment'
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=19 | tokens_awal=3 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=3
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=13 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=2120 | tokens_awal=117 | stopwords_dihapus=48 | token_di-stem=2 | token_akhir=69
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=36 | panjang_profil=713 karakter
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=37 | title='Festival Jeron Benteng' | category='Cultural'
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=22 | tokens_awal=3 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=3
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=788 | tokens_awal=72 | stopwords_dihapus=24 | token_di-stem=12 | token_akhir=48
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=37 | panjang_profil=461 karakter
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=38 | title='KOSTARIKA (Kotabaru Spektakuler Kawasan ' | category='Cultural'
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=60 | tokens_awal=6 | stopwords_dihapus=1 | token_di-stem=0 | token_akhir=5
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=770 | tokens_awal=72 | stopwords_dihapus=28 | token_di-stem=3 | token_akhir=44
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=38 | panjang_profil=522 karakter
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=39 | title='Napak Tilas Abdi Dalem Patehan' | category='Cultural'
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=30 | tokens_awal=5 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=5
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=8 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=18 | tokens_awal=2 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=2
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=576 | tokens_awal=56 | stopwords_dihapus=19 | token_di-stem=14 | token_akhir=37
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=39 | panjang_profil=402 karakter
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Membangun content profile — event_id=40 | title='Public Lecture #3' | category='Educational'
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=17 | tokens_awal=2 | stopwords_dihapus=1 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=11 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=10 | tokens_awal=1 | stopwords_dihapus=0 | token_di-stem=0 | token_akhir=1
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Preprocessing — raw_chars=1081 | tokens_awal=119 | stopwords_dihapus=43 | token_di-stem=27 | token_akhir=76
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Content profile selesai — event_id=40 | panjang_profil=627 karakter
+[2026-03-09 19:14:05] [INFO    ] [pinarak.ml] — Content profiles selesai — jumlah=39 | panjang min=247 | max=1160 | rata2=595.1 | elapsed=0.512s
+[2026-03-09 19:14:05] [INFO    ] [pinarak.ml] — [3/4] Fitting TF-IDF vectorizer (ngram_range=(1,2) | min_df=1 | max_df=0.95 | sublinear_tf=True) …
+[2026-03-09 19:14:05] [INFO    ] [pinarak.ml] — TF-IDF fit selesai | elapsed=0.016s
+[2026-03-09 19:14:05] [INFO    ] [pinarak.ml] — Statistik TF-IDF matrix — shape=(39, 3510) | vocab_size=3510 | non-zero=4578 | sparsity=96.66%
+[2026-03-09 19:14:05] [INFO    ] [pinarak.ml] — [4/4] Model siap digunakan.
+[2026-03-09 19:14:05] [INFO    ] [pinarak.ml] — PROSES FIT SELESAI — total_elapsed=0.621s | events=39 | fitur=3510
+[2026-03-09 19:14:05] [INFO    ] [pinarak.ml] — ============================================================
+[2026-03-09 19:14:05] [INFO    ] [pinarak.ml] — REKOMENDASI diminta — event_id=1 | n=3
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Target event — idx=12 | title='Festival Urup'
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Vektor TF-IDF target diambil — shape=(1, 3510) | non-zero=40
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Menghitung cosine similarity antara target vs 39 event …
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Cosine similarity selesai — elapsed=0.0011s | skor max=0.0980 | skor min=0.0000 | skor rata2=0.0258
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] — Top-3 indeks terpilih: [35, 33, 4]
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] —   Rank #1 — event_id=37 | title='Festival Jeron Benteng' | similarity=0.0980
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] —   Rank #2 — event_id=35 | title='Festival Destinasi' | similarity=0.0610
+[2026-03-09 19:14:05] [DEBUG   ] [pinarak.ml] —   Rank #3 — event_id=9 | title='JFFE 2025' | similarity=0.0572
+[2026-03-09 19:14:05] [INFO    ] [pinarak.ml] — REKOMENDASI SELESAI — event_id=1 | hasil=3/3 | elapsed=0.0068s

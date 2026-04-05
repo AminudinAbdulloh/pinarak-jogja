@@ -40,6 +40,9 @@
                 <li><a href="<?= BASEURL . '/admin/contact' ?>">
                         <i class="fas fa-envelope"></i> Contacts
                     </a></li>
+                <li><a href="<?= BASEURL . '/admin/ml' ?>">
+                        <i class="fas fa-brain"></i> ML Control
+                    </a></li>
                 <li><a href="<?= BASEURL . '/admin/setting' ?>">
                         <i class="fas fa-cog"></i> Settings
                     </a></li>
