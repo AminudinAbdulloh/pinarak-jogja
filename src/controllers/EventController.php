@@ -71,7 +71,9 @@ class EventController extends BaseController{
         }
 
         // Ambil rekomendasi dari Recommendation API (fallback ke query lokal jika gagal)
-        $relatedEvents = $this->fetchRecommendedEvents((int)$id, 3);
+        $n = $this->getRecommendationCount();
+        $relatedEvents = $this->fetchRecommendedEvents((int)$id, $n);
+
         if ($relatedEvents === null) {
             $relatedEvents = $this->eventModel->getRelatedPublished($id, 3);
         }
@@ -129,6 +131,22 @@ class EventController extends BaseController{
         return $data['recommendations'];
     }
 
-
+    private function getRecommendationCount(): int
+    {
+        $url = rtrim($this->recoApiBase, '/') . '/api/ml/config';
+        if (!function_exists('curl_init')) return 3;
+ 
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 3,
+        ]);
+        $raw  = curl_exec($ch);
+        curl_close($ch);
+ 
+        if ($raw === false) return 3;
+        $data = json_decode($raw, true);
+        return (int)($data['config']['n_recommendations'] ?? 3);
+    }
 }
 

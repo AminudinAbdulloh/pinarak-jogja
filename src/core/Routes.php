@@ -140,6 +140,15 @@ class Routes {
         // Delete Tourist Object
         $router->post('/admin/tourist-object/delete_tourist_object', ['AdminTouristObjectController', 'delete_tourist_object']);
 
+        // 11. ML Control Center
+        $router->get('/admin/ml',                ['AdminMLController', 'index']);
+        $router->get('/admin/ml/preview',        ['AdminMLController', 'preview']);
+        $router->get('/admin/ml/preview/:id',    ['AdminMLController', 'preview']);
+        $router->post('/admin/ml/update_config', ['AdminMLController', 'update_config']);
+        $router->post('/admin/ml/refresh',       ['AdminMLController', 'refresh_model']);
+        $router->post('/admin/ml/upload_dataset',['AdminMLController', 'upload_dataset']);
+        $router->post('/admin/ml/delete_dataset',['AdminMLController', 'delete_dataset']);
+
         $router->run();
     }
 }
