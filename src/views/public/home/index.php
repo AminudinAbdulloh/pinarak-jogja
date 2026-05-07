@@ -13,8 +13,8 @@
     <section class="container">
         <h2 class="section-title">EVENT TERBARU</h2>
         <div class="main-content">
-            <div class="highlight-event" id="highlight-event">
-                <?php if ($highlight_event): ?>
+            <?php if ($highlight_event): ?>
+                <a href="<?= BASEURL . '/events/detail/' . urlencode($highlight_event['id']) ?>" class="highlight-event highlight-event-link" id="highlight-event">
                     <img src="<?= $highlight_event['image'] ?: 'assets/images/events/default.png' ?>"
                         alt="<?= htmlspecialchars($highlight_event['title']) ?>" class="main-image" id="highlight-image">
                     <div class="highlight-text">
@@ -34,21 +34,25 @@
                         </p>
                         <p id="countdown" class="countdown"></p>
                     </div>
-                <?php else: ?>
+                </a>
+            <?php else: ?>
+                <div class="highlight-event" id="highlight-event">
                     <img src="assets/images/events/default.png" alt="No Event" class="main-image" id="highlight-image">
                     <div class="highlight-text">
                         <h3 id="highlight-title">Tidak Ada Event Mendatang</h3>
                         <p class="description" id="highlight-description">Belum ada event yang dijadwalkan. Pantau terus untuk update terbaru!</p>
                         <p id="countdown" class="countdown"></p>
                     </div>
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php endif; ?>
 
             <div class="event-list">
                 <?php if (!empty($all_events) && count($all_events) > 1): ?>
                     <?php foreach ($all_events as $index => $event): ?>
                         <?php if ($index === 0) continue; ?>
-                        <div class="event-item clickable-event" data-event-index="<?= $index ?>">
+                        <a href="<?= BASEURL . '/events/detail/' . urlencode($event['id']) ?>"
+                            class="event-item clickable-event"
+                            data-event-index="<?= $index ?>">
                             <img src="<?= $event['image'] ?: 'assets/images/events/default.png' ?>"
                                 alt="<?= htmlspecialchars($event['title']) ?>">
                             <div class="event-info">
@@ -62,7 +66,7 @@
                                     <?= htmlspecialchars($event['location']) ?>
                                 </small>
                             </div>
-                        </div>
+                        </a>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <div class="event-item">
@@ -155,9 +159,10 @@ function formatDateIndonesia(datetime) {
 }
 
 function createEventListItem(event, index) {
-    const eventItem = document.createElement('div');
+    const eventItem = document.createElement('a');
     eventItem.className = 'event-item clickable-event';
     eventItem.setAttribute('data-event-index', index);
+    eventItem.href = `${BASEURL}/events/detail/${encodeURIComponent(event.id)}`;
     
     const imageSrc = getImagePath(event.image);
     
