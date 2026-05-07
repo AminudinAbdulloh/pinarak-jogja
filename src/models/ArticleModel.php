@@ -56,12 +56,58 @@ class ArticleModel extends Database {
     public function getById($id) {
         $query = "SELECT 
             a.*,
-            ad.username as publisher_name
+            ad.username as publisher_name,
+            COALESCE(AVG(ar.rating), 0) as avg_rating,
+            COUNT(ar.id) as total_ratings
         FROM articles a
         LEFT JOIN admins ad ON a.author_id = ad.id
-        WHERE a.id = :id";
+        LEFT JOIN article_ratings ar ON a.id = ar.article_id
+        WHERE a.id = :id
+        GROUP BY a.id";
         
         return $this->qry($query, [':id' => $id])->fetch();
+    }
+
+    public function incrementViews($id) {
+        $query = "UPDATE articles SET views = views + 1 WHERE id = :id";
+        return $this->qry($query, [':id' => $id]);
+    }
+
+    public function getUserRating($articleId, $userIp) {
+        $query = "SELECT rating FROM article_ratings 
+                  WHERE article_id = :article_id AND user_ip = :user_ip";
+        
+        $result = $this->qry($query, [
+            ':article_id' => $articleId,
+            ':user_ip' => $userIp
+        ])->fetch();
+        
+        return $result ? $result['rating'] : 0;
+    }
+
+    public function addOrUpdateRating($articleId, $userIp, $rating) {
+        $query = "INSERT INTO article_ratings (article_id, user_ip, rating) 
+                  VALUES (:article_id, :user_ip, :rating)
+                  ON DUPLICATE KEY UPDATE rating = :rating, updated_at = CURRENT_TIMESTAMP";
+        
+        return $this->qry($query, [
+            ':article_id' => $articleId,
+            ':user_ip' => $userIp,
+            ':rating' => $rating
+        ]);
+    }
+
+    public function getArticleStats($articleId) {
+        $query = "SELECT 
+            a.views,
+            COALESCE(AVG(ar.rating), 0) as avg_rating,
+            COUNT(ar.id) as total_ratings
+        FROM articles a
+        LEFT JOIN article_ratings ar ON a.id = ar.article_id
+        WHERE a.id = :article_id
+        GROUP BY a.id";
+        
+        return $this->qry($query, [':article_id' => $articleId])->fetch();
     }
 
     public function getAllWithPagination($limit = 6, $offset = 0, $search = '') {

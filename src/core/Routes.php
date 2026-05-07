@@ -10,6 +10,7 @@ class Routes {
         $router->get('/articles', ['ArticleController', 'index']);
         $router->get('/articles/:page', ['ArticleController', 'index']);
         $router->get('/articles/detail/:id', ['ArticleController', 'detail']);
+        $router->post('/articles/rate', ['ArticleController', 'rate']);
         $router->get('/events', ['EventController', 'index']);
         $router->get('/events/:page', ['EventController', 'index']);
         $router->get('/events/detail/:id', ['EventController', 'detail']);

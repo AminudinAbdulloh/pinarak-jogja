@@ -21,10 +21,22 @@
                         <i class="far fa-user"></i>
                         <span>Oleh: Admin</span>
                     </div>
-                    <!-- <div class="meta-item">
+                    <div class="meta-item">
                         <i class="far fa-eye"></i>
-                        <span>1,234 views</span>
-                    </div> -->
+                        <span><?php echo number_format($article['views'], 0, ',', '.'); ?> views</span>
+                    </div>
+                    <div class="meta-item rating-display">
+                        <i class="fas fa-star"></i>
+                        <span>
+                            <?php 
+                                $avgRating = round($article['avg_rating'], 1);
+                                echo $avgRating > 0 ? $avgRating : 'Belum ada rating';
+                            ?>
+                            <?php if ($article['total_ratings'] > 0): ?>
+                                (<?php echo $article['total_ratings']; ?> rating)
+                            <?php endif; ?>
+                        </span>
+                    </div>
                 </div>
 
                 <div class="article-excerpt">
@@ -41,6 +53,29 @@
             <!-- Article Content -->
             <div class="article-content">
                 <?php echo $article['content']; ?>
+            </div>
+
+            <!-- Rating Section -->
+            <div class="rating-section">
+                <h3>Beri Rating Artikel Ini</h3>
+                <p class="rating-description">Bagaimana pendapat Anda tentang artikel ini?</p>
+                
+                <div class="star-rating" data-article-id="<?php echo $article['id']; ?>">
+                    <?php for ($i = 1; $i <= 5; $i++): ?>
+                        <span class="star <?php echo $i <= $userRating ? 'active' : ''; ?>" 
+                              data-rating="<?php echo $i; ?>">
+                            <i class="<?php echo $i <= $userRating ? 'fas' : 'far'; ?> fa-star"></i>
+                        </span>
+                    <?php endfor; ?>
+                </div>
+                
+                <div class="rating-feedback" style="display: none;">
+                    <p class="success-message"></p>
+                </div>
+                
+                <?php if ($userRating > 0): ?>
+                    <p class="user-rating-info">Anda telah memberi rating: <strong><?php echo $userRating; ?> bintang</strong></p>
+                <?php endif; ?>
             </div>
 
             <!-- Article Footer -->
@@ -298,6 +333,83 @@
   color: #c86b85;
 }
 
+/* Rating Section */
+.rating-section {
+  padding: 30px 40px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+  text-align: center;
+}
+
+.rating-section h3 {
+  font-size: 1.4em;
+  color: #0e4b75;
+  margin-bottom: 10px;
+}
+
+.rating-description {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 0.95em;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 2em;
+  color: #ddd;
+  transition: all 0.3s ease;
+}
+
+.star i {
+  transition: all 0.3s ease;
+}
+
+.star:hover,
+.star.hover {
+  transform: scale(1.2);
+}
+
+.star:hover i,
+.star.hover i {
+  color: #ffc107;
+}
+
+.star.active i {
+  color: #ffc107;
+}
+
+.rating-feedback {
+  margin-top: 15px;
+}
+
+.success-message {
+  color: #28a745;
+  font-weight: 500;
+  margin: 0;
+}
+
+.user-rating-info {
+  color: #666;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.user-rating-info strong {
+  color: #0e4b75;
+}
+
+.meta-item.rating-display i {
+  color: #ffc107;
+}
+
 /* Article Footer */
 .article-footer {
   padding: 30px 40px;
@@ -504,6 +616,10 @@
     padding: 25px 20px;
   }
 
+  .rating-section {
+    padding: 25px 20px;
+  }
+
   .article-title {
     font-size: 1.6em;
   }
@@ -537,6 +653,14 @@
   .breadcrumb {
     font-size: 0.85em;
   }
+
+  .star-rating {
+    gap: 8px;
+  }
+
+  .star {
+    font-size: 1.8em;
+  }
 }
 
 @media (max-width: 480px) {
@@ -559,6 +683,18 @@
   .article-featured-image {
     width: 100%;
   }
+
+  .rating-section h3 {
+    font-size: 1.2em;
+  }
+
+  .star {
+    font-size: 1.5em;
+  }
+
+  .star-rating {
+    gap: 5px;
+  }
 }
 </style>
 
@@ -571,4 +707,127 @@ function copyLink() {
         console.error('Gagal menyalin link:', err);
     });
 }
+
+// Rating functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const starRating = document.querySelector('.star-rating');
+    if (!starRating) return;
+    
+    const stars = starRating.querySelectorAll('.star');
+    const articleId = starRating.dataset.articleId;
+    const ratingFeedback = document.querySelector('.rating-feedback');
+    const successMessage = document.querySelector('.success-message');
+    const userRatingInfo = document.querySelector('.user-rating-info');
+    
+    // Hover effect
+    stars.forEach((star, index) => {
+        star.addEventListener('mouseenter', function() {
+            highlightStars(index + 1);
+        });
+        
+        star.addEventListener('mouseleave', function() {
+            const currentRating = getCurrentRating();
+            highlightStars(currentRating);
+        });
+        
+        star.addEventListener('click', function() {
+            const rating = parseInt(this.dataset.rating);
+            submitRating(articleId, rating);
+        });
+    });
+    
+    function highlightStars(count) {
+        stars.forEach((star, index) => {
+            if (index < count) {
+                star.classList.add('hover');
+                star.querySelector('i').classList.remove('far');
+                star.querySelector('i').classList.add('fas');
+            } else {
+                star.classList.remove('hover');
+                if (!star.classList.contains('active')) {
+                    star.querySelector('i').classList.remove('fas');
+                    star.querySelector('i').classList.add('far');
+                }
+            }
+        });
+    }
+    
+    function getCurrentRating() {
+        let rating = 0;
+        stars.forEach(star => {
+            if (star.classList.contains('active')) {
+                rating++;
+            }
+        });
+        return rating;
+    }
+    
+    function submitRating(articleId, rating) {
+        // Show loading state
+        stars.forEach(star => star.style.pointerEvents = 'none');
+        
+        fetch('<?php echo BASEURL; ?>/articles/rate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                article_id: articleId,
+                rating: rating
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update stars
+                stars.forEach((star, index) => {
+                    if (index < rating) {
+                        star.classList.add('active');
+                        star.querySelector('i').classList.remove('far');
+                        star.querySelector('i').classList.add('fas');
+                    } else {
+                        star.classList.remove('active');
+                        star.querySelector('i').classList.remove('fas');
+                        star.querySelector('i').classList.add('far');
+                    }
+                });
+                
+                // Show success message
+                successMessage.textContent = data.message + ' - Rating rata-rata: ' + data.data.avg_rating + ' (' + data.data.total_ratings + ' rating)';
+                ratingFeedback.style.display = 'block';
+                
+                // Update user rating info
+                if (userRatingInfo) {
+                    userRatingInfo.innerHTML = 'Anda telah memberi rating: <strong>' + rating + ' bintang</strong>';
+                } else {
+                    const newInfo = document.createElement('p');
+                    newInfo.className = 'user-rating-info';
+                    newInfo.innerHTML = 'Anda telah memberi rating: <strong>' + rating + ' bintang</strong>';
+                    ratingFeedback.after(newInfo);
+                }
+                
+                // Update rating display in meta
+                const ratingDisplay = document.querySelector('.meta-item.rating-display span');
+                if (ratingDisplay) {
+                    ratingDisplay.textContent = data.data.avg_rating + ' (' + data.data.total_ratings + ' rating)';
+                }
+                
+                // Hide message after 3 seconds
+                setTimeout(() => {
+                    ratingFeedback.style.display = 'none';
+                }, 3000);
+            } else {
+                alert('Gagal menyimpan rating: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan saat menyimpan rating');
+        })
+        .finally(() => {
+            // Re-enable stars
+            stars.forEach(star => star.style.pointerEvents = 'auto');
+        });
+    }
+});
 </script>

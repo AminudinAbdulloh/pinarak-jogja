@@ -69,12 +69,22 @@ class ArticleController extends BaseController{
             exit;
         }
 
+        // Increment views
+        $this->articleModel->incrementViews($id);
+        
+        // Get user IP
+        $userIp = $this->getUserIP();
+        
+        // Get user's rating if exists
+        $userRating = $this->articleModel->getUserRating($id, $userIp);
+
         // Ambil artikel terkait (3 artikel terbaru selain artikel ini)
         $relatedArticles = $this->articleModel->getRelatedArticles($id, 3);
 
         $data = [
             'title' => 'Pinarak Jogja - ' . $article['title'],
             'article' => $article,
+            'userRating' => $userRating,
             'relatedArticles' => $relatedArticles,
             'setting' => $this->settingModel->getSettings(),
             'contact' => $this->contactModel->getContacts()
@@ -83,5 +93,61 @@ class ArticleController extends BaseController{
         $this->view('templates/public/header', $data);
         $this->view('public/article/detail', $data);
         $this->view('templates/public/footer', $data);
+    }
+
+    public function rate() {
+        // Only accept POST requests
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            echo json_encode(['success' => false, 'message' => 'Method not allowed']);
+            exit;
+        }
+
+        // Get JSON input
+        $input = json_decode(file_get_contents('php://input'), true);
+        
+        $articleId = $input['article_id'] ?? null;
+        $rating = $input['rating'] ?? null;
+
+        // Validation
+        if (!$articleId || !$rating || $rating < 1 || $rating > 5) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'Invalid input']);
+            exit;
+        }
+
+        // Get user IP
+        $userIp = $this->getUserIP();
+
+        // Save rating
+        try {
+            $this->articleModel->addOrUpdateRating($articleId, $userIp, $rating);
+            
+            // Get updated stats
+            $stats = $this->articleModel->getArticleStats($articleId);
+            
+            echo json_encode([
+                'success' => true,
+                'message' => 'Rating berhasil disimpan',
+                'data' => [
+                    'avg_rating' => round($stats['avg_rating'], 1),
+                    'total_ratings' => $stats['total_ratings']
+                ]
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['success' => false, 'message' => 'Gagal menyimpan rating']);
+        }
+        exit;
+    }
+
+    private function getUserIP() {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            return $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            return $_SERVER['REMOTE_ADDR'];
+        }
     }
 }
