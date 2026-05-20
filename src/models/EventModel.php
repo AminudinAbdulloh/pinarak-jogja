@@ -131,6 +131,35 @@ class EventModel extends Database {
         return $result['total'];
     }
 
+    public function searchPublishedUpcoming($search, $limit = 6) {
+        $limit = (int)$limit;
+        $searchParam = '%' . $search . '%';
+
+        $query = "SELECT *
+        FROM events
+        WHERE status = 'published'
+            AND start_time > NOW()
+            AND (title LIKE ?
+                OR description LIKE ?
+                OR location LIKE ?
+                OR category LIKE ?)
+        ORDER BY
+            CASE
+                WHEN title LIKE ? THEN 4
+                WHEN category LIKE ? THEN 3
+                WHEN location LIKE ? THEN 2
+                WHEN description LIKE ? THEN 1
+                ELSE 0
+            END DESC,
+            start_time ASC
+        LIMIT $limit";
+
+        return $this->qry($query, [
+            $searchParam, $searchParam, $searchParam, $searchParam,
+            $searchParam, $searchParam, $searchParam, $searchParam,
+        ])->fetchAll();
+    }
+
     public function getRelatedPublished($excludeId, $limit = 3) {
         $limit = (int)$limit;
 

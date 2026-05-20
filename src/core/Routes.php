@@ -19,6 +19,7 @@ class Routes {
         $router->get('/informations/:page', ['InformationController', 'index']);
         $router->get('/informations/detail/:id', ['InformationController', 'detail']);
         $router->get('/contacts', ['ContactController', 'index']);
+        $router->get('/home/search', ['DefaultApp', 'searchEvents']);
 
         // Admin
         // 1. Auth Routes
