@@ -84,7 +84,7 @@ class EventModel extends Database {
     public function highlight_event(){
         $query = "SELECT *
         FROM events
-        WHERE status = 'published' AND start_time > NOW()
+        WHERE status = 'published'
         ORDER BY start_time ASC
         LIMIT 1";
         return $this->qry($query)->fetch();
@@ -93,7 +93,7 @@ class EventModel extends Database {
     public function all_events() {
         $query = "SELECT *
         FROM events
-        WHERE status = 'published' AND start_time > NOW() 
+        WHERE status = 'published'
         ORDER BY start_time ASC 
         LIMIT 6";
         return $this->qry($query)->fetchAll();
@@ -115,7 +115,7 @@ class EventModel extends Database {
             a.username as publisher_name
         FROM events e
         LEFT JOIN admins a ON e.author_id = a.id
-        WHERE e.status = 'published' AND e.start_time > NOW()
+        WHERE e.status = 'published'
         ORDER BY e.start_time ASC
         LIMIT $limit OFFSET $offset";
         
@@ -125,7 +125,7 @@ class EventModel extends Database {
     public function countAllPublished() {
         $query = "SELECT COUNT(*) as total 
         FROM events e
-        WHERE e.status = 'published' AND e.start_time > NOW()";
+        WHERE e.status = 'published'";
         
         $result = $this->qry($query)->fetch();
         return $result['total'];
@@ -138,7 +138,6 @@ class EventModel extends Database {
         $query = "SELECT *
         FROM events
         WHERE status = 'published'
-            AND start_time > NOW()
             AND (title LIKE ?
                 OR description LIKE ?
                 OR location LIKE ?
@@ -175,8 +174,7 @@ class EventModel extends Database {
             a.username as publisher_name
         FROM events e
         LEFT JOIN admins a ON e.author_id = a.id
-        WHERE e.status = 'published' 
-            AND e.start_time > NOW()
+        WHERE e.status = 'published'
             AND e.id != :excludeId
         ORDER BY e.start_time ASC
         LIMIT $limit";

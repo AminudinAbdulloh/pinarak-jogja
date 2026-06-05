@@ -201,6 +201,7 @@ class EventRecommender:
                 FROM   events
                 WHERE  status = 'published'
                 ORDER  BY start_time ASC
+
                 """
             )
             rows = cursor.fetchall()
